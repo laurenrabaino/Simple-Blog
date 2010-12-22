@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
   
   def self.info_account
-    find(:first, :conditions => "user_name='info'")
+    find(:first, :conditions => "user_name='#{SETTINGS[:site][:info_account_user_name]}'")
   end
   
   def is_admin?

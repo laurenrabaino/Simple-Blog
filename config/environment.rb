@@ -30,8 +30,6 @@ Rails::Initializer.run do |config|
 
   config.load_paths += ["#{Rails.root}/app/concerns"]
   
-  config.gem 'hoptoad_notifier'
-  
   config.time_zone = 'UTC'
   DEFAULT_SECRET = "552e024ba5bbf493d1ae37aacb875359804da2f1002fa908f304c7b0746ef9ab67875b69e66361eb9484fc0308cabdced715f7e97f02395874934d401a07d3e0"
   secret = SETTINGS[:action_controller][:session][:secret] rescue DEFAULT_SECRET
@@ -60,5 +58,3 @@ begin
 # In case you're not running under Passenger (i.e. devmode with mongrel)
 rescue NameError => error
 end
-
-S3_BUCKET = SETTINGS[:s3][:bucket]

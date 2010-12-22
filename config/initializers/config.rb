@@ -13,3 +13,5 @@ SUBSCRIBE_IMAGES[:blogtalkradio] = "blogtalkradio.jpg"
 SUBSCRIBE_IMAGES[:youtube] = "yt_logo.png"
 SUBSCRIBE_IMAGES[:itunes] = "itunes.png"
 SUBSCRIBE_IMAGES[:flickr] = "fk_logo.png"
+
+S3_BUCKET = SETTINGS[:s3][:bucket]

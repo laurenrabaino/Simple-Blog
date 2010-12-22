@@ -15,6 +15,7 @@ development:
         :noreply: 'noreply@domain.com'
         :email: 'sender@domain.com'
         :salt: ""
+        :info_account_user_name: '(make sure you get this username :-))'
     :s3:
         :bucket: "simpleblog-dev"
     :recaptcha:
