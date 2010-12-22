@@ -40,10 +40,10 @@ class Account::FacebookAccountsController < ApplicationController
       end
       session[:fb_session] = fb_user ? params[:code] : nil
       if fb_user
-        existing_fb_account = FacebookAccount.find_by_fb_user_id_and_site_id(fb_user["id"].to_i, SITE_ID)               # check for existing facebook account...
+        existing_fb_account = FacebookAccount.find_by_fb_user_id(fb_user["id"].to_i)               # check for existing facebook account...
         if @current_user && (!existing_fb_account || existing_fb_account.user_id == @current_user.id) 
           unless @current_user.has_facebook_oauth?  
-            facebook_account = FacebookAccount.create({ :user_id => @current_user.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code], :site_id => SITE_ID }) 
+            facebook_account = FacebookAccount.create({ :user_id => @current_user.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code] }) 
             flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
           end
         else
@@ -73,7 +73,7 @@ class Account::FacebookAccountsController < ApplicationController
         email = fb_user["email"] || ""
         profile = Profile.find_by_email(email)                              # check for existing users with that email...
         if profile                                                          # existing user with email matching, attach the credentials to it...
-          facebook_account = FacebookAccount.create({ :user_id => profile.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code], :site_id => SITE_ID }) 
+          facebook_account = FacebookAccount.create({ :user_id => profile.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code] }) 
           flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
           session[:user_id] = profile.id
           redirect_to profile_path(profile)
