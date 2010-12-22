@@ -14,17 +14,19 @@
 		<%= f.text_field :title, :maxlength => 256, :size => 15 %>
 	</div>
 	
-	<div class="row">
-		<label for="categories" class="label"><%=t("common.category.display").capitalize%> 
-			<span class="required">*</span>
-		</label>
-		<div class='sites'>
-			<%for category in Category.find(:all, :order => 'name ASC')%>
-				<%= check_box_tag "post[category_ids][]", category.id, (@post.categories.include?(category)), :class=>"radioButton" %>
-				<span class="radioButtonText"><%=category.name%></span>
-			<%end%>
+	<%if Category.count>0%>
+		<div class="row">
+			<label for="categories" class="label"><%=t("common.category.display").capitalize%> 
+				<span class="required">*</span>
+			</label>
+			<div class='sites'>
+				<%for category in Category.find(:all, :order => 'name ASC')%>
+					<%= check_box_tag "post[category_ids][]", category.id, (@post.categories.include?(category)), :class=>"radioButton" %>
+					<span class="radioButtonText"><%=category.name%></span>
+				<%end%>
+			</div>
 		</div>
-	</div>
+	<%end%>
 	
 	<div class="row">
 		<label for="excerpt" class="label"><%=t("form.blog.labels.excerpt").capitalize%>
