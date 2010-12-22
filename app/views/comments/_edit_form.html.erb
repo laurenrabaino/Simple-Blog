@@ -1,0 +1,48 @@
+<div class="formBody"  id="commentFormContainer">
+	<%=render :partial=>"shared/captcha_settings" if params[:action]!="edit" && !@comment.profile%>
+	<%=render :partial=>"shared/error", :locals=>{ :object => @comment }%>
+	
+	<% form_for([object, @comment]) do |f| %>
+
+		<div class="row">
+			<h2 class="heading"><%=t("common.profile.display").capitalize%></h2>
+		</div>
+		
+		<div class="row">
+			<label for="full_name" class="label"><%=t("form.profile.full_name").capitalize%>	
+			</label>
+			<%=@comment.full_name%>
+		</div>
+
+		<div class="row">
+			<label for="email" class="label"><%=t("form.profile.labels.email").capitalize%>
+			</label>
+			<a href="<%=@comment.email%>" title="<%=@comment.email%>"><%=@comment.email%></a>
+		</div>
+		
+		<%if @comment.profile%>
+			<div class="row">
+				<label for="profile" class="label"><%=t("common.profile.display").capitalize%>
+				</label>
+				<%=link_to @comment.full_name, profile_path(@comment.profile)%>
+			</div>
+		<%end%>
+		
+		<div class="row">
+			<h2 class="heading"><%=t("common.comment.display").capitalize%></h2>
+		</div>
+
+		<div class="row">
+			<label for="body" class="label"><%=t("common.comment.display").capitalize%>  
+				<span class="required">*</span>
+			</label>
+			<%= ckeditor_textarea("comment", "body", :toolbar=>"Comments", :width => '444px', :height => '200px') %>
+		</div>
+
+		<div class="row">
+			<label>&nbsp;</label>
+			<input type="submit" name="submit" value="<%=t("form.submit").capitalize%>"  class="submitButton" />
+		</div>
+
+	<%end%>
+</div>

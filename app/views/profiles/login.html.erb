@@ -1,0 +1,23 @@
+<div class="formContainer">
+	
+	<div class="formHeading">
+		<h2>
+			<%=t("account.headers.login").capitalize%>
+		</h2>
+	</div>
+	
+	<div class="formDescription">
+		
+		<p>
+			<div class="required"><span>*</span><%=t("form.required").capitalize%></div>
+		</p>
+		
+		<span class="actionLinks"><%=link_to t("account.forgot"), "/forgot_your_password", :rel => "nofollow"%></span>
+		
+	</div>
+	
+	<div class="formBody">
+		<%= render :partial=>"login"%>
+	</div>
+
+</div>

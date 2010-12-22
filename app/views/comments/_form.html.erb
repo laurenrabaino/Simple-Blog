@@ -1,0 +1,57 @@
+<div class="formBody"  id="commentFormContainer">
+	<%=render :partial=>"shared/captcha_settings" if params[:action]!="edit" && !@current_user%>
+	<%=render :partial=>"shared/error", :locals=>{ :object => @comment }%>
+
+	<% form_for([object, Comment.new(:commentable => object)]) do |f| %>
+
+		<h3><%=t("common.comment.create").capitalize%></h3>
+
+		<%= f.hidden_field :commentable_id%>
+	  	<%= f.hidden_field :commentable_type%>
+		<%= f.hidden_field :parent_id, :id=>"commentParentId"%>
+		<%= f.hidden_field :level, :id=>"commentLevel"%>
+		
+		<%if @current_user%>
+			<%= f.hidden_field :full_name, :value => @current_user.user_name %>
+			<%= f.hidden_field :email, :value => @current_user.email %>
+			<%= f.hidden_field :user_id, :value => @current_user.id %>
+		<%else%>
+			<div class="row">
+				<label for="full_name" class="label"><%=t("form.comment.labels.fullname").capitalize%>	
+					<span class="required">*</span>
+				</label>
+				<%= f.text_field :full_name, :maxlength => 256, :size => 15 %>
+			</div>
+
+			<div class="row">
+				<label for="email" class="label"><%=t("form.comment.labels.email").capitalize%>
+					<span class="required">*</span>
+					<span class="small"><%=t("form.private").capitalize%></span>
+				</label>
+				<%= f.text_field :email, :maxlength => 256, :size => 15 %>
+			</div>
+		<%end%>
+
+		<div class="row">
+			<label for="body" class="label"><%=t("common.comment.display").capitalize%>  
+				<span class="required">*</span>
+			</label>
+			<%= ckeditor_textarea("comment", "body", :toolbar=>"Comments", :width => '444px', :height => '200px') %>
+		</div>
+	
+		<%if params[:action]!="edit" && !@current_user%>
+			<div class="row">
+				<label><%=t("form.captcha")%>:
+					<span class="required">*</span>
+				</label>
+				<%= recaptcha_tags %>
+			</div>
+		<%end%>
+
+		<div class="row">
+			<label>&nbsp;</label>
+			<input type="submit" name="submit" value="<%=t("form.comment.submit").capitalize%>" />
+		</div>
+
+	<%end%>
+</div>

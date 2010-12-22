@@ -1,0 +1,38 @@
+<h2 class="subscribeHeader"><%=t("common.subscribe").capitalize%></h2>
+
+<div class="subscribeContainer">
+	<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<%=SETTINGS[:site][:name].downcase%>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" style="width:100%;clear:both;">
+		<span class="subscribe"><%=t("common.enteremailaddress").capitalize%>:</span>
+		<input type="text" style="width:210px" name="email"  style="float:left;"/>
+		<input type="hidden" value="<%=SETTINGS[:site][:name].downcase%>" name="uri"/>
+		<input type="hidden" name="loc" value="en_US"/>
+		<input name="submit" type="submit" alt="<%=t("form.submit")%>" value="<%=t("form.submit")%>" style="float:right;">
+		<%if false%>
+			<a href="http://feeds.feedburner.com/<%=SETTINGS[:site][:name].downcase%>"><img src="http://feeds.feedburner.com/~fc/<%=SETTINGS[:site][:name]%>?bg=E8E8E8&amp;fg=555555&amp;anim=0" /></a>
+		<%end%>
+	</form>
+	
+	<%unless SUBSCRIBE.empty?%>
+		<div style="clear:both;padding-bottom:20px;"></div>
+
+		<% col = 1%>
+		<%SUBSCRIBE.each do |key, link|%>
+			<%if col == 1%><ul class="subscribeLinkRow"><%end%>
+			<li><a href="<%=link%>"><%=image_tag(SUBSCRIBE_IMAGES[key])%></a></li>
+			<%col += 1%>
+			<%if col == 4%></ul><%end%>
+			<%col = 1 if col == 4%>
+		<%end%>
+		<%if col < 4 %></ul><%end%>
+		
+	<%end%>
+	
+	<ul class="rssFeeds">
+		<li class="rssHeader">RSS Feeds</li>
+		<li><a href="/articles.rss" title="<%=t("common.article").pluralize%>"><%=t("common.article").pluralize%></a></li>
+		<li><a href="/alerts.rss" title="<%=t("common.article").pluralize%>"><%=t("common.alerts")%></a></li>
+		<li><a href="/recordings.rss" title="<%=t("common.article").pluralize%>"><%=t("common.recordings")%></a></li>
+		<li><a href="/posts.rss" title="<%=t("common.blog").pluralize%>"><%=t("common.blog")%></a></li>
+	</ul>
+	
+</div>

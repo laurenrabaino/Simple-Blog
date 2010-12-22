@@ -1,0 +1,16 @@
+<div class="profileContainer">
+	
+	<%=render :partial => "account/header", :locals => { :selected => "notification_settings" }%>
+	
+	<div class="profileSettings">
+		<h2>
+			<%=t("account.notifications.label").capitalize%> 
+		</h2>
+		<div class='formContainer'>
+			<div class="formBody">
+				<%= render :partial=>"form"%>
+			</div>
+		</div>
+	</div>
+	
+</div>

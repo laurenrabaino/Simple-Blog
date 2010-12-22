@@ -1,0 +1,12 @@
+<%if (TWITTER_KEY && TWITTER_SECRET) || (FACEBOOK_KEY && FACEBOOK_SECRET)%>
+	<ul>
+		<li<%if selected=='settings'%> class='selected'<%end%>><%=link_to t("account.settings"), account_settings_path%></li>
+		<li<%if selected=='notification_settings'%> class='selected'<%end%>><%=link_to t("account.notifications.label"), account_notification_setting_path%></li>
+		<%if TWITTER_KEY && TWITTER_SECRET%>
+			<li<%if selected=='twitter'%> class='selected'<%end%>><%=link_to t("account.twitter.label"), account_twitter_account_path%></li>
+		<%end%>
+		<%if FACEBOOK_KEY && FACEBOOK_SECRET%>
+			<li<%if selected=='facebook'%> class='selected'<%end%>><%=link_to t("account.facebook.label"), account_facebook_account_path%></li>
+		<%end%>
+	</ul>
+<%end%>

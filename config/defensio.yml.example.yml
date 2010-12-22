@@ -1,0 +1,9 @@
+development:
+  api_key: 
+  owner_url: 
+  validate_key: false
+
+production:
+  api_key: 
+  owner_url: 
+  validate_key: false

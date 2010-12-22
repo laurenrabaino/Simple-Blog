@@ -1,0 +1,26 @@
+<!-- ARTICLES PAGE -->
+<div class="landingPage">
+	<div class="leftSide">
+		<%=render :partial => "comments/list", :locals => { :comments => @comments, :show_association => true, :show_pagination => true, :hide_header => false } %>
+	</div>
+	
+	<div class="rightSide">
+		
+		<%if @current_user && @current_user.is_admin?%>
+			
+			<div class="adminLinks">
+				<h3><%=t("common.filter_label").capitalize%></h3>
+				<%=link_to t("admin.comments.all"), comments_path, :class=>(@filter=='all' ? "activeLink" : "editLink")%> <span class="linkSeparator">|</span>
+				<%=link_to t("admin.comments.ham"), ham_comments_path, :class=>(@filter=='ham' ? "activeLink" : "editLink")%> <span class="linkSeparator">|</span>
+				<%=link_to t("admin.comments.spam"), spam_comments_path, :class=>(@filter=='spam' ? "activeLink" : "deleteLink")%>
+			</div>
+			
+			<div class="adminLinks">
+				<h3><%=t("admin.label").capitalize%></h3>
+				<%=link_to t("admin.comments.delete_all_spam"), delete_spam_comments_path, :class=>"editLink" %>
+			</div>
+			
+		<%end%>
+		
+	</div>
+</div>

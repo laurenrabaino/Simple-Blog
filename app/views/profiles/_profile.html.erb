@@ -1,0 +1,26 @@
+<li>
+	<%apply_fragment [cache_key, "_profile_header_", p, is_admin?] do %>
+		<%=image_tag p.avatar.url(:thumb), :class=>"avatarImage"%>
+		<div class="profileUserName">
+			<%=link_to p.user_name, profile_path(p)%>
+		</div>
+	<%end%>
+	<%apply_fragment [cache_key, "_profile_time_", p, is_admin?] do %>
+		<span class="profileCreatedAt">
+			<%=time_ago_in_words(p.created_at)%>
+		</span>
+	<%end%>
+	<div class="profileAboutMe">
+		<%=p.short_about_me if p.short_about_me%>
+	</div>
+	<div class='profileAdmin'>
+		<%if is_admin?%>
+			<%=render :partial => "shared/admin_links_small", :locals =>{
+				:edit_link => edit_profile_path(p),
+				:show_publishing_links => false,
+				:delete_link => profile_path(p),
+				:confirm_message => t("common.profile.delete")
+			}%>
+		<%end%>
+	</div>
+</li>

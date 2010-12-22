@@ -1,0 +1,26 @@
+<%if !defined?(hide_header) || !hide_header%>
+	<h2>
+		<%=t("common.blog.display").capitalize%>
+		<%if false && defined?(filters) && !filters.empty?%>
+			<%filters.each do |key, f|%>
+				<span class="filterLink<%='Active' if key==@filter%>"><a href="<%=pre_link%><%=f[:link]%>" alt='<%=f[:display_name]%>'><%=f[:display_name]%></a></span>
+			<%end%>
+		<%end%>
+	</h2>
+<%end%>
+<%if posts && !posts.empty?%>
+	<ul class="posts">
+		<%posts.each do |a|%>
+			<%=render :partial=>"posts/post", :locals=>{ :cache_key => cache_key, :a => a }%>
+		<%end%>
+	</ul>
+	<%if defined?(show_more) && show_more%>
+		<div class="readMore">
+			<%=link_to "#{t("common.blog.viewall")} &raquo;", posts_path%>
+		</div>
+	<%elsif defined?(show_pagination) && show_pagination%>
+		<%=will_paginate(posts, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+	<%end%>
+<%else%>
+	<p><%=t("common.blog.nocontent")%></p>
+<%end%>

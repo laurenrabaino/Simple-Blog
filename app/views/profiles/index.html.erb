@@ -1,0 +1,11 @@
+<%=render :partial=>"shared/flash", :locals => { :message => flash[:notice] }%>
+
+<!-- PROFILE PAGE -->
+<div class="landingPage">
+	<div class="leftSide">
+		<%= render :partial => "profiles/list", :locals => { :profiles => @profiles, :show_pagination => true, :cache_key => "landing_page" }%> 
+	</div>
+	
+	<div class="rightSide">
+	</div>
+</div>

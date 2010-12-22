@@ -1,0 +1,52 @@
+<div class="articleContainer">
+	
+	<%apply_fragment ["page_header_", @page, is_admin?] do %>
+		<div class="articleHeading">
+			<h2>
+				<%=@page.title%> 
+			</h2>
+		</div>
+	<%end%>
+	
+	<div class="articleDescription">
+		
+		<%=render :partial => "shared/admin_links", :locals =>{
+			:edit_link => edit_page_path(@page),
+			:show_publishing_links => true,
+			:is_published => @page.published?, 
+			:unpublish_link => unpublish_page_path(@page),
+			:publish_link => publish_page_path(@page),
+			:feature_link => featured_page_path(@page),
+			:featured => @page.featured,
+			:delete_link => page_path(@page),
+			:confirm_message => 'Are you sure you want to delete this page?'
+		} if @current_user && @current_user.is_admin?%>
+		
+		<ul class='actionLinks'>
+			<%#=render :partial => 'shared/favorite_this', :locals => { :url => favorite_page_url(@page), :object => @page } %>
+		</ul>
+		
+		<%apply_fragment ["page_side_time_", @page, is_admin?], :expires_in => CACHE_TIMEOUT do %>
+			<span class="articleCreatedAt"><%= t("common.posted").capitalize%> <%=time_ago_in_words(@page.created_at)%></span>
+		<%end%>
+		
+		<%=render :partial => 'shared/viewed', :locals => { :viewed => @page.viewed } %>
+		
+	</div>
+	
+	<div class="articleBody">
+		<%apply_fragment ["page_body_with_embed_and_image1_", @page, is_admin?] do %>
+			<%if @page.embed_code && !@page.embed_code.strip.blank?%>
+				<%=transform_embed_code(@page.embed_code, 600, 400)%>
+			<%elsif @page.featured_image.file?%>
+				<%=image_tag @page.featured_image.url(:large)%>
+				<%if @page.featured_image_caption && !@page.featured_image_caption.blank?%>
+					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.photocredit")%>:</span><%=@page.featured_image_caption%></div>
+				<%end%>
+			<%end%>
+			<%=correct_body @page.body%>
+		<%end%>
+		<%=render :partial => "comments/commenting", :locals => { :object => @page }%>
+	</div>
+	
+</div>

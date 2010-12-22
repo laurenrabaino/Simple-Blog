@@ -1,0 +1,5 @@
+<%if @menu_pages && !@menu_pages.empty?%>
+	<%@menu_pages.each do |page|%>
+		<li<%if @page && @page.is_a?(Page) && @page==page%> class="selected"<%end%><%if @menu_pages.first==page%> style="border-left:none;"<%end%>><%= link_to page.title.capitalize, page_path(page) %></li>
+	<%end%>
+<%end%>

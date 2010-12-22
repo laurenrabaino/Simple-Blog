@@ -1,0 +1,49 @@
+<li<%unless a.published?%> class="unpublishedStory"<%end%>>
+	<%if a.featured_image?%>
+		<%apply_fragment [cache_key, "_posts_featured_", a] do %>
+			<div class="featuredImage">
+				<%=image_tag a.featured_image.url(:medium), :alt => h(a.title) %>
+			</div>
+		<%end%>
+	<%end%>
+	<%apply_fragment [cache_key, "_posts_header_", a] do %>
+		<div class="postTitle">
+			<%=link_to a.title, post_path(a)%>
+		</div>
+		<div class="postBody">
+			<%=strip_tags(a.excerpt?)%>
+		</div>
+		<div class="postMetaData">
+			<span class="postAuthor">
+				<%=t("common.viewed").capitalize%> <%=a.viewed%>
+			</span>
+			<span class="metaDataSeparator">|</span>
+	<%end%>
+	<%apply_fragment [cache_key, "_posts_time_", a], { :expires_in => CACHE_TIMEOUT } do %>
+			<span class="postCreatedAt">
+				<%=time_ago_in_words(a.created_at)%>
+			</span>
+	<%end%>
+	<%apply_fragment [cache_key, "_posts_footer_", a] do %>
+			<%if a.allow_comments%>
+				<span class="metaDataSeparator">|</span>
+				<span class="postComments">
+					<%=t("common.comment.display").pluralize.capitalize%>: <%=a.comments.count(:conditions => 'spam=0')%>
+				</span>
+			<%end%>
+		</div>
+	<%end%>
+	
+	<%=render :partial => "shared/admin_links_small", :locals =>{
+		:edit_link => edit_post_path(a),
+		:show_publishing_links => true,
+		:is_published => a.published?, 
+		:unpublish_link => unpublish_post_path(a),
+		:publish_link => publish_post_path(a),
+		:feature_link => featured_post_path(a),
+		:featured => a.featured,
+		:delete_link => post_path(a),
+		:confirm_message => t("common.post.delete")
+	} if is_admin?%>
+	
+</li>

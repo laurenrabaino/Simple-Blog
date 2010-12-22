@@ -1,0 +1,19 @@
+<%if !defined?(hide_header) || !hide_header%>
+	<h2><%=t("common.profile.display").pluralize.capitalize%></h2>
+<%end%>
+<%if profiles && !profiles.empty?%>
+	<ul class="profiles">
+		<%profiles.each do |p|%>
+			<%=render :partial=>"profiles/profile", :locals=>{ :cache_key => cache_key, :p => p }%>
+		<%end%>
+	</ul>
+	<%if defined?(show_more) && show_more%>
+		<div class="readMore">
+			<%=link_to "#{t("common.profile.viewall")} &raquo;", profiles_path%>
+		</div>
+	<%elsif defined?(show_pagination) && show_pagination%>
+		<%=will_paginate(profiles, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+	<%end%>
+<%else%>
+	<p><%=t("common.profile.nocontent")%></p>
+<%end%>

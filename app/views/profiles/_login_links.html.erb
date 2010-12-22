@@ -1,0 +1,15 @@
+<%unless @current_user%>
+	<li class="facebookConnect"><a href="<%=connect_account_facebook_account_path%>" title="Registro" rel="nofollow"><%=image_tag("facebook_connect.png", :alt=>"Registro Facebook") %></a></li>
+	<li class="actionSeparatorFacebookConnect">|</li>
+	<li><a href="<%=new_profile_path%>" title="Registro" rel="nofollow"><%=t("account.register").capitalize%></a></li>
+	<li><a href="/login" title="Login" rel="nofollow"><%=t("account.login").capitalize%></a></li>
+<%else%>
+	<li><a href="/logout" title="Logout" rel="nofollow" class="logout"><%=t("account.logout").capitalize%></a></li>
+	<li class="actionLink"><%=link_to (t("common.blog.create").capitalize+" &raquo;"), new_post_path, :class=>"submitArticle"%></li>
+	<li class="actionLink"><%=link_to "[#{t("account.account").capitalize}]", edit_profile_path(@current_user), :class=>"editAccount"%></li>
+	<li class="actionSeparator">|</li>
+	<li class="actionLink"><%=link_to "[#{t("account.settings").capitalize}]", account_settings_path, :class=>"editSettings"%></li>
+	<li class="actionSeparator">|</li>
+	
+	<li class="actionLink"><span><%=t("account.welcome").capitalize%></span> <%=link_to @current_user.user_name, profile_path(@current_user), :class=>"userName"%></li>
+<%end%>

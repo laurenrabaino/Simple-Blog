@@ -1,0 +1,11 @@
+<%if @current_user%>
+	<%unless shared %>
+		<li class='favoriteThis'>	
+			<%=link_to image_tag("/images/tweet.png", :alt=>t("common.tweet.label")), url, :rel => 'nofollow', :title=>t("common.tweet.label") %>
+		</li>
+	<%else%>
+		<li class='favoritedThis'>
+			<%=image_tag("/images/tweeted.png", :alt=>t("common.tweet.tweeted"))%>
+		</li>
+	<%end%>
+<%end%>

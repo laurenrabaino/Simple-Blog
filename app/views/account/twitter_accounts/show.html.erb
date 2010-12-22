@@ -1,0 +1,10 @@
+<div class="profileContainer">
+	
+	<%=render :partial => "account/header", :locals => { :selected => "twitter" }%>
+	
+	<div class="profileSettings">
+		<h2><%=t("account.twitter.label")%></h2>
+		<%=render :partial => 'account/service', :locals => { :service_name => 'Twitter' }%>
+	</div>
+	
+</div>

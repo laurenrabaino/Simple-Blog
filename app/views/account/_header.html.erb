@@ -1,0 +1,13 @@
+<%apply_fragment ["account_header_", @current_user] do %>
+	<div class="profileHeading">
+		<h1>
+			<%=@current_user.user_name%> 
+			<%#=link_to "[#{t("account.settings").capitalize}]", account_settings_path, :class=>"editLink"%>
+			<%=link_to "[#{t("account.account").capitalize}]", edit_profile_path(@current_user), :class=>"editLink"%>
+		</h1>
+	</div>
+<%end%>
+
+<div class="profileNavigation">
+	<%=render :partial => "account/navigation", :locals => { :selected => selected }%>
+</div>

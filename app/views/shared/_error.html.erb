@@ -1,0 +1,14 @@
+<% if (defined?(error_text) && !error_text.blank?) || (object && !object.errors.empty?) %>
+	<div class="formErrors">
+		<h3 class="formErrorHeading"><%=t("common.oops")%></h3>
+		<ul class="formErrorsList">
+			<%if defined?(error_text)%>
+				<li><%=error_text%></li>
+			<%elsif object%>
+				<%object.errors.each do |error|%>
+					<li><%=error[1]%></li>
+				<%end%>
+			<%end%>
+		</ul>
+	</div>
+<%end%>

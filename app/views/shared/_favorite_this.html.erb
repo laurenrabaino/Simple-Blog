@@ -1,0 +1,11 @@
+<%if @current_user%>
+	<%unless object.favorites.find_by_user_id(@current_user.id) %>
+		<li class='favoriteThis'>	
+			<%=link_to image_tag("/images/favorite.png", :alt=>t("common.favorite.label")), url, :rel => 'nofollow', :title=>t("common.favorite.label") %>
+		</li>
+	<%else%>
+		<li class='favoriteThis'>
+			<%= image_tag("/images/favorited.png", :alt=>t("common.favorite.favorited"))%>
+		</li>
+	<%end%>
+<%end%>

@@ -1,0 +1,56 @@
+<%if is_admin?%>
+	<div class="hideShowEmbeddedAdminMenu">
+		<span id="showEmbeddedAdminMenu">[+] <%=t("outer.show")%> <%=t("admin.administration")%></span>
+		<span id="hideEmbeddedAdminMenu" style="display:none;">[-] <%=t("outer.hide")%> <%=t("admin.administration")%></span>
+	</div>
+	<div class="embeddedAdminMenu" id='embeddedAdminMenu' style='display:none;'>
+		<ul class='adminMenu'>
+			<li id='adminMenuPosts' <%=getAdminMenuClass('posts')%>>
+				<span><%=t("common.blog.display")%></span>
+			</li>
+			<li id='adminMenuPages' <%=getAdminMenuClass('pages')%>>
+				<span><%=t("common.page.display").pluralize%></span>
+			</li>
+			<li id='adminMenuProfiles' <%=getAdminMenuClass('profiles')%>>
+				<span><%=t("common.profile.display")%></span>
+			</li>
+			<li id='adminMenuComments' <%=getAdminMenuClass('comments')%>>
+				<span><%=t("common.comment.display").pluralize%></span>
+			</li>
+		</ul>
+		
+		
+		<ul class='subAdminMenu' id='subMenuPosts' <%=showAdminMenu?('posts')%>>
+			<li class='preMenu'><%=t("admin.label").capitalize%>:</li>
+			<li><%=link_to t("common.blog.viewall"), posts_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.blog.create"), new_post_path%></li>
+		</ul>
+		
+		<ul class='subAdminMenu' id='subMenuPages' <%=showAdminMenu?('pages')%>>
+			<li class='preMenu'><%=t("admin.label").capitalize%>:</li>
+			<li><%=link_to t("common.page.viewall"), pages_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.page.create"), new_page_path%></li>
+		</ul>
+
+		<ul class='subAdminMenu' id='subMenuProfiles' <%=showAdminMenu?('profiles')%>>
+			<li class='preMenu'><%=t("admin.label").capitalize%>:</li>
+			<li><%=link_to t("common.profile.viewall"), profiles_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.profile.create"), new_profile_path%></li>
+		</ul>
+		
+		<ul class='subAdminMenu' id='subMenuComments' <%=showAdminMenu?('comments')%>>
+			<li class='preMenu'><%=t("admin.label").capitalize%>:</li>
+			<li><%=link_to t("common.comment.viewall.all"), comments_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.comment.viewall.spam"), spam_comments_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.comment.viewall.ham"), ham_comments_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.comment.delete_all_spam"), delete_spam_comments_path%></li>
+		</ul>
+		
+	</div>
+<%end%>

@@ -1,0 +1,14 @@
+<p>Nuevo Artículo :: <%=SETTINGS[:site][:name]%></p>
+
+<p>
+	<strong>Artículo:</strong> <%=@article.title%> - <%=link_to @article.permalink, @article.permalink%>
+	<%unless @article.published?%>
+		<br/><br/>
+		<em>Usted necesidad de publicar el artículo a disposición del público - <%=link_to t("admin.publish").capitalize, publish_article_path(@article), :method => :put%></em>
+	<%end%>
+</p>
+
+<p>Atentamente,</p>
+
+<p><%=SETTINGS[:site][:name]%><br/>
+http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>	

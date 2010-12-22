@@ -1,0 +1,20 @@
+# MYSQL SETTINGS
+development:
+    adapter: mysql
+    database: thebal7_simpleb
+    username: root
+    password: 
+    encoding: utf8
+    host: localhost
+    pool: 2
+    timeout: 5000
+
+production:
+    adapter: mysql
+    database: thebal7_simpleb
+    username: thebal7_simpleb
+    password: MGE1uSFC6clr
+    encoding: utf8
+    host: localhost
+    pool: 2
+    timeout: 5000

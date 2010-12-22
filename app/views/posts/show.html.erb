@@ -1,0 +1,78 @@
+<div class="articleContainer">
+	
+	<%apply_fragment ["post_header_", @post, is_admin?] do %>
+		<div class="articleHeading">
+			<h2>
+				<%=@post.title%> 
+			</h2>
+		</div>
+	<%end%>
+	
+	<div class="articleDescription">
+		<%=render :partial => "shared/admin_links", :locals =>{
+			:edit_link => edit_post_path(@post),
+			:show_publishing_links => true,
+			:is_published => @post.published?, 
+			:unpublish_link => unpublish_post_path(@post),
+			:publish_link => publish_post_path(@post),
+			:feature_link => featured_post_path(@post),
+			:featured => @post.featured,
+			:delete_link => post_path(@post),
+			:confirm_message => 'Are you sure you want to delete this article?'
+		} if @current_user && @current_user.is_admin?%>
+		
+		<ul class='actionLinks'>
+			<%#=render :partial => 'shared/favorite_this', :locals => { :url => favorite_post_url(@post), :object => @post }%>
+			<%=render :partial => 'shared/tweet', :locals => { :url => tweet_post_url(@post), :shared => shared?('Post', @post.id, 'Twitter') } if @current_user && @current_user.twitter_account%>
+			<%=render :partial => 'shared/facebook', :locals => { :url => facebook_post_url(@post), :shared => shared?('Post', @post.id, 'Facebook') } if @current_user && @current_user.facebook_account%>
+		</ul>
+		
+		<%apply_fragment ["post_side_header_", @post, is_admin?] do %>		
+			<%if @post.profile &&  @post.profile.show_profile_link?%>
+				<h3 class="articleAuthor"><%=t("common.blog.writtenby").capitalize%> <%=link_to @post.profile.user_name, profile_path(@post.profile)%></h3>
+			<%end%>
+		<%end%>
+		
+		<%apply_fragment ["post_side_time_", @post, is_admin?], { :expires_in => CACHE_TIMEOUT } do %>
+			<span class="articleCreatedAt"><%= t("common.blog.posted").capitalize%> <%=time_ago_in_words(@post.created_at)%></span>
+		<%end%>
+		
+		<%apply_fragment ["post_side_footer3_", @post, is_admin?] do %>
+			<%unless @post.tags.empty?%>
+				<span class="articleKeywords"><%=t("common.tags").capitalize%>: 
+					<%@post.tags.each do |tag|%>
+						<%= link_to tag.name, "/tags/#{tag.name}" %>
+					<%end%>
+				</span>
+			<%end%>	
+		<%end%>
+		
+		<%=render :partial => 'shared/viewed', :locals => { :viewed => @post.viewed } %>
+
+		<div class="shareThis">
+			<%#= render :partial => "shared/share_this"%>
+			<%#= render :partial => "shared/facebook_like", :locals => { :url => @post.permalink } %>
+		</div>
+		
+	</div>
+	
+	<div class="articleBody">
+		
+		<%apply_fragment ["post_body_new1_", @post, is_admin?] do %>
+			<%if @post.embed_code && !@post.embed_code.strip.blank?%>
+				<%=transform_embed_code(@post.embed_code, 600, 400)%>
+			<%elsif @post.featured_image.file?%>
+				<%=image_tag @post.featured_image.url(:large)%>
+				<%if @post.featured_image_caption && !@post.featured_image_caption.blank?%>
+					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.photocredit")%>:</span><%=@post.featured_image_caption%></div>
+				<%end%>
+			<%end%>
+		
+			<%=correct_body(@post.body)%>
+		<%end%>
+		
+		<%=render :partial => "comments/commenting", :locals => { :object => @post }%>
+		
+	</div>
+	
+</div>

@@ -1,0 +1,11 @@
+<%if @current_user && @current_user!=p%>	
+	<%unless @current_user.friends.find_by_id(p.id) %>
+		<li class='friendThis'>
+			<%=link_to image_tag("/images/follow.png", :alt=>t("common.friendships.friend").gsub('CONTRIBUTOR', p.user_name)), friend_profile_friendship_path(p, @current_user), :rel => 'nofollow', :title=>t("common.friendships.friend").gsub('CONTRIBUTOR', p.user_name) %>
+		</li>
+	<%else%>
+		<li class='unfriendThis'>
+			<%=link_to image_tag("/images/unfollow.png", :alt=>t("common.friendships.unfriend").gsub('CONTRIBUTOR', p.user_name)), unfriend_profile_friendship_path(p, @current_user), :rel => 'nofollow', :title=>t("common.friendships.unfriend").gsub('CONTRIBUTOR', p.user_name) %>
+		</li>
+	<%end%>
+<%end%>

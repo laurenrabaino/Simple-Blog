@@ -1,0 +1,14 @@
+<p>Nuevo Entrada En El Blog :: <%=SETTINGS[:site][:name]%></p>
+
+<p>
+	<strong>Entrada En El Blog:</strong> <%=@post.title%> - <%=link_to @post.permalink, @post.permalink%>
+	<%unless @post.published?%>
+		<br/><br/>
+		<em>Usted necesidad de publicar el entrada en el blog a disposición del público - <%=link_to t("admin.publish").capitalize, publish_post_path(@post, {:only_path=>false}), :method => :put%></em>
+	<%end%>
+</p>
+
+<p>Atentamente,</p>
+
+<p><%=SETTINGS[:site][:name]%><br/>
+http://www.<%=SETTINGS[:site][:host].downcase%></p>

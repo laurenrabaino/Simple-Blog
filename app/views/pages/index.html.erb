@@ -1,0 +1,15 @@
+<!-- PAGES PAGE -->
+<div class="landingPage">
+	<div class="leftSide">
+		<%= render :partial => "pages/list", :locals => { :pages => @pages, :show_pagination => true, :cache_key => "landing_page" }%> 
+	</div>
+	
+	<div class="rightSide">
+		<%if @current_user && @current_user.is_admin?%>
+			<div class="adminLinks">
+				<h3><%=t("admin.label").capitalize%></h3>
+				<%=link_to "Create", new_page_path, :class=>"editLink"%>
+			</div>
+		<%end%>
+	</div>
+</div>

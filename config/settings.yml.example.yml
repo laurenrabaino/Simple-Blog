@@ -1,0 +1,39 @@
+development:
+    :action_controller:
+        :session:
+          :secret:  
+    :cache:
+        :name: "simpleblog"
+        :timeout: 15.minutes
+    :site:
+        :name: ""
+        :tagline: ""
+        :description: ""
+        :keywords: ""
+        :host: "http://domain.com"
+        :locale: 'en'
+        :noreply: 'noreply@domain.com'
+        :email: 'sender@domain.com'
+        :salt: ""
+    :google:
+        :verification: ""
+        :analytics: ""
+    :s3:
+        :bucket: "simpleblog-dev"
+    :twitter:
+        :key: ""
+        :secret: ""
+    settings:
+        :login: ""
+        :api_key: ""
+    :facebook:
+        :key: ""
+        :secret: ""
+        :callback_url: "http://domain.com/account/facebook_account/callback"
+    :recaptcha:
+        :public: ""
+        :private: ""
+    :hoptoad: ""
+        
+        
+        

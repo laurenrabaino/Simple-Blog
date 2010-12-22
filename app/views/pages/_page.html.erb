@@ -1,0 +1,38 @@
+<li<%unless p.published?%> class="unpublishedStory"<%end%>>
+	<%apply_fragment [cache_key, "_pages_header_", p] do %>
+		<div class="articleTitle">
+			<%=link_to p.title, page_path(p)%>
+		</div>
+		<div class="articleBody">
+			<%=strip_tags(p.excerpt?)%>
+		</div>
+	<%end%>
+	<%apply_fragment [cache_key, "_pages_time_", p], { :expires_in => CACHE_TIMEOUT } do %>
+		<div class="articleMetaData">
+			<span class="articleCreatedAt">
+				<%=time_ago_in_words(p.created_at)%>
+			</span>
+	<%end%>
+	<%apply_fragment [cache_key, "_pages_bottom_", p] do %>
+			<%if p.allow_comments%>
+				<span class="metaDataSeparator">|</span>
+				<span class="articleComments">
+					<%=t("common.comment.display").pluralize%>: <%=p.comments.count(:conditions => 'spam=0')%>
+				</span>
+			<%end%>
+		</div>
+	<%end%>
+	
+	<%=render :partial => "shared/admin_links_small", :locals =>{
+		:edit_link => edit_page_path(p),
+		:show_publishing_links => true,
+		:is_published => p.published?, 
+		:unpublish_link => unpublish_page_path(p),
+		:publish_link => publish_page_path(p),
+		:feature_link => featured_page_path(p),
+		:featured => p.featured,
+		:delete_link => page_path(p),
+		:confirm_message => t("common.page.delete")
+	} if @current_user && @current_user.is_admin?%>
+	
+</li>

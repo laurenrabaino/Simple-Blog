@@ -1,0 +1,10 @@
+<div class="profileContainer">
+	
+	<%=render :partial => "account/header", :locals => { :selected => "facebook" }%>
+	
+	<div class="profileSettings">
+		<h2><%=t("account.facebook.label")%></h2>
+		<%=render :partial => 'account/service', :locals => { :service_name => 'Facebook' }%>
+	</div>
+	
+</div>

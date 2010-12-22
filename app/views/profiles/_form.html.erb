@@ -1,0 +1,75 @@
+<%=render :partial=>"shared/captcha_settings"%>
+<%=render :partial=>"shared/error", :locals=>{ :object => @profile }%>
+
+<% form_for(@profile, :html => { :multipart => true }) do |f| %>
+
+	<div class="row facebookRegister">
+		<label for="full_name" class="label"><%=t("account.facebook.register.label").capitalize%>
+		</label>
+		<a href="<%=connect_account_facebook_account_path%>" title="<%=t("account.facebook.register.button")%>" rel="nofollow">
+			<%=t("account.facebook.register.button")%>
+		</a>
+	</div>
+
+	<div class="row">
+		<label for="full_name" class="label"><%=t("form.profile.labels.username").capitalize%>
+			<span class="required">*</span>
+		</label>
+		<%= f.text_field :user_name, :maxlength => 256, :size => 15  %>
+	</div>
+	
+	<%if !@current_user || @current_user==@profile || is_super_admin?%>
+		<div class="row">
+			<label for="email" class="label"><%=t("form.profile.labels.email").capitalize%>
+				<span class="required">*</span>
+			</label>
+			<%unless params[:action]=="edit"%>
+				<%= f.text_field :email, :maxlength => 256, :size => 15 %>
+			<%else%>
+				<%= @profile.email%>
+			<%end%>
+		</div>
+	<%end%>
+
+	<div class="row">
+		<label for="url" class="label"><%=t("form.profile.labels.password").capitalize%>
+			<span class="required">*</span>
+		</label>
+		<%= f.password_field :password, :maxlength => 256, :size => 15 %>
+	</div>
+
+	<div class="row">
+		<label for="country" class="label"><%=t("form.profile.labels.confirmpassword").capitalize%> 
+			<span class="required">*</span>
+		</label>
+		<%= f.password_field :confirm_password, :maxlength => 256, :size => 15 %>
+	</div>
+	
+	<!-- only show terms of service and captcha for registration and not edits... -->
+	<%unless params[:action]=="edit"%>
+		<div class="row">
+			<label for="terms_of_service" class="label"><%=t("form.profile.labels.termsofuse.accept").capitalize%>
+				<span class="required">*</span>
+			</label>
+			<%= f.check_box :terms_of_use, :id=>"termsOfService" %>
+		</div>
+		<div class="row">
+			<label><%=t("form.captcha").capitalize%>:
+				<span class="required">*</span>
+			</label>
+			<%= recaptcha_tags %>
+		</div>
+	<%else%>
+		<div class="row">
+			<label for="tags" class="label">Avatar
+			</label>
+			<%= f.file_field :avatar %>
+		</div>
+	<%end%>
+
+	<div class="row">
+		<label>&nbsp;</label>
+		<input type="submit" name="submit" value="<%=t("form.submit").capitalize%>">
+	</div>
+
+<%end%>

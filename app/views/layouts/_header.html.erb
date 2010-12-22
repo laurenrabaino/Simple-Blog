@@ -1,0 +1,23 @@
+<div id="header">
+	
+	<ul id="login">
+		<%=render :partial => "profiles/login_links"%>
+	</ul>
+
+	<div id="logo"> 
+		<a href="/"><%=SETTINGS[:site][:name]%></a>
+		<%if SETTINGS[:site][:tagline]%><span><%=SETTINGS[:site][:tagline]%></span><%end%>
+	</div>
+	
+	<div class="searchForm">
+		<% form_tag(search_path, :method => "post") do %>
+			<%= text_field_tag(:q) %>
+			<%= submit_tag(t("outer.search").capitalize) %>
+		<% end %>
+	</div>
+
+	<ul id="pages">	
+		<%=render :partial => "layouts/navigation"%>
+	</ul>
+
+</div>

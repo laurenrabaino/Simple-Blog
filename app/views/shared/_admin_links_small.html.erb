@@ -1,0 +1,20 @@
+<div class="adminLinksSmall">
+	<span class="adminPre"><%=t("admin.label").capitalize%>:</span>
+	<%=link_to t("admin.edit").capitalize, edit_link, :class=>"editLink"%>  
+	<%if show_publishing_links%>
+		<%if is_published%>
+			<span class="linkSeparator">|</span> <%=link_to t("admin.unpublish").capitalize, unpublish_link, :class=>"publishLink", :method => :put%>
+		<%else%>
+			<span class="linkSeparator">|</span> <%=link_to t("admin.publish").capitalize, publish_link, :class=>"publishLink", :method => :put%>
+		<%end%>
+	<%end%>
+	<%if defined?(close_link) && defined?(is_closed) && !is_closed%>
+		<span class="linkSeparator">|</span> <%=link_to t("admin.close").capitalize, close_link, :class=>"publishLink", :method => :get%>
+	<%end%>
+	<%if defined?(feature_link) && defined?(featured) && !featured%>
+		<span class="linkSeparator">|</span> <%=link_to t("admin.feature").capitalize, feature_link, :class=>"publishLink", :method => :get%>
+	<%end%>
+	<%if defined?(delete_link) && delete_link%>
+		<span class="linkSeparator">|</span> <%=link_to t("admin.delete").capitalize, delete_link, :class=>"deleteLink", :confirm => confirm_message, :method => :delete%>
+	<%end%>
+</div>

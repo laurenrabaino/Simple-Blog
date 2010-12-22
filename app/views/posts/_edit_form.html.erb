@@ -1,0 +1,136 @@
+<%=render :partial=>"shared/captcha_settings"%>
+<%=render :partial=>"shared/error", :locals=>{ :object => @post }%>
+
+<% form_for(@post, :html => { :multipart => true, :id => "postForm" }) do |f| %>
+
+	<div class="row">
+		<h2 class="heading"><%=t("common.post").capitalize%></h2>
+	</div>
+	
+	<div class="row" id="language" >
+		<label for="message" class="label"><%=t("common.language.name").capitalize%>
+			<span class="required">*</span>
+		</label>
+		<%LANGUAGES.each do |key, language|%>
+			<%= f.radio_button :language_id, key, :class=>"radioButton" %><span class="radioButtonText"><%=language[:display_name].capitalize%>
+		<%end%>
+	</div>
+	
+	<div class="row">
+		<label for="title" class="label"><%=t("form.title").capitalize%>
+			<span class="required">*</span>
+		</label>
+		<%= f.text_field :title, :maxlength => 256, :size => 15 %>
+	</div>
+
+	<%unless @project_dropdown.empty?%>
+		<div class="row">
+			<label for="project" class="label"><%= t("common.project").capitalize%> 
+			</label>
+
+			<%= collection_select(:post, :project_id, @project_dropdown, :id, :name, {:prompt => ""}, :class =>"project") %>
+		</div>
+	<%end%>
+
+	<%if is_super_admin?%>
+		<div class="row" >
+			<label for="site" class="label"><%=t("form.site").capitalize%>
+			</label>
+			<div class='sites'>
+				<%for site in @available_sites%>
+					<%= check_box_tag "post[site_ids][]", site.id, (@post.sites.include?(site) || site.name==SETTINGS[:site][:name]), :class=>"radioButton" %>
+					<span class="radioButtonText"><%=site.name%></span>
+				<%end%>
+			</div>
+		</div>
+	<%end%>
+	
+	<div class="row">
+		<label for="body" class="label"><%=t("form.excerpt").capitalize%>
+		</label>
+		<%= ckeditor_textarea("post", "excerpt", :toolbar=>"HablaGuate", :width => '444px', :height => '200px') %>
+	</div>
+
+	<div class="row">
+		<label for="body" class="label"><%=t("form.post").capitalize%> 
+			<span class="required">*</span>
+		</label>
+		<%= ckeditor_textarea("post", "body", :toolbar=>"HablaGuate", :width => '444px', :height => '300px') %>
+	</div>
+	
+	<div class="row">
+		<label for="tags" class="label"><%=t("form.tags").capitalize%> 
+			<span class="required">*</span>
+			<span class="small"><%=t("form.smallkeywords").capitalize%></span>
+		</label>
+		<%= f.text_field :tag_list, :maxlength => 256, :size => 15 %>
+		<div class="suggestTags">
+			<span id="suggestTagsPost"><%=t("common.suggest_tags")%> &raquo;</span>
+			<%=image_tag("/images/ajax-loader.gif", :alt => 'ajax spinner', :id => "ajaxSpinner", :style => "display:none;") %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<label for="message" class="label"><%=t("form.allowcomments").capitalize%>
+		</label>
+		<%= f.check_box :allow_comments, :class=>"normalCheckbox" %>
+	</div>
+	
+	<%if false && @current_user%>
+		<%if @current_user.twitter_account%>
+			<div class="row">
+				<label for="message" class="label"><%=t("account.twitter.notify").capitalize%>  
+					<span class="required">*</span>
+				</label>
+				<%= f.check_box :notify_twitter, :class=>"normalCheckbox", :checked => (@post.notify_twitter ? @post.notify_twitter : @current_user.get_setting?('Twitter'))  %>
+			</div>
+		<%end%>
+	
+		<%if @current_user.facebook_account%>
+			<div class="row">
+				<label for="message" class="label"><%=t("account.facebook.notify").capitalize%>  
+					<span class="required">*</span>
+				</label>
+				<%= f.check_box :notify_facebook, :class=>"normalCheckbox", :checked => (@post.notify_facebook ? @post.notify_facebook : @current_user.get_setting?('Facebook')) %>
+			</div>
+		<%end%>
+	<%end%>
+	
+	<div class="row">
+		<h2 class="heading"><%=t("form.multimedia").capitalize%></h2>
+	</div>
+	
+	<div class="row">
+		<label for="tags" class="label"><%=t("form.image").capitalize%>
+		</label>
+		<%= f.file_field :featured_image %>
+	</div>
+	
+	<div class="row">
+		<label for="title" class="label"><%=t("form.imagecaption").capitalize%>
+		</label>
+		<%= f.text_field :featured_image_caption, :maxlength => 256, :size => 15 %>
+	</div>
+
+	<div class="row">
+		<label for="embed_code" class="label"><%=t("form.video").capitalize%> 
+			<span class="small"><%=t("form.smallvideo").capitalize%></span>
+		</label>
+		<%= f.text_area :embed_code, :rows => 8, :cols => 75 %>
+	</div>
+	
+	<%if false%>
+		<div class="row">
+			<label for="tags" class="label"><%=t("form.attachment.label").capitalize%>
+				<span class="small"><%=t("form.attachment.short").capitalize%></span>
+			</label>
+			<%= f.file_field :featured_image %>
+		</div>
+	<%end%>
+
+	<div class="row">
+		<label>&nbsp;</label>
+		<input type="submit" name="submit" value="<%=t("form.submit").capitalize%>" class="submitButton" />
+	</div>
+
+<%end%>

@@ -1,0 +1,8 @@
+<p><%=t("common.friendship.statuses.new_subject")%></p>
+
+<p><%=t("common.friendship.statuses.mail_instruction").capitalize%> <%=link_to @user.user_name, profile_path(@user, {:only_path => false})%></p>
+
+<p>Atentamente,</p>
+
+<p><%=SETTINGS[:site][:name]%><br/>
+http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>

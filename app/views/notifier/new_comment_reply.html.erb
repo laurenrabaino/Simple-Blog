@@ -1,0 +1,8 @@
+<p><%=t("comment.new_reply").gsub("USERNAME", @comment.author_name).gsub("TYPE", @commentable[:type])%> - '<%=link_to @commentable[:title], @commentable[:permalink]%>'</p>
+
+<p><%=t("comment.read_comment")%> <%=link_to @commentable[:title], "#{@commentable[:permalink]}#comment_#{@comment.id}"%></p>
+
+<p>Atentamente,</p>
+
+<p><%=SETTINGS[:site][:name]%><br/>
+http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>

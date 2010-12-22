@@ -1,0 +1,23 @@
+<%apply_fragment ["comment_list_header_5_", comment, comment.user, show_association, is_admin?, params[:controller]=='comments'] do %>
+	<div class="comment <%="spam" if comment.spam%> <%="commentLevel#{comment.level}" if comment.level && comment.level>0 && params[:controller]!='comments'%>" id="comment_<%=comment.id%>">
+		<%=comment.body%>
+		<div class="commentMetaData">
+			<%if show_association%>
+				<%=link_to "#{comment.commentable.title[0..20].gsub(/\w+$/, '')}...", comment.commentable.permalink%>
+				<span class="commentMetaDataSeparator">|</span>
+			<%end%>
+			<%=t("common.comment.postedby").capitalize%> <%=comment.user ? link_to(comment.user.user_name, profile_path(comment.user)) : comment.full_name%>
+<%end%>
+<%apply_fragment ["comment_list_time_", comment, comment.user, is_admin?, params[:controller]=='comments'], { :expires_in => CACHE_TIMEOUT } do %>
+			<span class="commentMetaDataSeparator">|</span>
+			<%=time_ago_in_words(comment.created_at)%>
+			<%unless params[:controller]=='comments' || comment.level>=2%>
+				<span class="commentMetaDataSeparator">|</span>
+				<span id="replyToComment<%=comment.id%>-<%=comment.level ? comment.level.to_i+1 : 1%>" class="replyButton"><%=t("common.comment.reply")%></span>
+			<%end%>
+		</div>
+	</div>
+	<div id="replyForm<%=comment.id%>"></div>
+<%end%>
+<%=render :partial => "shared/admin_comments_small", :locals =>{ :comment => comment } %>
+<%=render :partial => "comments/list", :locals => { :comments => comment.replies.all, :show_association => false, :level => (comment.level+1) } if comment.replies.count>0 %>

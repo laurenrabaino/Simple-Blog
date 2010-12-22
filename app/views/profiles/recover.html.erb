@@ -1,0 +1,39 @@
+<div class="formContainer">
+	
+	<div class="formHeading">
+		<h2>
+			<%=t("account.forgot").capitalize%>
+		</h2>
+	</div>
+	
+	<div class="formDescription">
+		
+		<p>
+			<div class="required"><span>*</span><%=t("form.required").capitalize%></div>
+		</p>
+		
+		<span class="actionLinks"><%=link_to t("account.want_to_login"), "/login", :rel => "nofollow"%></span>
+		
+	</div>
+	
+	<div class="formBody">
+		<%=render :partial=>"shared/error", :locals=>{ :error_text => @error_text }%>
+	
+		<% form_tag("/forgot_your_password") do %>
+
+			<div class="row">
+				<label for="q" class="label"><%=t("account.email_or_username").capitalize%>	
+					<span class="required">*</span>
+				</label>
+				<%= text_field_tag :q %>
+			</div>
+
+			<div class="row">
+				<label>&nbsp;</label>
+				<input type="submit" name="submit" value="<%=t("form.submit").capitalize%>">
+			</div>
+
+		<%end%>
+	</div>
+
+</div>

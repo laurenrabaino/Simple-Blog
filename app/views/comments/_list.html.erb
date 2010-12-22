@@ -1,0 +1,19 @@
+<%if defined?(hide_header) && !hide_header%>
+	<h2><%=t("common.comment.display").pluralize.capitalize%></h2>
+<%end%>
+<%if comments && !comments.empty?%>
+	<ul class="comments <%="commentsLevel#{level}" if defined?(level) && level>0 && params[:controller]!='comments'%>">
+		<%comments.each do |comment|%>
+			<%=render :partial => "comments/comment", :locals => { :comment => comment, :show_association => show_association }%>
+		<%end%>
+	</ul>
+	<%if defined?(show_more) && show_more%>
+		<div class="readMore">
+			<%=link_to "#{t("common.comment.viewall")} &raquo;", comments_path%>
+		</div>
+	<%elsif defined?(show_pagination) && show_pagination%>
+		<%=will_paginate(comments, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+	<%end%>
+<%else%>
+	<p><%=t("common.comment.nocontent")%></p>
+<%end%>
