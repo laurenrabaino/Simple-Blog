@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     @menu_pages = Page.get_menu_pages(logged_in_and_admin)
   end
   
+  def login_required
+    redirect_to "/" unless @current_user
+  end
+  
   def no_before_filters
     params[:controller]=='sitemap'
   end

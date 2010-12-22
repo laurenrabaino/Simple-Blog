@@ -1,6 +1,8 @@
 <%unless @current_user%>
-	<li class="facebookConnect"><a href="<%=connect_account_facebook_account_path%>" title="Registro" rel="nofollow"><%=image_tag("facebook_connect.png", :alt=>"Registro Facebook") %></a></li>
-	<li class="actionSeparatorFacebookConnect">|</li>
+	<%if OauthConnect.has_facebook?%>
+		<li class="facebookConnect"><a href="<%=connect_account_facebook_account_path%>" title="Registro" rel="nofollow"><%=image_tag("facebook_connect.png", :alt=>"Registro Facebook") %></a></li>
+		<li class="actionSeparatorFacebookConnect">|</li>
+	<%end%>
 	<li><a href="<%=new_profile_path%>" title="Registro" rel="nofollow"><%=t("account.register").capitalize%></a></li>
 	<li><a href="/login" title="Login" rel="nofollow"><%=t("account.login").capitalize%></a></li>
 <%else%>

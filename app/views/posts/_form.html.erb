@@ -48,7 +48,7 @@
 	<%if @current_user%>
 		<%if @current_user.twitter_account%>
 			<div class="row">
-				<label for="notify_twitter" class="label"><%=t("account.twitter.notify").capitalize%>  
+				<label for="notify_twitter" class="label"><%=t("settings.notify.twitter").capitalize%>  
 					<span class="required">*</span>
 				</label>
 				<%= f.check_box :notify_twitter, :class=>"normalCheckbox", :checked => (@post.notify_twitter ? @post.notify_twitter : @current_user.get_setting?('Twitter'))  %>
@@ -57,7 +57,7 @@
 	
 		<%if @current_user.facebook_account%>
 			<div class="row">
-				<label for="notify_facebook" class="label"><%=t("account.facebook.notify").capitalize%>  
+				<label for="notify_facebook" class="label"><%=t("settings.notify.facebook").capitalize%>  
 					<span class="required">*</span>
 				</label>
 				<%= f.check_box :notify_facebook, :class=>"normalCheckbox", :checked => (@post.notify_facebook ? @post.notify_facebook : @current_user.get_setting?('Facebook')) %>

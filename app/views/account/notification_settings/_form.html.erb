@@ -1,14 +1,14 @@
 <% form_tag(update_account_notification_setting_path) do %>
 
 	<div class="row">
-		<label for="message" class="label"><%=t("account.twitter.notify").capitalize%>  
+		<label for="message" class="label"><%=t("settings.notify.twitter").capitalize%>  
 			<span class="required">*</span>
 		</label>
 		<%= check_box_tag "notify[twitter]", 1, @notify[:twitter], { :class=>"normalCheckbox" }  %>
 	</div>
 
 	<div class="row">
-		<label for="message" class="label"><%=t("account.facebook.notify").capitalize%>  
+		<label for="message" class="label"><%=t("settings.notify.facebook").capitalize%>  
 			<span class="required">*</span>
 		</label>
 		<%= check_box_tag "notify[facebook]", 1, @notify[:facebook], { :class=>"normalCheckbox" } %>

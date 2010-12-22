@@ -3,13 +3,15 @@
 
 <% form_for(@profile, :html => { :multipart => true }) do |f| %>
 
-	<div class="row facebookRegister">
-		<label for="full_name" class="label"><%=t("account.facebook.register.label").capitalize%>
-		</label>
-		<a href="<%=connect_account_facebook_account_path%>" title="<%=t("account.facebook.register.button")%>" rel="nofollow">
-			<%=t("account.facebook.register.button")%>
-		</a>
-	</div>
+	<%if OauthConnect.has_facebook?%>
+		<div class="row facebookRegister">
+			<label for="full_name" class="label"><%=t("account.facebook.register.label").capitalize%>
+			</label>
+			<a href="<%=connect_account_facebook_account_path%>" title="<%=t("account.facebook.register.button")%>" rel="nofollow">
+				<%=t("account.facebook.register.button")%>
+			</a>
+		</div>
+	<%end%>
 
 	<div class="row">
 		<label for="full_name" class="label"><%=t("form.profile.labels.username").capitalize%>

@@ -16,4 +16,12 @@ module OauthConnect
     TwitterOAuth::Client.new(:consumer_key => SETTINGS[:twitter][:key], :consumer_secret => SETTINGS[:twitter][:secret])
   end
   
+  def self.has_facebook?
+    SETTINGS[:twitter][:key] && SETTINGS[:twitter][:secret] && !SETTINGS[:twitter][:key].blank? && !SETTINGS[:twitter][:secret].blank?
+  end
+  
+  def self.has_twitter?
+    SETTINGS[:twitter][:key] && SETTINGS[:twitter][:secret] && !SETTINGS[:twitter][:key].blank? && !SETTINGS[:twitter][:secret].blank?
+  end
+  
 end

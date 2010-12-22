@@ -29,7 +29,7 @@ class Account::FacebookAccountsController < ApplicationController
     access_token = fb_access_token(params[:code])
     
     unless access_token
-      flash[:notice] = t("account.service.oops").gsub('EXTERNAL_SITE', 'Facebook').gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])
+      flash[:notice] = t("account.service.oops").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
 	    redirect_to "/connect"
       return
 	  else
@@ -44,13 +44,13 @@ class Account::FacebookAccountsController < ApplicationController
         if @current_user && (!existing_fb_account || existing_fb_account.user_id == @current_user.id) 
           unless @current_user.has_facebook_oauth?  
             facebook_account = FacebookAccount.create({ :user_id => @current_user.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code], :site_id => SITE_ID }) 
-            flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])
+            flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
           end
         else
-          flash[:notice] = t("account.service.already_linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])
+          flash[:notice] = t("account.service.already_linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
         end
       else
-        flash[:notice] = t("account.service.oops").gsub('EXTERNAL_SITE', 'Facebook').gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])
+        flash[:notice] = t("account.service.oops").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
         redirect_to "/connect"
         return
       end
@@ -74,7 +74,7 @@ class Account::FacebookAccountsController < ApplicationController
         profile = Profile.find_by_email(email)                              # check for existing users with that email...
         if profile                                                          # existing user with email matching, attach the credentials to it...
           facebook_account = FacebookAccount.create({ :user_id => profile.id, :fb_user_id => fb_user["id"].to_i, :code => params[:code], :site_id => SITE_ID }) 
-          flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])
+          flash[:notice] = t("account.service.linked").gsub('EXTERNAL_SITE', 'Facebook').gsub('SITE_NAME', SETTINGS[:site][:name])
           session[:user_id] = profile.id
           redirect_to profile_path(profile)
           return
@@ -98,9 +98,9 @@ class Account::FacebookAccountsController < ApplicationController
   def check_credentials    
     facebook_oauth_client = get_facebook_oauth_client
     return facebook_oauth_client.web_server.authorize_url(
-			:redirect_uri => FACEBOOK_CALLBACK_URL,
+			:redirect_uri => SETTINGS[:facebook][:callback_url],
 			:display => "page",
-			:scope => "publish_stream,sms,offline_access,email"
+			:scope => "publish_stream,offline_access,email"
 		)
   end
   

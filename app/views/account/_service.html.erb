@@ -1,16 +1,16 @@
 <% if @link %>
 	<h3>
-		<%=t("account.service.not_linked").gsub('EXTERNAL_SITE', service_name).gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])%>
+		<%=t("account.service.not_linked").gsub('EXTERNAL_SITE', service_name).gsub('SITE_NAME', SETTINGS[:site][:name])%>
 	</h3>
 	<p>	
-		<%=t("account.service.instructions").gsub('EXTERNAL_SITE', service_name).gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])%>
-		<%= link_to t("account.service.click").gsub('EXTERNAL_SITE', service_name).gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])+" &raquo;", @link, :class=>'linkService' %>
+		<%=t("account.service.instructions").gsub('EXTERNAL_SITE', service_name).gsub('SITE_NAME', SETTINGS[:site][:name])%>
+		<%= link_to t("account.service.click").gsub('EXTERNAL_SITE', service_name).gsub('SITE_NAME', SETTINGS[:site][:name])+" &raquo;", @link, :class=>'linkService' %>
 	</p>
 <% else %>
 	<h3>
-		<%=t("account.service.linked").gsub('EXTERNAL_SITE', service_name).gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])%>
+		<%=t("account.service.linked").gsub('EXTERNAL_SITE', service_name).gsub('SITE_NAME', SETTINGS[:site][:name])%>
 	</h3>
 	<p>
-		<%=t("account.service.effects").gsub('EXTERNAL_SITE', service_name).gsub('SETTINGS[:site][:name]', SETTINGS[:site][:name])%>
+		<%=t("account.service.effects").gsub('EXTERNAL_SITE', service_name).gsub('SITE_NAME', SETTINGS[:site][:name])%>
 	</p>
 <% end %>

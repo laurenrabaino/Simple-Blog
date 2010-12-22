@@ -50,6 +50,15 @@ en:
         copyright: "Copyright"
         show: "show"
         hide: "hide"
+    settings:
+        navigation:
+            settings: "settings"
+            notification: "notification"
+            twitter: "twitter"
+            facebook: "facebook"
+        notify:
+            facebook: "notify facebook"
+            twitter: "notify twitter"
     admin:
            label: "admin"
            edit: "edit"
@@ -76,14 +85,24 @@ en:
             login:
                 label: "want to login using Facebook?"
                 button: "login with Facebook"
-                notify: "notify facebook"
             register:
                 label: "want to register using Facebook?"
                 button: "register with Facebook"
-                notify: "notify twitter"
         register: "register"
         forgot: "did you forget your password?"
         logout: "logout"
+        notifications: "notification settings"
+        services:
+            facebook: "link your account with facebook"
+            twitter: "link your account with twitter"
+        service:
+            not_linked: "You have not linked your account to EXTERNAL_SITE to SITE_NAME"
+            linked: "You have linked your account to EXTERNAL_SITE to SITE_NAME"
+            already_linked: "This EXTERNAL_SITE account is already in use by another user on SITE_NAME."
+            click: "Click here to link your account on EXTERNAL_SITE to SITE_NAME"
+            instructions: "You will be redirected to EXTERNAL_SITE briefly. Follow the instructions and you will be then be automatically redirected back to SITE_NAME afterwards."
+            effects: "All your articles, alerts and uploaded recordings to SITE_NAME will now be automatically posted to EXTERNAL_SITE."
+            oops: "Oops, we're having trouble linking your account on EXTERNAL_SITE to SITE_NAME right now. Please try again later."
     form:
         required: "required"
         captcha: "captcha"
@@ -104,7 +123,13 @@ en:
                 full_name: "full name"
                 email: "email"
                 profile: "profile page"
-            submit: "post comment"    
+            submit: "post comment"   
+        settings:
+            labels:
+                fullname: "full name"
+                aboutme: "about me"
+                publicprofile: "show attribution to me"
+            submit: "update settings"
         blog:
             labels:
                 title: "title"

@@ -20,12 +20,13 @@ development:
         :analytics: ""
     :s3:
         :bucket: "simpleblog-dev"
+    :bitly:
+        :login: ""
+        :api_key: ""
     :twitter:
         :key: ""
         :secret: ""
-    settings:
-        :login: ""
-        :api_key: ""
+        :callback_url: "http://domain.com/account/twitter_account/callback"
     :facebook:
         :key: ""
         :secret: ""

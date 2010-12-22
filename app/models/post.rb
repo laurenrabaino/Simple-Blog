@@ -149,13 +149,15 @@ class Post < ActiveRecord::Base
   def update_admins
     Notifier.deliver_new_post_update(Profile.admins.all.map(&:email), {:post => self}) unless tweeted
     
-    info_account = User.info_account
-    update_twitter_and_facebook(info_account)
+    if OauthConnect.has_twitter? || OauthConnect.has_facebook?
+      info_account = User.info_account
+      update_twitter_and_facebook(info_account)
+    end
   end
   
   def update_twitter_and_facebook_for_a_user(u, twitter_account, facebook_account)
-    update_twitter(u, twitter_account) 
-    update_facebook_wall(u, facebook_account) 
+    update_twitter(u, twitter_account) if OauthConnect.has_twitter?
+    update_facebook_wall(u, facebook_account) if OauthConnect.has_facebook?
   end
   
   def update_twitter_and_facebook(info_account=nil)
@@ -175,6 +177,7 @@ class Post < ActiveRecord::Base
   end
   
   def update_twitter(u = nil, twitter_account=nil)
+    return unless OauthConnect.has_twitter?
     if u && (u.twitter_account || twitter_account) && self.notify_twitter.to_i==1
       u.twitter_account.update_status(status_update) unless twitter_account
       twitter_account.update_status(status_update) if twitter_account
@@ -183,6 +186,7 @@ class Post < ActiveRecord::Base
   end
   
   def update_facebook_wall(u = nil, facebook_account=nil)
+    return unless OauthConnect.has_facebook?
     if u && (u.facebook_account || facebook_account) && self.notify_facebook.to_i==1
       args = {:message => status_update(false), 
         :description => strip_html(excerpt?), 
