@@ -32,7 +32,7 @@ en:
         profile: 
             display: "profile"
             create: "register a new user"
-            edit: "edit a profile"
+            edit: "edit profile"
             nocontent: "There are no profiles yet."
             viewall: "see all profiles"
             delete: "Are you sure you want to delete this user?"
@@ -132,6 +132,7 @@ en:
                 termsofuse: 
                     display: "terms of use"
                     accept: "I accept the terms of use"
+                admin: "Is admin?"
                 aboutme: "about me"
                 noaboutme: "The user has not written an about me section yet."
         comment:

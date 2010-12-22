@@ -53,7 +53,7 @@
 			<label for="terms_of_service" class="label"><%=t("form.profile.labels.termsofuse.accept").capitalize%>
 				<span class="required">*</span>
 			</label>
-			<%= f.check_box :terms_of_use, :id=>"termsOfService" %>
+			<%= f.check_box :terms_of_use, :id=>"termsOfService", :class=>"normalCheckbox" %>
 		</div>
 		<div class="row">
 			<label><%=t("form.captcha").capitalize%>:
@@ -62,8 +62,15 @@
 			<%= recaptcha_tags %>
 		</div>
 	<%else%>
+		<%if is_admin?%>
+			<div class="row">
+				<label for="is_admin" class="label"><%=t("form.profile.labels.admin")%>
+				</label>
+				<%= f.check_box :is_admin, :class=>"normalCheckbox" %>
+			</div>
+		<%end%>
 		<div class="row">
-			<label for="tags" class="label">Avatar
+			<label for="avatar" class="label">Avatar
 			</label>
 			<%= f.file_field :avatar %>
 		</div>
