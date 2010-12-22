@@ -16,7 +16,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments, :member => { :report_as_spam => :put, :report_as_ham => :put }, :collection => { :ham => :get, :spam => :get, :delete_spam => :get }
 
   map.connect "/tags/suggest", :controller => "tags", :action => "suggest"
-  map.resources :tags
 
   map.resources :profiles, :member => { :favorite => :get, :featured => :get } do |profile|
     profile.connect ":tab", :controller => "profiles", :action => "show", :requirements => { :tab => /posts|comments/  }

@@ -261,8 +261,8 @@ h1,h2,h3,h4,h5,h6{
 	padding:10px 10px 10px 10px;
 	width:100%;
 	color:000;
-	background:#eee;
-	border:1px solid #999;
+	background:#f9f9f9;
+	border:1px solid #ccc;
 	text-transform:capitalize;
 }
 
