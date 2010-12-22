@@ -1463,11 +1463,13 @@ pre {
 	text-transform:capitalize;
 	margin-left:12px;
 	padding-left:5px;
+	padding-bottom:4px;
 	width:920px;
 	padding-top:3px;
 	background:#f9f9f9;
-	color:white:link
-	;
+	color:#666;
+	cursor:pointer;
+	font-size:11px;
 }
 
 .hideShowEmbeddedAdminMenu span{
@@ -1490,6 +1492,7 @@ pre {
 	border-bottom:1px solid #999;
 	background:none;
 	width:905px;
+	cursor:pointer;
 }
 
 .embeddedAdminMenu .adminMenu, .embeddedAdminMenu .subAdminMenu{
