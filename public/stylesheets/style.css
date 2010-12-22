@@ -220,13 +220,13 @@ margin-top: -25px;
 
 
 a:link, a:visited{
-    color:#14b5eb;
-	text-decoration:none;
+    color:#333;
+	text-decoration:underline;
 }
 
 a:hover{
-    color: #75cdeb;
-	text-decoration:underline;
+    color: #999;
+	text-decoration:none;
 }
 	
 acronym,abbr{
@@ -308,7 +308,12 @@ label{
 #logo a{
 	font-size:30px;
 	text-transform:uppercase;
+	text-decoration:none;
 	color:#666;
+}
+
+#logo a:hover{
+	text-decoration:underline;
 }
 
 #logo span{
@@ -588,7 +593,7 @@ pre {
 	margin-bottom:15px;
 	margin-top:5px;
 	display:block;
-	min-height:130px;
+	min-height:100px;
 	clear:both;
 }
 
