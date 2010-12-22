@@ -1,0 +1,8 @@
+<%if tags && !tags.empty?%>
+	<h2><%=t("common.tag.display").pluralize.capitalize%></h2>
+	<div class="categoryContainer">
+		<% tag_cloud tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+		    <%= link_to tag.name, "/tags/#{URI.encode(tag.name)}", :class => css_class %>
+		<% end %>
+	</div>
+<%end%>

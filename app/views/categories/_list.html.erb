@@ -1,0 +1,17 @@
+<% if categories && !categories.empty?%>
+	<h2 class="categoryHeader"><%=t("common.category.display").pluralize.capitalize%></h2>
+	<div class="categoryContainer">
+		<ul>
+			<%if !defined?(hide_home) || !hide_home%><li><a href="/" title="home" rel="nofollow">Home</li><%end%>
+			<%show_sep = !defined?(hide_home) || !hide_home ? true : false %>
+			<%categories.each do |category|%>
+				<%if show_sep%>
+					<li class="separator">|</li>
+				<%else%>
+					<%show_sep = true%>
+				<%end%>
+				<li<%if @category==category%> class="selectedCategory"<%end%>><%=link_to category.name, "/category/#{category.seo_name}"%></li>
+			<%end%>
+		</ul>
+	</div>
+<%end%>

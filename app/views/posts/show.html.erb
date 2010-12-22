@@ -1,14 +1,14 @@
-<div class="articleContainer">
+<div class="postContainer">
 	
 	<%apply_fragment ["post_header_", @post, is_admin?] do %>
-		<div class="articleHeading">
+		<div class="postHeading">
 			<h2>
 				<%=@post.title%> 
 			</h2>
 		</div>
 	<%end%>
 	
-	<div class="articleDescription">
+	<div class="postDescription">
 		<%=render :partial => "shared/admin_links", :locals =>{
 			:edit_link => edit_post_path(@post),
 			:show_publishing_links => true,
@@ -18,7 +18,7 @@
 			:feature_link => featured_post_path(@post),
 			:featured => @post.featured,
 			:delete_link => post_path(@post),
-			:confirm_message => 'Are you sure you want to delete this article?'
+			:confirm_message => 'Are you sure you want to delete this post?'
 		} if @current_user && @current_user.is_admin?%>
 		
 		<ul class='actionLinks'>
@@ -29,17 +29,19 @@
 		
 		<%apply_fragment ["post_side_header_", @post, is_admin?] do %>		
 			<%if @post.profile &&  @post.profile.show_profile_link?%>
-				<h3 class="articleAuthor"><%=t("common.blog.writtenby").capitalize%> <%=link_to @post.profile.user_name, profile_path(@post.profile)%></h3>
+				<h3 class="postAuthor"><%=t("common.blog.writtenby").capitalize%> <%=link_to @post.profile.user_name, profile_path(@post.profile)%></h3>
 			<%end%>
 		<%end%>
 		
 		<%apply_fragment ["post_side_time_", @post, is_admin?], { :expires_in => CACHE_TIMEOUT } do %>
-			<span class="articleCreatedAt"><%= t("common.blog.posted").capitalize%> <%=time_ago_in_words(@post.created_at)%></span>
+			<span class="postCreatedAt"><%= t("common.blog.posted").capitalize%> <%=time_ago_in_words(@post.created_at)%></span>
 		<%end%>
+		
+		<%= render :partial => "categories/list", :locals => { :categories => @post.categories, :hide_home => true } unless @post.categories.empty? %>
 		
 		<%apply_fragment ["post_side_footer3_", @post, is_admin?] do %>
 			<%unless @post.tags.empty?%>
-				<span class="articleKeywords"><%=t("common.tags").capitalize%>: 
+				<span class="postKeywords"><%=t("common.tag.display").pluralize.capitalize%>: 
 					<%@post.tags.each do |tag|%>
 						<%= link_to tag.name, "/tags/#{tag.name}" %>
 					<%end%>
@@ -56,7 +58,7 @@
 		
 	</div>
 	
-	<div class="articleBody">
+	<div class="postBody">
 		
 		<%apply_fragment ["post_body_new1_", @post, is_admin?] do %>
 			<%if @post.embed_code && !@post.embed_code.strip.blank?%>

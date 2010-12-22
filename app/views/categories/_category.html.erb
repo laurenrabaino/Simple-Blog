@@ -1,0 +1,11 @@
+<%apply_fragment ["category_list_", cache_key, c, is_admin?] do %>
+	<div style="margin:10px;">
+		<%=link_to c.name, category_path(c) %>
+	</div>
+<%end%>
+<%=render :partial => "shared/admin_links_small", :locals =>{
+	:edit_link => edit_category_path(c),
+	:show_publishing_links => false,
+	:delete_link => category_path(c),
+	:confirm_message => 'Are you sure you want to delete this category?'
+} if @current_user && @current_user.is_admin?%>

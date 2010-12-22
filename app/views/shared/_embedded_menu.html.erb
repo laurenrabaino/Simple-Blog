@@ -17,6 +17,9 @@
 			<li id='adminMenuComments' <%=getAdminMenuClass('comments')%>>
 				<span><%=t("common.comment.display").pluralize%></span>
 			</li>
+			<li id='adminMenuCategories' <%=getAdminMenuClass('categories')%>>
+				<span><%=t("common.category.display").pluralize%></span>
+			</li>
 		</ul>
 		
 		
@@ -50,6 +53,13 @@
 			<li><%=link_to t("common.comment.viewall.ham"), ham_comments_path%></li>
 			<li class='adminMenuSpacer'>|</li>
 			<li><%=link_to t("common.comment.delete_all_spam"), delete_spam_comments_path%></li>
+		</ul>
+		
+		<ul class='subAdminMenu' id='subMenuCategories' <%=showAdminMenu?('categories')%>>
+			<li class='preMenu'><%=t("admin.label").capitalize%>:</li>
+			<li><%=link_to t("common.category.viewall"), categories_path%></li>
+			<li class='adminMenuSpacer'>|</li>
+			<li><%=link_to t("common.category.create"), new_category_path%></li>
 		</ul>
 		
 	</div>

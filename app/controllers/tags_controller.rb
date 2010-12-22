@@ -1,5 +1,15 @@
 class TagsController < ApplicationController
 
+  def show
+    Post.per_page = 10
+    posts_search_results = Post.find_tagged_with(URI.decode(params[:id]))
+    @posts = posts_search_results.paginate({:page => @page, :per_page=>10})
+    
+    @header[:title] << t("common.tag.display").pluralize.capitalize
+    @header[:title] << params[:id]
+    @header[:title] << t("common.blog.display").pluralize.capitalize
+  end
+
   def suggest
     arr = []
     

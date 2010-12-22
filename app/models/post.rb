@@ -27,6 +27,8 @@ class Post < ActiveRecord::Base
   
   belongs_to :profile, :foreign_key => "user_id", :class_name=>"User", :touch => true
   
+  has_and_belongs_to_many :categories
+  
   validates_presence_of :title, :on => :create, :message => I18n.t('errors.blog.title')
   validates_presence_of :body, :on => :create, :message => I18n.t('errors.blog.body')
   
@@ -69,6 +71,12 @@ class Post < ActiveRecord::Base
           published.apply_filter_to_list(filter_name).paginate(:page => page)
         end
       end
+  end
+  
+  def self.get_tags(is_admin=false)
+    having_cache ["tags_", is_admin], {:expires_in => 24*60*60, :force => is_admin }  do
+      self.tag_counts(:limit => 20)
+    end
   end
   
   # helper methods for validations

@@ -407,7 +407,6 @@ pre {
 	border:1px solid #999;
 }
 
-
 .subscribeContainer{
 	border:1px solid #999;
 	background: #eee;
@@ -492,13 +491,34 @@ pre {
 	margin-top:10px;	
 }
 
-.postsPage .rightSide {
+.postsPage .rightSide, .searchPage .rightSide, .landingPage .rightSide {
 	float:right;
 	width:30%;
 	margin:10px;
 }
 
 /* end landing page*/
+
+/* categories */
+
+.categoryContainer{
+	width:98%;
+	margin: 0px 0px 10px 0px;
+}
+
+.categoryContainer ul{
+	list-style:none;
+}
+
+.categoryContainer ul li{
+	display:inline;
+}
+
+.categoryContainer ul li.separator{
+	padding: 0px 5px 0px 5px;
+}
+
+/* end categories */
 
 
 /* tabs page */
@@ -550,21 +570,17 @@ pre {
 	margin:11px 0px 0px 0px;
 }
 
-.tabBody .articles, .tabBody .textMessages {
-	margin-right:10px;
-}
-
 /* end search page */
 
 
 /* posts */
-.posts, .articleContainer .posts{
+.posts, .postContainer .posts{
 	width:100%;
 	list-style:none;	
 	padding:10px 0px 10px 10px;
 }
 
-.articleContainer .posts{
+.postContainer .posts{
 	margin-left:-30px;
 }
 
@@ -597,7 +613,7 @@ pre {
 	border: 1px solid #ddd;
 }
 
-.leftSide .posts li .featuredImage, .articleContainer .posts li .featuredImage{
+.leftSide .posts li .featuredImage, .postContainer .posts li .featuredImage{
 	width:260px;
 	height:120px;
 	padding:5px;
@@ -607,19 +623,19 @@ pre {
 	float:left;
 }
 
-.articleContainer .posts li .featuredImage{
+.postContainer .posts li .featuredImage{
 	width:130px;
 	height:60px;
 }
 
-.leftSide .posts li .featuredImage img, .articleContainer .posts li .featuredImage img{
+.leftSide .posts li .featuredImage img, .postContainer .posts li .featuredImage img{
 	border:none;
 	width:260px;
 	padding:0px;
 	margin:0px;
 }
 
-.articleContainer .posts li .featuredImage img{
+.postContainer .posts li .featuredImage img{
 	width:130px;
 }
 
@@ -670,7 +686,7 @@ pre {
 	padding: 0px 5px 0px 5px;
 }
 
-.articleContainer .articleBody .posts li .featuredImage img{
+.postContainer .postBody .posts li .featuredImage img{
 	width:120px;
 }
 
@@ -985,7 +1001,7 @@ pre {
 	padding-bottom:5px;
 }
 
-.articleBody .alertArticleHeading {
+.postBody .alertArticleHeading {
 	margin-top:10px;
 	padding-left:0px;
 	width:590px;
@@ -995,7 +1011,7 @@ pre {
 	font-size: 18px;
 }
 
-.articleBody .comments .formBody, .jobBody .comments .formBody{
+.postBody .comments .formBody, .jobBody .comments .formBody{
 	float:left;
 	width:700px;
 }
@@ -1136,79 +1152,85 @@ pre {
 }
 /* end admin links */
 
-/* article page */
+/* post page */
 
-.articleContainer {
+.postContainer {
 	margin-top:10px;
 	width:920px;
 }
 
-.articleContainer .articleHeading{
+.postContainer .postHeading{
 	text-transform:capitalize;
 }
 
-.articleContainer .articleHeading h1{
+.postContainer .postHeading h1{
 	border-bottom:1px solid #ddd;
 	margin-bottom:5px;
 	padding-bottom:5px;
 }
 
-.articleContainer .articleDescription{
+.postContainer .postDescription{
 	float:right;
 	font-size:11px;
 	width:25%;
 	margin: 10px 0px 10px 10px;
 }
 
-.articleContainer .articleDescription .articleAuthor{
+.postContainer .postDescription .postAuthor{
 	background:none;
 	border:none;
 	font-size: 18px;
 }
 
-.articleContainer .articleDescription .articleAboutMe, .articleContainer .articleDescription .articleSource, .articleContainer .articleDescription .articleCategory, 
-	.articleContainer .articleDescription .articleCreatedAt, .articleContainer .articleDescription .articleCountry, 
-		.articleContainer .articleDescription .articleKeywords, .articleContainer .articleDescription .articleIsEmail{
+.postContainer .postDescription .categoryHeader{
+	font-size:16px;
+	border: none;
+	border-bottom:1px solid #ddd;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+
+.postContainer .postDescription .postCreatedAt, .postContainer .postDescription .postKeywords{
 	display:block;
 	padding-left:10px;
 	width:100%;
 }
 
-.articleContainer .articleDescription .articleAboutMe{
+.postContainer .postDescription .postAboutMe{
 	padding-bottom:10px;
 	margin-bottom:10px;
 	border-bottom:1px solid #ddd;
 }
 
-.articleContainer .articleDescription .articleAboutMe p{
+.postContainer .postDescription .postAboutMe p{
 	padding-left:0px;
 	margin-left:-5px;
 }
 
-.articleContainer .articleBody{
+.postContainer .postBody{
 	float:left;
 	width:70%;
 	margin:10px;
 }
 
-.articleContainer .articleBody img{
+.postContainer .postBody img{
 	cursor:pointer;
 }
 
-.articleContainer .articleBody .attributionUrl{
+.postContainer .postBody .attributionUrl{
 }
 
-.articleContainer .articleBody .attributionUrl .preUrl{
+.postContainer .postBody .attributionUrl .preUrl{
 	margin-right:5px;
 }
 
-.articleContainer .articleBody .projectUpdates{
+.postContainer .postBody .projectUpdates{
 	margin-top:10px;
 	padding:10px;
 	border: 1px solid #ddd;
 }
 
-.articleContainer .articleBody .projectUpdates h3{
+.postContainer .postBody .projectUpdates h3{
 	border:none;
 	background:none;
 	font-size:16px;
@@ -1216,15 +1238,15 @@ pre {
 	border-bottom: 1px solid #ddd;
 }
 
-.articleContainer .articleBody ul, .articleContainer .articleBody ol{
+.postContainer .postBody ul, .postContainer .postBody ol{
 	display:block;
 }
 
-.articleContainer .articleBody ul li, .articleContainer .articleBody ol li{
+.postContainer .postBody ul li, .postContainer .postBody ol li{
 	margin:0px 10px 10px 20px;
 }
 
-/* end article page css */
+/* end post page css */
 
 /* profile page */
 
@@ -1439,14 +1461,6 @@ pre {
 
 /* end login and registration links */
 
-.modalWidget{
-	width:100%;
-}
-
-.modalWidget h2{
-	width:97%;
-}
-
 /* tag cloud */
 
 .css1 { font-size: 8px; }
@@ -1454,7 +1468,7 @@ pre {
 .css3 { font-size: 16px; }
 .css4 { font-size: 20px; }
 
-/*end tag cloud */
+/* end tag cloud */
 
 /* ADMIN MENU */
 .hideShowEmbeddedAdminMenu{
@@ -1660,7 +1674,7 @@ pre {
 	cursor:normal;
 }
 
-.favoriteThis, .favoritedThis, .friendThis, .unfriendThis, .sendPm{
+.favoriteThis, .favoritedThis{
 	margin:10px;
 	padding: 4px 0px 4px 0px;
 	width:150px;
@@ -1673,7 +1687,7 @@ pre {
 	list-style-type:none;
 }
 
-.actionLinks .favoriteThis, .actionLinks .favoritedThis, .actionLinks .friendThis, .actionLinks .unfriendThis, .actionLinks .sendPm {
+.actionLinks .favoriteThis, .actionLinks .favoritedThis{
 	margin:2px 2px;
 	padding:0px;
 	font-size:10px;
@@ -1695,21 +1709,14 @@ pre {
 	text-transform:none;
 }
 
-.profileContainer .favoriteThis, .profileContainer .favoritedThis, .profileContainer .friendThis, .profileContainer .unfriendThis, .profileContainer .sendPm{
+.profileContainer .favoriteThis, .profileContainer .favoritedThis{
 }
 
-.profileContainer .sendPm{
-}
-
-.unfriendThis a{
-	color:red;
-}
-
-.favoriteThis a, .friendThis a, .sendPm a{
+.favoriteThis a{
 	text-decoration:none;
 }
 
-.favoriteThis a:hover, .friendThis a:hover, .sendPm a:hover{
+.favoriteThis a:hover{
 	text-decoration:underline;
 }
 
@@ -1719,25 +1726,6 @@ pre {
 	color: #666;
 	padding-top:10px;
 	margin:10px;
-}
-
-.articleTitle .bulkEmailStatus{
-	padding:4px;
-	float:right;
-	background:red;
-	width:150px;
-	text-align:center;
-	text-transform:uppercase;
-	color:white;
-}
-
-.articleTitle .bulkEmailStatus a{
-	color:white;
-}
-
-.articleTitle .toSend{
-	background:green;
-	color:white;
 }
 
 .largeLink{
@@ -1756,33 +1744,4 @@ pre {
 	border: 1px solid #fff;
 	position:absolute;
 	z-index:1000;
-}
-
-#pages .projectList {
-	list-style-type:disc;
-	border:1px solid #999;
-	padding:5px 10px;
-	display:block;
-	float:none;
-}
-
-#pages .projectList li{
-	display:block;
-	background:#f9f9f9;
-	border:none;
-	float:none;
-}
-
-#pages .projectList li a{
-	border:none;
-	float:none;
-}
-
-#pages .projectList li a:hover;{
-	cursor:hand;
-	text-decoration:underline;
-}
-
-#pages .projectList .projectListHeader{
-	font-weight:bold;
 }

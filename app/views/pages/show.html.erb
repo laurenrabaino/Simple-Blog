@@ -1,14 +1,14 @@
-<div class="articleContainer">
+<div class="postContainer">
 	
 	<%apply_fragment ["page_header_", @page, is_admin?] do %>
-		<div class="articleHeading">
+		<div class="postHeading">
 			<h2>
 				<%=@page.title%> 
 			</h2>
 		</div>
 	<%end%>
 	
-	<div class="articleDescription">
+	<div class="postDescription">
 		
 		<%=render :partial => "shared/admin_links", :locals =>{
 			:edit_link => edit_page_path(@page),
@@ -27,14 +27,14 @@
 		</ul>
 		
 		<%apply_fragment ["page_side_time_", @page, is_admin?], :expires_in => CACHE_TIMEOUT do %>
-			<span class="articleCreatedAt"><%= t("common.posted").capitalize%> <%=time_ago_in_words(@page.created_at)%></span>
+			<span class="postCreatedAt"><%= t("common.posted").capitalize%> <%=time_ago_in_words(@page.created_at)%></span>
 		<%end%>
 		
 		<%=render :partial => 'shared/viewed', :locals => { :viewed => @page.viewed } %>
 		
 	</div>
 	
-	<div class="articleBody">
+	<div class="postBody">
 		<%apply_fragment ["page_body_with_embed_and_image1_", @page, is_admin?] do %>
 			<%if @page.embed_code && !@page.embed_code.strip.blank?%>
 				<%=transform_embed_code(@page.embed_code, 600, 400)%>

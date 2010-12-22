@@ -3,6 +3,8 @@ en:
         oops: "Ooops, something went wrong!"
         delete: "delete"
         viewed: "viewed"
+        tag:
+            display: "tag"
         blog: 
             display: "blog"
             create: "submit a new blog post"
@@ -27,6 +29,13 @@ en:
             nocontent: "There are no profiles yet."
             viewall: "see all profiles"
             delete: "Are you sure you want to delete this user?"
+        category: 
+            display: "category"
+            create: "create a new category"
+            edit: "edit category"
+            nocontent: "There are no categories yet."
+            viewall: "see all categories"
+            delete: "Are you sure you want to delete this category?"
         comment: 
             display: "comment"
             create: "comment"
@@ -130,6 +139,13 @@ en:
                 aboutme: "about me"
                 publicprofile: "show attribution to me"
             submit: "update settings"
+        category:
+            labels:
+                parent_category: "parent category"
+                description: 
+                    display: "category description"
+                    small: "write something short about category"
+            submit: "save category"
         blog:
             labels:
                 title: "title"
@@ -158,6 +174,7 @@ en:
                     display: "tags"
                     small: "specify a few tags"
                     suggest: "suggest tags"
+                settings: "settings"
                 showintopmenu: "show in top menu"
                 allowcomments: "allow comments"
                 multimedia:
@@ -192,6 +209,8 @@ en:
             body: 
                 empty: "You have to specify your comment body"
                 length: "The comment can only be 1000 characters long"
+        category:
+            name: "You have to specify a category name"
     notice:
         comment:
                 create:

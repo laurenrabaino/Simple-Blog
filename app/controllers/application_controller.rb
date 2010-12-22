@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_base_header_info, :unless => :no_before_filters
   before_filter :get_pages, :unless => :no_before_filters
   
+  include CacheConcerns::ControllerMethods                                                # Core concerns
+  
   def get_pages
     @menu_pages = Page.get_menu_pages(logged_in_and_admin)
   end

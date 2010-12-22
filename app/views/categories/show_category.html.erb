@@ -1,0 +1,35 @@
+<!-- CATEGORY PAGE -->
+<div class="searchPage">
+	<div class="leftSide">
+		<ul class="tabHeader">
+			<li class="tab<%if @tab=='posts'%>Selected<%end%>"><a href="/category/<%=@category.seo_name%>/posts" title="<%=t("common.blog.display").pluralize.capitalize%>"><%=t("common.blog.display").pluralize.capitalize%></a></li>
+		</ul>
+
+		<%if @tab=='posts'%>
+			<div class="tabBody">
+				<%if @posts && !@posts.empty?%>
+					<ul class="posts">
+						<%@posts.each do |a|%>
+							<%=render :partial=>"posts/post", :locals=>{ :cache_key => "landing_page", :a => a }%>
+						<%end%>
+					</ul>
+					<%= will_paginate(@posts, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;") %>
+				<%else%>
+					<p class="noResults"><%=t("common.blog.nocontent")%></p>
+				<%end%>
+			</div>
+		<%end%>
+
+	</div>
+
+	<div class="rightSide">
+		
+		<%if @current_user && @current_user.is_admin?%>
+			<div class="adminLinks">
+				<h3><%=t("admin.label").capitalize%></h3>
+				<%=link_to "Create", new_category_path, :class=>"editLink"%><span class="linkSeparator">|</span>
+				<%=link_to "Edit", edit_category_path(@category), :class=>"editLink"%>
+			</div>
+		<%end%>
+	</div>
+</div>

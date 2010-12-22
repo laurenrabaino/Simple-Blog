@@ -17,14 +17,21 @@
 	<div class="row">
 		<label for="excerpt" class="label"><%=t("form.blog.labels.excerpt").capitalize%>
 		</label>
-		<%= ckeditor_textarea("post", "excerpt", :toolbar=>"HablaGuate", :width => '444px', :height => '200px') %>
+		<%= ckeditor_textarea("post", "excerpt", :toolbar=>"SimpleBlog", :width => '444px', :height => '200px') %>
+	</div>
+
+	<div class="row">
+		<label for="categories" class="label"><%=t("common.category.display").capitalize%> 
+			<span class="required">*</span>
+		</label>
+		<%= collection_select :post, :category_ids, Category.find(:all, :order => 'name ASC'), :id, :name, { :selected => @post.category_ids }, { :multiple => true, :name => 'post[category_ids][]' } %>
 	</div>
 
 	<div class="row">
 		<label for="body" class="label"><%=t("form.blog.labels.post").capitalize%> 
 			<span class="required">*</span>
 		</label>
-		<%= ckeditor_textarea("post", "body", :toolbar=>"HablaGuate", :width => '444px', :height => '300px') %>
+		<%= ckeditor_textarea("post", "body", :toolbar=>"SimpleBlog", :width => '444px', :height => '300px') %>
 	</div>
 	
 	<div class="row">

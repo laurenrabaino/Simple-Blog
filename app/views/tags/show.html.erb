@@ -1,0 +1,17 @@
+<%=render :partial=>"shared/flash", :locals => { :message => flash[:notice] }%>
+
+<!-- ARTICLES PAGE -->
+<div class="postsPage">
+	<div class="leftSide">
+		<h2><%=t("common.blog.display").pluralize.capitalize%></h2>
+		<ul class="posts">
+			<%@posts.each do |a|%>
+				<%=render :partial=>"posts/post", :locals=>{ :cache_key => "landing_page", :a => a }%>
+			<%end%>
+		</ul>
+		<%=will_paginate(@posts, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+	</div>
+	
+	<div class="rightSide">
+	</div>
+</div>

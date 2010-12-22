@@ -24,6 +24,7 @@ jQuery(document).ready(function($){
 		menuItems[2] = "Profiles";
 		menuItems[3] = "Comments";
 		menuItems[4] = "Pages";
+		menuItems[5] = "Categories";
 		
 		// hide all other menues
 		for (i=0; i<menuItems.length; i++){

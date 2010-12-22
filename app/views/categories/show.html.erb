@@ -1,0 +1,26 @@
+<div class="articleContainer">
+	
+	<%apply_fragment ["category_header_", @category, is_admin?] do %>
+		<div class="articleHeading">
+			<h2>
+				<%=@category.name%> 
+			</h2>
+		</div>
+	<%end%>
+	
+	<div class="articleDescription">
+		<%=render :partial => "shared/admin_links", :locals =>{
+			:edit_link => edit_category_path(@category),
+			:show_publishing_links => false,
+			:delete_link => category_path(@category),
+			:confirm_message => 'Are you sure you want to delete this category?'
+		} if @current_user && @current_user.is_admin?%>
+		
+		
+	</div>
+	
+	<div class="articleBody">
+		<%=@category.description if @category.description && !@category.description.blank?%>
+	</div>
+	
+</div>

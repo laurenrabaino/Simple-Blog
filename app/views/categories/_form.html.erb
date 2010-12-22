@@ -1,0 +1,38 @@
+<%=render :partial=>"shared/captcha_settings"%>
+<%=render :partial=>"shared/error", :locals=>{ :object => @category }%>
+
+<% form_for(@category, :html => { :multipart => true }) do |f| %>
+	
+	<div class="row">
+		<label for="title" class="label"><%=t("common.category.display").capitalize%>  
+			<span class="required">*</span>
+		</label>
+		<%= f.text_field :name, :maxlength => 256, :size => 15 %>
+	</div>
+
+	<div class="row">
+		<label for="category" class="label"><%= t("form.category.labels.parent_category").capitalize%> 
+			<span class="required">*</span>
+		</label>
+
+		<select name="category[parent_id]">
+			<option value="-1" <%unless @category.parent_id%>selected<%end%>>-</option>
+			<%Category.all.each do |c|%>
+				<option value="<%=c.id%>" <%if @category.parent_id && @category.parent_id==c.id%>selected<%end%>><%=c.name%></option> 
+			<%end%>
+		</select>
+	</div>
+	
+	<div class="row">
+		<label for="message" class="label"><%=t("form.category.labels.description.display").capitalize%>  
+			<span class="small"><%=t("form.category.labels.description.small")%></span>
+		</label>
+		<%= f.text_area :description, :rows => 8, :cols => 75 %>
+	</div>
+
+	<div class="row">
+		<label>&nbsp;</label>
+		<input type="submit" name="submit" value="<%=t("form.category.submit").capitalize%>" class="submitButton" />
+	</div>
+
+<%end%>

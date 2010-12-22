@@ -2,12 +2,14 @@
 	<%= auto_discovery_link_tag(:rss, {:controller => 'posts', :action => 'index', :format => 'rss'}) %>
 <% end %>
 
-<!-- ARTICLES PAGE -->
+<!-- POSTS PAGE -->
 <div class="postsPage">
 	<div class="leftSide">
 		<%= render :partial => "posts/list", :locals => { :posts => @posts, :show_pagination => true, :cache_key => "landing_page", :pre_link => '/posts' }%>
 	</div>
 	
 	<div class="rightSide">
+		<%= render :partial => "categories/list", :locals => { :categories => Category.get_categories(is_admin?) } %>
+		<%= render :partial => "tags/list", :locals => { :tags => @tags } %>
 	</div>
 </div>

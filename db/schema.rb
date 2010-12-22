@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222042837) do
+ActiveRecord::Schema.define(:version => 20101222160407) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "seo_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.string   "description"
+  end
+
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+  end
 
   create_table "clickstreams", :force => true do |t|
     t.string   "ip"
@@ -64,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20101222042837) do
     t.text     "excerpt"
     t.text     "body"
     t.text     "embed_code"
-    t.integer  "category_id"
     t.integer  "status",                      :limit => 2, :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"

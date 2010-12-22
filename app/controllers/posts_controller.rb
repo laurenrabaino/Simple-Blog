@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   resources_controller_for :post
   
+  before_filter :set_category_ids, :only => [:create, :update]
+  
   def show
     begin
       @post = find_resource
@@ -24,6 +26,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       format.html do
+        @tags = Post.get_tags(logged_in_and_admin)
       end
       format.rss do
         render :layout => false
@@ -40,6 +43,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     
     if @post.save
+      params[:post][:category_ids].uniq.compact.each { |category_id| create_post_category(category_id, @post.id) }
       redirect_to post_path(@post)
     else
       render :action => 'new'
@@ -89,6 +93,19 @@ class PostsController < ApplicationController
     @post.featured = true
     @post.save
     redirect_to :back
+  end
+  
+  protected 
+  
+  def create_post_category(category_id, post_id)
+    ps = CategoriesPost.new
+    ps.category_id = category_id
+    ps.post_id = post_id
+    ps.save
+  end
+  
+  def set_category_ids
+    params[:post][:category_ids] ||= []
   end
   
 end

@@ -1,6 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  include TagsHelper
   
   def apply_fragment(key, options = {}, &block)    
     options[:skip] ? block.call : cache(reduce_cache_key(key), options, &block)
@@ -51,6 +50,7 @@ module ApplicationHelper
     return 'profiles' if @profile || params[:controller]=='profiles'
     return 'pages' if  (@page && @page.is_a?(Page)) || params[:controller]=='pages'
     return 'posts' if @post || params[:controller]=='posts'
+    return 'categories' if @category || params[:controller]=='category'
     return 'posts'
   end
   
@@ -67,6 +67,15 @@ module ApplicationHelper
   def shared?(type, id, notification_type)
     share_types = SharedPost.find(:all, :conditions => ["user_id=? and shareable_type=? and shareable_id=?", @current_user.id, type, id]).map(&:share_type)
     share_types.include?(notification_type)
+  end
+  
+  def tag_cloud(tags, classes)
+    max_count = tags.sort_by(&:count).last.count.to_f
+    
+    tags.each do |tag|
+      index = ((tag.count / max_count) * (classes.size - 1)).round
+      yield tag, classes[index]
+    end
   end
   
 end

@@ -1,0 +1,19 @@
+<%if !defined?(hide_header) || !hide_header%>
+	<h2><%=t("common.category.display").pluralize.capitalize%></h2>
+<%end%>
+<%if categories && !categories.empty?%>
+	<ul class="articles">
+		<%categories.each do |c|%>
+			<%=render :partial=>"categories/category", :locals=>{ :cache_key => cache_key, :c => c }%>
+		<%end%>
+	</ul>
+	<%if defined?(show_more) && show_more%>
+		<div class="readMore">
+			<%=link_to "#{t("common.category.viewall")} &raquo;", categories_path%>
+		</div>
+	<%elsif defined?(show_pagination) && show_pagination%>
+		<%=will_paginate(categories, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+	<%end%>
+<%else%>
+	<p><%=t("common.category.nocontent")%></p>
+<%end%>
