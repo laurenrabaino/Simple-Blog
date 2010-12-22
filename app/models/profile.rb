@@ -54,7 +54,7 @@ class Profile < User
   
   def generate_temporary_password(send_email=false)
     self.confirm_password = self.password
-    self.update_attributes({:temporary_password => ActiveSupport::SecureRandom.base64(6), :temporary_password_hash => Digest::SHA1.hexdigest("--#{SALT}--#{password}--#{Time.now}--#{ActiveSupport::SecureRandom.base64(6)}--")})
+    self.update_attributes({:temporary_password => ActiveSupport::SecureRandom.base64(6), :temporary_password_hash => Digest::SHA1.hexdigest("--#{SETTINGS[:site][:salt]}--#{password}--#{Time.now}--#{ActiveSupport::SecureRandom.base64(6)}--")})
     Notifier.deliver_new_password(email, {:user => self, :locale => locale}) if send_email
   end
   

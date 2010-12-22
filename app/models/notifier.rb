@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
   end
   
   def account_confirmation(to_email, options, mail_type="text/html")
-    @subject    = options[:locale]=="es" ? "¡Bienvenido a #{SETTINGS[:site][:name]}!" : "Welcome to #{SETTINGS[:site][:name]}!"
+    @subject    = I18n.t("notifier.account_confirmation.subject").gsub('SITE_NAME', SETTINGS[:site][:name])
     @body       = options
     @recipients = to_email
     @from       = SETTINGS[:site][:noreply]
@@ -26,7 +26,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_post_update(emails, options, mail_type="text/html")
-    @subject    = "Nuevo Entrada En El Blog :: #{SETTINGS[:site][:name]}"
+    @subject    = I18n.t("notifier.new_post_update.subject").gsub('SITE_NAME',SETTINGS[:site][:name])
     @body       = options
     @recipients = SETTINGS[:site][:email]
     @from       = SETTINGS[:site][:noreply]
@@ -37,7 +37,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_user(emails, options, mail_type="text/html")
-    @subject    = "Nuevo Miembro :: #{SETTINGS[:site][:name]}"
+    @subject    = I18n.t("notifier.new_user.subject").gsub('SITE_NAME',SETTINGS[:site][:name])
     @body       = options
     @recipients = SETTINGS[:site][:email]
     @from       = SETTINGS[:site][:noreply]
@@ -48,7 +48,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_password(to_email, options, mail_type="text/html")
-    @subject    = options[:locale]=="es" ? "#{SETTINGS[:site][:name]}: Su contraseña temporal" : "#{SETTINGS[:site][:name]}: Your temporary password"
+    @subject    = I18n.t("notifier.new_password.subject").gsub('SITE_NAME', SETTINGS[:site][:name] )
     @body       = options
     @recipients = to_email
     @from       = SETTINGS[:site][:noreply]

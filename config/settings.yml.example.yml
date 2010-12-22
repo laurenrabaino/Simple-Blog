@@ -54,6 +54,3 @@ development:
         :username: "(optional for email posting)"
         :password: "(optional for email posting)"
         :service_url: "http://domain.com/admin/incomings"
-        
-        
-        

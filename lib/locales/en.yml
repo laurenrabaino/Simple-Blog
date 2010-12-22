@@ -96,6 +96,10 @@ en:
         account: "account"
         settings: "settings"
         welcome: "welcome back"
+        reset_password: "reset your password"
+        reset_password_instructions: "Check your email for instructions how to reset your password."
+        forgot: "forgot your password?"
+        want_to_login: "do you want to login?"
         headers: 
             login: "login to your account"
             register: "register"
@@ -137,6 +141,8 @@ en:
                 admin: "Is admin?"
                 aboutme: "about me"
                 noaboutme: "The user has not written an about me section yet."
+                email_or_username: "Specify your email or user name"
+            submit: "submit"
         comment:
             labels:
                 full_name: "full name"
@@ -207,6 +213,7 @@ en:
             emailinvalid: "The email doesn't seem to be correct."
             emailtooshort: "The email seem to be invalid."
             passwordsdonotmatch: "The password and confirm password doesn't match."
+            forgot: "The username or email doesn't seem to be associated with an account."
         blog:
             title: "You have to provide a title."
             body: "You have to provide a body."
@@ -229,3 +236,21 @@ en:
                 edit:
                     oops: "Sorry the changes to the comment couldn't be changed."
                     success: "Your changes to the comment is now posted."
+    notifier:
+        signature:
+            regards: "Regards"
+            team: "Simple Blog RoR Team"
+        account_confirmation:
+            subject: "Welcome to SITE_NAME!"
+            body: "You have created an account with the following credentials:<br/>User Name: USER_NAME<br/>Password: PASSWORD"
+        new_password:
+            subject: "Your temporary password to SITE_NAME"
+            body:
+                part1: "Your new password is:<br/>Password: PASSWORD"
+                part2: "This password only works one time and you will be prompted to change it immediately."
+        new_post_update:
+            subject: "New Blog Post at SITE_NAME"
+            body: "The post is not published yet. Click the following link to publish it:"
+        new_user:
+            subject: "A new user has signed up at SITE_NAME"
+            body: "Click the following link to see the profile page:"

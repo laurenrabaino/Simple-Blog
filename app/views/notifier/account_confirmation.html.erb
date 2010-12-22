@@ -1,27 +1,8 @@
-<%if @locale=="es"%>
-	<p>¡Bienvenido a <%=SETTINGS[:site][:name]%>!</p>
+<p><%=t("notifier.account_confirmation.subject").gsub('SITE_NAME', SETTINGS[:site][:name])%>!</p>
 
-	<p>Se ha creado una cuenta con las siguientes credenciales:<br/>
-	Usuario: <%=@user.user_name%><br/>
-	Contraseña: <%=@user.password%></p>
+<p><%=t("notifier.account_confirmation.body").gsub('USER_NAME',@user.user_name).gsub('PASSWORD',@user.password)%></p>
 
-	<p>Usted puede utilizar estas credenciales para enviar artículos, y mandar los artículos del correo electrónico con cual registró.</p>
+<p><%=t("notifier.signature.regards")%>,</p>
 
-	<p>Atentamente,</p>
-
-	<p><%=SETTINGS[:site][:name]%><br/>
-	http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>	
-<%else%>
-	<p>Welcome to <%=SETTINGS[:site][:name]%>!</p>
-
-	<p>You have created an account with the following credentials:<br/>
-	User Name: <%=@user.user_name%><br/>
-	Password: <%=@user.password%></p>
-
-	<p>You can use these credentials to post articles, and email in articles from the email you registered under.</p>
-
-	<p>Sincerely,</p>
-
-	<p><%=SETTINGS[:site][:name]%><br/>
-	http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>
-<%end%>
+<p><%=t("notifier.signature.team")%><br/>
+<%=SETTINGS[:site][:host]%></p>

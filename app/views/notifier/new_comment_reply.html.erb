@@ -2,7 +2,7 @@
 
 <p><%=t("comment.read_comment")%> <%=link_to @commentable[:title], "#{@commentable[:permalink]}#comment_#{@comment.id}"%></p>
 
-<p>Atentamente,</p>
+<p><%=t("notifier.signature.regards")%>,</p>
 
-<p><%=SETTINGS[:site][:name]%><br/>
-http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>
+<p><%=t("notifier.signature.team")%><br/>
+<%=SETTINGS[:site][:host]%></p>

@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(params[:profile])
     @profile.locale = get_locale
       
-    if verify_recaptcha(:model=>@profile, :message => I18n.t('errors.bad_captcha')) && @profile.save
+    if verify_recaptcha(:model=>@profile, :message => I18n.t('errors.profile.bad_captcha')) && @profile.save
       
       unless logged_in_and_admin
         session[:user_id] = @profile.id 
@@ -71,11 +71,11 @@ class ProfilesController < ApplicationController
           redirect_to reset_password_link
           return
         else
-          @error_text = I18n.t("errors.badlogin")
+          @error_text = I18n.t("errors.profile.badlogin")
         end
       end
     else
-        @error_text = I18n.t("errors.badlogin") if params[:user_name] || params[:password]
+        @error_text = I18n.t("errors.profile.badlogin") if params[:user_name] || params[:password]
     end
   end
   
@@ -90,10 +90,10 @@ class ProfilesController < ApplicationController
         redirect_to "/"
         return
       else
-        @error_text = I18n.t("errors.forgot")
+        @error_text = I18n.t("errors.profile.forgot")
       end
     else
-      @error_text = I18n.t("errors.forgot") if params[:q]
+      @error_text = I18n.t("errors.profile.forgot") if params[:q]
     end
   end
   
@@ -121,7 +121,7 @@ class ProfilesController < ApplicationController
       redirect_to "/"
       return
     else
-      @error_text = I18n.t("errors.passwordsdonotmatch") if params[:password] && params[:confirm_password]
+      @error_text = I18n.t("errors.profile.passwordsdonotmatch") if params[:password] && params[:confirm_password]
     end
   end
   

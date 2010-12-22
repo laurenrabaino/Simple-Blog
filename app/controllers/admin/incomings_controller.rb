@@ -9,9 +9,8 @@ class Admin::IncomingsController < ApplicationController
     
     # parse the email...
     arguments = {}
-    arguments[:email] = mail.from.first.to_s
+    email = mail.from.first.to_s
     to_emails = mail.to
-    arguments[:full_name] = mail.from_addrs.empty? ? arguments[:email] : mail.from_addrs.first.to_s.gsub(" <#{arguments[:email]}>", "")
     arguments[:title] = mail.subject.to_s
     arguments[:excerpt] = ""
     
@@ -28,7 +27,7 @@ class Admin::IncomingsController < ApplicationController
     arguments[:body] = mail_body.to_s.sanitize
     
     #check if it is a known user...
-    user = Profile.find_by_email(arguments[:email])
+    user = Profile.find_by_email(email)
     if user
       arguments[:user_id] = user.id
       arguments[:status] = 1

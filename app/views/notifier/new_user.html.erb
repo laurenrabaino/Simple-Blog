@@ -1,10 +1,10 @@
-<p>Nuevo Miembre :: <%=SETTINGS[:site][:name]%></p>
+<p><%=t("notifier.new_user.subject").gsub('SITE_NAME',SETTINGS[:site][:name])%></p>
 
 <p>
-	<strong>Miembre:</strong> <%=@user.user_name%> - <%=link_to @user.permalink, @user.permalink%>
+	<strong><%=t("notifier.new_user.body")%></strong> <%=@user.user_name%> - <%=link_to @user.permalink, @user.permalink%>
 </p>
 
-<p>Atentamente,</p>
+<p><%=t("notifier.signature.regards")%>,</p>
 
-<p><%=SETTINGS[:site][:name]%><br/>
-http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>
+<p><%=t("notifier.signature.team")%><br/>
+<%=SETTINGS[:site][:host]%></p>
