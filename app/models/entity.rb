@@ -14,6 +14,10 @@ class Entity < ActiveRecord::Base
   attr_accessor :coordinates
   @@coordinates = []
 
+  def self.active?
+    SETTINGS[:calais] && !SETTINGS[:calais].blank?
+  end
+
   def process?(text)
     self.request_body = text && !text.blank? ? Calais.process_document(:content => text, :license_id => LICENSE) : nil
   end
