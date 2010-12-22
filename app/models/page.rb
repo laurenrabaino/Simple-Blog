@@ -110,4 +110,16 @@ class Page < ActiveRecord::Base
     end
   end
   
+  def new_comment_published(comment)
+    # only email if the comment is not yours...
+    if author_email!=comment.author_email
+      Notifier.deliver_new_comment_published({:commentable => {:title => title, :email => author_email, :author => article_author, :permalink => permalink, :type => I18n.t("common.page.display").capitalize}, 
+            :comment => comment })
+      
+      # only email if the parent comment is not yours...
+      Notifier.deliver_new_comment_reply({:commentable => {:title => title, :email => comment.parent_comment.author_email, :author => comment.parent_comment.article_author, :permalink => permalink, :type => I18n.t("common.article").capitalize}, 
+            :comment => comment, :parent_comment => comment.parent_comment }) if comment.parent_comment && author_email!=comment.parent_comment.author_email
+    end
+  end
+  
 end
