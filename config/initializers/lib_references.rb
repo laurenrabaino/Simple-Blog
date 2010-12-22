@@ -1,9 +1,9 @@
 require 'memcached'
 require 'will_paginate'
-require 'url_shortener'
-require 'twitter_oauth'
-require 'oauth2'
-require "calais"
+require 'url_shortener' if (OauthConnect.has_twitter? || OauthConnect.has_facebook?)
+require 'twitter_oauth' if  OauthConnect.has_twitter?
+require 'oauth2' if (OauthConnect.has_twitter? || OauthConnect.has_facebook?)
+require "calais" if Entity.active?
 require 'hoptoad_notifier'
 #require 'thinking_sphinx'
 #require 'thinking_sphinx/deltas/delayed_delta'

@@ -40,10 +40,12 @@ class Admin::IncomingsController < ApplicationController
     # save the post
     post = Post.new(arguments)
     
-    begin
-      e = Entity.new
-      post.tag_list = e.tags?(post.body).uniq.join(", ")
-    rescue
+    if Entity.active?
+      begin
+        e = Entity.new
+        post.tag_list = e.tags?(post.body).uniq.join(", ")
+      rescue
+      end
     end
     
     post.save
