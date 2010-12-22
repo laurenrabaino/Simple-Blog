@@ -1,9 +1,0 @@
-<strong><%=t("form.excerpt").capitalize%></strong>
-<%=@body%>
-
-<p><%=t("common.pm.see_the_entire_message").capitalize%> <%=link_to @pm.subject, profile_pm_path(@pm.owner, @pm, {:only_path => false})%></p>
-
-<p>Atentamente,</p>
-
-<p><%=SETTINGS[:site][:name]%><br/>
-http://www.<%=SETTINGS[:site][:name].downcase%>.com</p>
