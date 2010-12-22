@@ -6,6 +6,7 @@ en:
         delete: "delete"
         viewed: "viewed"
         enteremailaddress: "Enter your email address:"
+        filter_label: "filter"
         filter:
             :viewed: "viewed"
             :favorited: "favorited"
