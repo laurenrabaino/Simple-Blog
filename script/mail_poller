@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
+require 'net/imap'
+require 'net/http'
+require 'rubygems'
+require 'logger'
+
+config = YAML.load(File.read(File.join(File.dirname(__FILE__), '..', 'config', 'mail.yml')))[Rails.env]
+log = Logger.new(STDOUT)
+
+log.info Time.now.to_s + " Warming up mail_poller..."
+
+begin
+  imap = Net::IMAP.new(SETTINGS[:email][:host], SETTINGS[:email][:port], true)
+  imap.login(SETTINGS[:email][:username], SETTINGS[:email][:password])
+
+  #imap = Net::IMAP.new(SETTINGS[:email][:host])
+  #imap.authenticate('LOGIN', SETTINGS[:email][:username], SETTINGS[:email][:password])
+
+  log.info "    - Starting to process..."
+
+  # select inbox as our mailbox to process
+  imap.select('inbox')
+
+  # get all emails that are in inbox that have not been deleted
+  imap.uid_search(["RECENT"]).each do |uid|
+
+    log.info "       -- Starting to process one message - " + uid.to_s
+
+    # fetches the straight up source of the email
+    source   = imap.uid_fetch(uid, 'RFC822').first.attr['RFC822']
+    # Post the email to the Rails app's restful service
+    res = Net::HTTP.post_form(URI.parse(SETTINGS[:email][:service_url]), {'email' => source})
+    case res
+    when Net::HTTPSuccess, Net::HTTPRedirection
+      # OK
+    else
+      res.error!
+    end
+    # Delete the email
+    imap.uid_store(uid, "+FLAGS", [:Deleted])
+  end
+
+  # expunge removes the deleted emails
+  imap.expunge
+  imap.logout
+
+  # NoResponseError and ByResponseError happen often when imap'ing
+rescue Net::IMAP::NoResponseError => e
+  # Log if you'd like
+rescue Net::IMAP::ByeResponseError => e
+  # Log if you'd like
+rescue => e
+  log.warn e
+end
+
+log.info Time.now.to_s + " Done polling mail..."

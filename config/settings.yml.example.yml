@@ -36,6 +36,12 @@ development:
         :private: ""
     :hoptoad: ""
     :calais: ""
+    :email:
+        :host: ""
+        :port: ""
+        :username: ""
+        :password: ""
+        "service_url: "http://domain.com/admin/incomings"
         
         
         
