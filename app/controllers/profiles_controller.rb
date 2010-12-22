@@ -97,17 +97,6 @@ class ProfilesController < ApplicationController
     end
   end
   
-  def send_pm
-    @profile = find_resource
-    if @current_user && @profile
-      redirect_to new_profile_pm_path @current_user, :r => @profile.id
-      return
-    else
-      head :bad_request
-      return
-    end
-  end
-  
   def reset_password
     if !params[:temp] || !session[:temp] || (params[:temp] != session[:temp] && @current_user)
       redirect_to "/"
