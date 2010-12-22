@@ -87,6 +87,8 @@ jQuery(document).ready(function($){
 		
 		if (typeOfContent == 'Post') {
 			var objEditor = CKEDITOR.instances['post_body_editor'];
+		} else if (typeOfContent == 'Page') {
+			var objEditor = CKEDITOR.instances['page_body_editor'];
 		} else {
 			return;
 		}

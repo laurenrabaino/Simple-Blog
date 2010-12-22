@@ -26,8 +26,8 @@
 			<%=render :partial => 'shared/favorite_this', :locals => { :url => favorite_page_url(@page), :object => @page } %>
 		</ul>
 		
-		<%apply_fragment ["page_side_time_", @page, is_admin?], :expires_in => CACHE_TIMEOUT do %>
-			<span class="postCreatedAt"><%= t("common.posted").capitalize%> <%=time_ago_in_words(@page.created_at)%></span>
+		<%apply_fragment ["page_posted_", @page, is_admin?], :expires_in => CACHE_TIMEOUT do %>
+			<span class="postCreatedAt"><%= t("common.page.posted").capitalize%> <%=time_ago_in_words(@page.created_at)%></span>
 		<%end%>
 		
 		<%=render :partial => 'shared/viewed', :locals => { :viewed => @page.viewed } %>

@@ -5,6 +5,7 @@ en:
         home: "home"
         delete: "delete"
         viewed: "viewed"
+        enteremailaddress: "Enter your email address:"
         filter:
             :viewed: "viewed"
             :favorited: "favorited"
@@ -51,12 +52,11 @@ en:
             postedby: "posted by"
             nocontent: "There are no comments yet."
             viewall:
-                all: "view all"
-                spam: "view all spam"
-                ham: 'view all ham'
+                all: "view all comments"
+                spam: "view all spam comments"
+                ham: 'view all ham comments'
             delete_all_spam: "delete all spam comments"
             nocontent: "There are no comments yet."
-            viewall: "see all comments"
             delete: "Are you sure you want to delete this comment?"
     pagination:
         previous: "previous"

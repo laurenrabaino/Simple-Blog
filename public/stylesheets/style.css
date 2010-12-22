@@ -166,6 +166,7 @@ margin-top: -25px;
 
 #pages li a:link, #pages li a:visited, #pages li.languageLink a:link, #pages li.languageLink a:visited{
     color:#333;
+	text-decoration:none;
 }
 
 #pages li.languageLink,  #pages li.languageLinkSelected, #pages li.languageSeparator {
