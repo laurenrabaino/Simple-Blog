@@ -13,9 +13,6 @@ begin
   imap = Net::IMAP.new(SETTINGS[:email][:host], SETTINGS[:email][:port], true)
   imap.login(SETTINGS[:email][:username], SETTINGS[:email][:password])
 
-  #imap = Net::IMAP.new(SETTINGS[:email][:host])
-  #imap.authenticate('LOGIN', SETTINGS[:email][:username], SETTINGS[:email][:password])
-
   log.info "    - Starting to process..."
 
   # select inbox as our mailbox to process
