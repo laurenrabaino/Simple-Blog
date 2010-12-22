@@ -18,9 +18,9 @@ class Page < ActiveRecord::Base
   after_create :publish
   
   has_many :comments, :as => :commentable, :dependent => :destroy, :conditions => "comments.parent_id is null"
-  #has_many :favorites, :as => :favoriteable, :dependent => :destroy
+  has_many :favorites, :as => :favoriteable, :dependent => :destroy
   has_many :clickstreams, :as => :clickstreamable, :dependent => :destroy
-  #has_many :features, :as => :featurable, :dependent => :destroy
+  has_many :features, :as => :featurable, :dependent => :destroy
   
   belongs_to :user
   

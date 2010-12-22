@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222175435) do
+ActiveRecord::Schema.define(:version => 20101222180636) do
 
   create_table "blocked_ips", :force => true do |t|
     t.string   "ip"
@@ -69,6 +69,24 @@ ActiveRecord::Schema.define(:version => 20101222175435) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "site_id"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.string   "ip"
+    t.integer  "user_id"
+    t.string   "favoriteable_type"
+    t.integer  "favoriteable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "features", :force => true do |t|
+    t.string   "ip"
+    t.integer  "user_id"
+    t.string   "featurable_type"
+    t.integer  "featurable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notify_settings", :force => true do |t|

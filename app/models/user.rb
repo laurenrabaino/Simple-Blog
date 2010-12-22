@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   has_one :facebook_account, :dependent => :destroy
   has_many :notify_settings
   
-  #has_many :favorites, :as => :favoriteable, :dependent => :destroy
+  has_many :favorites, :as => :favoriteable, :dependent => :destroy
   has_many :clickstreams, :as => :clickstreamable, :dependent => :destroy
-  #has_many :features, :as => :featurable, :dependent => :destroy
+  has_many :features, :as => :featurable, :dependent => :destroy
   
   after_create :post_process
   

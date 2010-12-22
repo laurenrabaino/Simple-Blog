@@ -22,7 +22,7 @@
 		} if @current_user && @current_user.is_admin?%>
 		
 		<ul class='actionLinks'>
-			<%#=render :partial => 'shared/favorite_this', :locals => { :url => favorite_post_url(@post), :object => @post }%>
+			<%=render :partial => 'shared/favorite_this', :locals => { :url => favorite_post_url(@post), :object => @post }%>
 			<%=render :partial => 'shared/tweet', :locals => { :url => tweet_post_url(@post), :shared => shared?('Post', @post.id, 'Twitter') } if @current_user && @current_user.twitter_account%>
 			<%=render :partial => 'shared/facebook', :locals => { :url => facebook_post_url(@post), :shared => shared?('Post', @post.id, 'Facebook') } if @current_user && @current_user.facebook_account%>
 		</ul>
@@ -36,10 +36,18 @@
 		<%apply_fragment ["post_side_time_", @post, is_admin?], { :expires_in => CACHE_TIMEOUT } do %>
 			<span class="postCreatedAt"><%= t("common.blog.posted").capitalize%> <%=time_ago_in_words(@post.created_at)%></span>
 		<%end%>
+
+		<%apply_fragment ["post_side_categories_", @post, is_admin?] do %>
+			<%unless @post.categories.empty?%>
+				<span class="postKeywords"><%=t("common.category.display").pluralize.capitalize%>: 
+					<%@post.categories.each do |c|%>
+						<%= link_to c.name, "/category/#{c.name}" %>
+					<%end%>
+				</span>
+			<%end%>	
+		<%end%>
 		
-		<%= render :partial => "categories/list", :locals => { :categories => @post.categories, :hide_home => true } unless @post.categories.empty? %>
-		
-		<%apply_fragment ["post_side_footer3_", @post, is_admin?] do %>
+		<%apply_fragment ["post_side_tags_", @post, is_admin?] do %>
 			<%unless @post.tags.empty?%>
 				<span class="postKeywords"><%=t("common.tag.display").pluralize.capitalize%>: 
 					<%@post.tags.each do |tag|%>
@@ -52,8 +60,8 @@
 		<%=render :partial => 'shared/viewed', :locals => { :viewed => @post.viewed } %>
 
 		<div class="shareThis">
-			<%#= render :partial => "shared/share_this"%>
-			<%#= render :partial => "shared/facebook_like", :locals => { :url => @post.permalink } %>
+			<%= render :partial => "shared/share_this"%>
+			<%= render :partial => "shared/facebook_like", :locals => { :url => @post.permalink } %>
 		</div>
 		
 	</div>

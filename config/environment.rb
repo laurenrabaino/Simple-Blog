@@ -61,4 +61,4 @@ begin
 rescue NameError => error
 end
 
-S3_BUCKET=SETTINGS[:s3][:bucket]
+S3_BUCKET = SETTINGS[:s3][:bucket]

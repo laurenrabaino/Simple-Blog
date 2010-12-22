@@ -21,6 +21,17 @@ development:
         :public: ""
         :private: ""
     :hoptoad: ""
+    :social:
+        :share_this: "(optional)"
+        :feedburner: "(optional)"
+        :facebook_widget_id: "(optional)"
+        :subscribe:
+            :facebook: "(optional)"
+            :twitter: "(optional)"
+            :blogtalkradio: "(optional)"
+            :youtube: "(optional)"
+            :itunes: "(optional)"
+            :flickr: "(optional)"
     :google:
         :verification: "(optional, but strongly suggested)"
         :analytics: "(optional)"

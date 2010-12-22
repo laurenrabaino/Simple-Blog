@@ -23,7 +23,7 @@
 		} if @current_user && @current_user.is_admin?%>
 		
 		<ul class='actionLinks'>
-			<%#=render :partial => 'shared/favorite_this', :locals => { :url => favorite_page_url(@page), :object => @page } %>
+			<%=render :partial => 'shared/favorite_this', :locals => { :url => favorite_page_url(@page), :object => @page } %>
 		</ul>
 		
 		<%apply_fragment ["page_side_time_", @page, is_admin?], :expires_in => CACHE_TIMEOUT do %>

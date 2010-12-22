@@ -11,5 +11,7 @@
 	<div class="rightSide">
 		<%= render :partial => "categories/list", :locals => { :categories => Category.get_categories(is_admin?) } %>
 		<%= render :partial => "tags/list", :locals => { :tags => @tags } %>
+		<%= render :partial => "shared/subscribe" %>
+		<%= render :partial => "shared/facebook_widget" %>
 	</div>
 </div>

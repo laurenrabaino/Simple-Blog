@@ -1,8 +1,15 @@
 en:
     common:
         oops: "Ooops, something went wrong!"
+        subscribe: "subscribe"
+        home: "home"
         delete: "delete"
         viewed: "viewed"
+        filter:
+            :viewed: "viewed"
+            :favorited: "favorited"
+            :featured: "featured"
+            :recency: "recency"
         tag:
             display: "tag"
         blog: 
