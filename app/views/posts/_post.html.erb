@@ -6,7 +6,7 @@
 			</div>
 		<%end%>
 	<%end%>
-	<%apply_fragment [cache_key, "_posts_header_", a] do %>
+	<%apply_fragment [cache_key, "_posts_header_", a, is_admin?] do %>
 		<div class="postTitle">
 			<%=link_to a.title, post_path(a)%>
 		</div>
@@ -14,6 +14,12 @@
 			<%=strip_tags(a.excerpt?)%>
 		</div>
 		<div class="postMetaData">
+			<%if a.profile.show_profile_link? || is_admin?%>
+				<span class="messageAuthor">
+					<%=t("common.blog.postedby").capitalize%> <%=link_to a.profile.user_name, profile_path(a.profile)%>
+				</span>
+				<span class="metaDataSeparator">|</span>
+			<%end%>
 			<span class="postAuthor">
 				<%=t("common.viewed").capitalize%> <%=a.viewed%>
 			</span>

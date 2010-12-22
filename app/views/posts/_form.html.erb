@@ -15,16 +15,21 @@
 	</div>
 	
 	<div class="row">
-		<label for="excerpt" class="label"><%=t("form.blog.labels.excerpt").capitalize%>
-		</label>
-		<%= ckeditor_textarea("post", "excerpt", :toolbar=>"SimpleBlog", :width => '444px', :height => '200px') %>
-	</div>
-
-	<div class="row">
 		<label for="categories" class="label"><%=t("common.category.display").capitalize%> 
 			<span class="required">*</span>
 		</label>
-		<%= collection_select :post, :category_ids, Category.find(:all, :order => 'name ASC'), :id, :name, { :selected => @post.category_ids }, { :multiple => true, :name => 'post[category_ids][]' } %>
+		<div class='sites'>
+			<%for category in Category.find(:all, :order => 'name ASC')%>
+				<%= check_box_tag "post[category_ids][]", category.id, (@post.categories.include?(category)), :class=>"radioButton" %>
+				<span class="radioButtonText"><%=category.name%></span>
+			<%end%>
+		</div>
+	</div>
+	
+	<div class="row">
+		<label for="excerpt" class="label"><%=t("form.blog.labels.excerpt").capitalize%>
+		</label>
+		<%= ckeditor_textarea("post", "excerpt", :toolbar=>"SimpleBlog", :width => '444px', :height => '200px') %>
 	</div>
 
 	<div class="row">

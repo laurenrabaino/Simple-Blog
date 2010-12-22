@@ -7,8 +7,14 @@
 			<%=strip_tags(p.excerpt?)%>
 		</div>
 	<%end%>
-	<%apply_fragment [cache_key, "_pages_time_", p], { :expires_in => CACHE_TIMEOUT } do %>
+	<%apply_fragment [cache_key, "_pages_time_", p, is_admin?], { :expires_in => CACHE_TIMEOUT } do %>
 		<div class="articleMetaData">
+			<%if p.profile.show_profile_link? || is_admin?%>
+				<span class="messageAuthor">
+					<%=t("common.blog.postedby").capitalize%> <%=link_to p.profile.user_name, profile_path(p.profile)%>
+				</span>
+				<span class="metaDataSeparator">|</span>
+			<%end%>
 			<span class="articleCreatedAt">
 				<%=time_ago_in_words(p.created_at)%>
 			</span>
