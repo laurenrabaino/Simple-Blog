@@ -10,7 +10,7 @@ development:
         :tagline: ""
         :description: ""
         :keywords: ""
-        :host: "http://domain.com"
+        :host: "www.domain.com"
         :locale: 'en'
         :noreply: 'noreply@domain.com'
         :email: 'sender@domain.com'
@@ -53,4 +53,4 @@ development:
         :port: "(optional for email posting)"
         :username: "(optional for email posting)"
         :password: "(optional for email posting)"
-        :service_url: "http://domain.com/admin/incomings"
+        :service_url: "http://domain.com/admin/incoming"
