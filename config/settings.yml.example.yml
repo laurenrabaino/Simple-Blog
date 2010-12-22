@@ -15,32 +15,32 @@ development:
         :noreply: 'noreply@domain.com'
         :email: 'sender@domain.com'
         :salt: ""
-    :google:
-        :verification: ""
-        :analytics: ""
     :s3:
         :bucket: "simpleblog-dev"
-    :bitly:
-        :login: ""
-        :api_key: ""
-    :twitter:
-        :key: ""
-        :secret: ""
-        :callback_url: "http://domain.com/account/twitter_account/callback"
-    :facebook:
-        :key: ""
-        :secret: ""
-        :callback_url: "http://domain.com/account/facebook_account/callback"
     :recaptcha:
         :public: ""
         :private: ""
     :hoptoad: ""
-    :calais: ""
+    :google:
+        :verification: "(optional, but strongly suggested)"
+        :analytics: "(optional)"
+    :bitly:
+        :login: "(optional but needed for automatic feed updates to Facebook or Twitter)"
+        :api_key: "(optional but needed for automatic feed updates to Facebook and login)"
+    :twitter:
+        :key: "(optional for automatic feed updates to Twitter)"
+        :secret: "(optional for automatic feed updates to Twitter)"
+        :callback_url: "http://domain.com/account/twitter_account/callback"
+    :facebook:
+        :key: "(optional for automatic feed updates to Facebook and login)"
+        :secret: "(optional for automatic feed updates to Facebook and login)"
+        :callback_url: "http://domain.com/account/facebook_account/callback"
+    :calais: "(optional for tag suggestion support)"
     :email:
-        :host: ""
-        :port: ""
-        :username: ""
-        :password: ""
+        :host: "(optional for email posting)"
+        :port: "(optional for email posting)"
+        :username: "(optional for email posting)"
+        :password: "(optional for email posting)"
         :service_url: "http://domain.com/admin/incomings"
         
         
