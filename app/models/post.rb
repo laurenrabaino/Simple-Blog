@@ -100,8 +100,8 @@ class Post < ActiveRecord::Base
   def status_update(show_url=true)
     bitly = short_url(permalink)
     url_length = show_url ? bitly.length : 0
-    max_length = 140 - (PREPEND_STATUS_UPDATE.length + url_length + 23)
-    msg  = "#{PREPEND_STATUS_UPDATE}: "
+    max_length = 140 - (SETTINGS[:site][:prepend_status_update].length + url_length + 23)
+    msg  = "#{SETTINGS[:site][:prepend_status_update]}: "
     msg += title.length > max_length ? "#{title[0..max_length].gsub(/\w+$/, '')}..." : title
     msg += " - #{bitly}" if show_url
     msg

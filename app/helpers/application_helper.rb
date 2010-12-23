@@ -39,6 +39,11 @@ module ApplicationHelper
       xml.lastBuildDate Time.now.to_s(:rfc822)
     end
   end
+
+  def truncate_words(text, length = 30, end_string = '&hellip; ')
+    words = text.split()
+    words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
+  end
   
   def correct_body(body, object=nil)
     tmp = body.sanitize if body

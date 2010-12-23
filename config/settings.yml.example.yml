@@ -14,7 +14,8 @@ development:
         :locale: 'en'
         :noreply: 'noreply@domain.com'
         :email: 'sender@domain.com'
-        :salt: ""
+        :salt: "make sure this is really long an difficult to guess. use md5 hashes of something hard to guess to "
+        :prepend_status_update: "Simple Blog RoR"
         :info_account_user_name: '(make sure you get this username :-))'
     :s3:
         :bucket: "simpleblog-dev"
