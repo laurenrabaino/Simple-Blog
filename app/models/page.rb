@@ -16,7 +16,8 @@ class Page < ActiveRecord::Base
   
   after_create :publish
   
-  has_many :comments, :as => :commentable, :dependent => :destroy, :conditions => "comments.parent_id is null"
+  has_many :comments, :as => :commentable, :conditions => "comments.parent_id is null"
+  has_many :all_comments, :as => :commentable, :dependent => :destroy, :class_name=>"Comment"
   has_many :favorites, :as => :favoriteable, :dependent => :destroy
   has_many :clickstreams, :as => :clickstreamable, :dependent => :destroy
   has_many :features, :as => :featurable, :dependent => :destroy
@@ -70,6 +71,12 @@ class Page < ActiveRecord::Base
       has created_at, updated_at
     
       set_property :delta => :delayed
+    end
+  end
+  
+  def self.get_pages(page, is_admin=false)
+    having_cache ["index_pages_", page, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      paginate(:page=>params[:page])
     end
   end
   
@@ -141,11 +148,11 @@ class Page < ActiveRecord::Base
     # only email if the comment is not yours...
     if author_email!=comment.author_email
       Notifier.deliver_new_comment_published({:commentable => {:title => title, :email => author_email, :author => author, :permalink => permalink, :type => I18n.t("common.page.display").capitalize}, 
-            :comment => comment })
+            :comment => comment }) unless author_email=='anonymous'
       
       # only email if the parent comment is not yours...
       Notifier.deliver_new_comment_reply({:commentable => {:title => title, :email => comment.parent_comment.author_email, :author => comment.parent_comment.article_author, :permalink => permalink, :type => I18n.t("common.article").capitalize}, 
-            :comment => comment, :parent_comment => comment.parent_comment }) if comment.parent_comment && author_email!=comment.parent_comment.author_email
+            :comment => comment, :parent_comment => comment.parent_comment }) if comment.parent_comment && author_email!=comment.parent_comment.author_email && comment.parent_comment.author_email!='anonymous'
     end
   end
   

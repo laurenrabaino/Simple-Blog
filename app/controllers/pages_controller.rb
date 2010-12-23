@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   
   def index
     @header[:title] << t("common.page.display").capitalize
-    @pages = Page.active_site.paginate(:page=>params[:page])
+    @pages = Page.get_pages(params[:page], is_logged_in_and_admin)
   end
   
   def publish
@@ -46,15 +46,6 @@ class PagesController < ApplicationController
     @page.featured = true
     @page.save
     redirect_to :back
-  end
-  
-  protected
-  
-  def create_page_site(site_id, page_id)
-    ps = PagesSite.new
-    ps.site_id = site_id
-    ps.page_id = page_id
-    ps.save
   end
   
 end

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @header[:title] << t("common.blog.display").capitalize
     
     Post.per_page = 10
-    @posts = Post.get_posts_index(params[:page], @filter, logged_in_and_admin)
+    @posts = Post.get_posts(params[:page], @filter, logged_in_and_admin)
     
     respond_to do |format|
       format.html do

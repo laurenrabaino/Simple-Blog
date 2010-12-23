@@ -9,7 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223175711) do
+ActiveRecord::Schema.define(:version => 20101223223047) do
+
+  create_table "assets", :force => true do |t|
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 25
+    t.string   "type",              :limit => 25
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "facebooked"
+    t.boolean  "tweeted"
+    t.boolean  "featured",                        :default => false
+    t.datetime "featured_at"
+    t.integer  "favorited",                       :default => 0
+    t.integer  "viewed",                          :default => 0
+    t.boolean  "allow_comments",                  :default => true
+    t.string   "title"
+    t.string   "tag_list"
+    t.text     "body"
+    t.text     "excerpt"
+  end
 
   create_table "blocked_ips", :force => true do |t|
     t.string   "ip"
@@ -133,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20101223175711) do
     t.boolean  "featured",                                 :default => false
     t.boolean  "delta",                                    :default => true,  :null => false
     t.datetime "featured_at"
+    t.integer  "user_id"
   end
 
   create_table "posts", :force => true do |t|

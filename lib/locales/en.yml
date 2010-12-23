@@ -245,12 +245,12 @@ en:
                 size: "The image can only be 3Mb."
     notice:
         comment:
-                create:
-                    oops: "Sorry your comment couldn't be saved."
-                    success: "Your comment is now posted."
-                edit:
-                    oops: "Sorry the changes to the comment couldn't be changed."
-                    success: "Your changes to the comment is now posted."
+            create:
+                oops: "Sorry your comment couldn't be saved."
+                success: "Your comment is now posted."
+            edit:
+                oops: "Sorry the changes to the comment couldn't be changed."
+                success: "Your changes to the comment is now posted."
     notifier:
         signature:
             regards: "Regards"

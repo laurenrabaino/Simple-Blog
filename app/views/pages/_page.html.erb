@@ -19,11 +19,11 @@
 				<%=time_ago_in_words(p.created_at)%>
 			</span>
 	<%end%>
-	<%apply_fragment [cache_key, "_pages_bottom_", p] do %>
+	<%apply_fragment [cache_key, "_pages_comments_", p] do %>
 			<%if p.allow_comments%>
 				<span class="metaDataSeparator">|</span>
 				<span class="articleComments">
-					<%=t("common.comment.display").pluralize%>: <%=p.comments.count(:conditions => 'spam=0')%>
+					<%=t("common.comment.display").pluralize%>: <%=p.all_comments.count(:conditions => 'spam=0')%>
 				</span>
 			<%end%>
 		</div>

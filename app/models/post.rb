@@ -20,7 +20,8 @@ class Post < ActiveRecord::Base
   extend ActiveSupport::Memoizable
   include ActiveSupport::Memoizable
   
-  has_many :comments, :as => :commentable, :dependent => :destroy, :conditions => "comments.parent_id is null"
+  has_many :comments, :as => :commentable, :conditions => "comments.parent_id is null"
+  has_many :all_comments, :as => :commentable, :dependent => :destroy, :class_name=>"Comment"
   has_many :favorites, :as => :favoriteable, :dependent => :destroy
   has_many :clickstreams, :as => :clickstreamable, :dependent => :destroy
   has_many :features, :as => :featurable, :dependent => :destroy
@@ -90,8 +91,8 @@ class Post < ActiveRecord::Base
     end
   end
   
-  def self.get_posts_index(page, filter_name='recency', is_admin=false)
-      having_cache ["index_page_posts_new", page, filter_name, is_admin, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin }  do
+  def self.get_posts(page, filter_name='recency', is_admin=false)
+      having_cache ["posts_", page, filter_name, is_admin, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin }  do
         if is_admin
           apply_filter_to_list(filter_name).paginate(:page => page)
         else

@@ -10,7 +10,8 @@ class Asset < ActiveRecord::Base
   belongs_to :profile, :foreign_key => "user_id", :class_name=>"User", :touch => true
   belongs_to :assetable, :polymorphic => true
   
-  has_many :comments, :as => :commentable, :dependent => :destroy, :conditions => "comments.parent_id is null"
+  has_many :comments, :as => :commentable, :conditions => "comments.parent_id is null"
+  has_many :all_comments, :as => :commentable, :dependent => :destroy
   has_many :favorites, :as => :favoriteable, :dependent => :destroy
   has_many :clickstreams, :as => :clickstreamable, :dependent => :destroy
   has_many :features, :as => :featurable, :dependent => :destroy
