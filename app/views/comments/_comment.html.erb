@@ -8,10 +8,10 @@
 			<%end%>
 			<%=t("common.comment.postedby").capitalize%> <%=comment.user ? link_to(comment.user.user_name, profile_path(comment.user)) : comment.full_name%>
 <%end%>
-<%apply_fragment ["comment_list_time_", comment, comment.user, is_admin?, params[:controller]=='comments'], { :expires_in => CACHE_TIMEOUT } do %>
+<%apply_fragment ["comment_list_time_", comment, comment.user, is_admin?, params[:controller]=='comments', params[:controller]=='search'], { :expires_in => CACHE_TIMEOUT } do %>
 			<span class="commentMetaDataSeparator">|</span>
 			<%=time_ago_in_words(comment.created_at)%>
-			<%unless !@current_user || params[:controller]=='comments' || comment.level>=2%>
+			<%unless !@current_user || params[:controller]=='comments' || params[:controller]=='search' || comment.level>=2%>
 				<span class="commentMetaDataSeparator">|</span>
 				<span id="replyToComment<%=comment.id%>-<%=comment.level ? comment.level.to_i+1 : 1%>" class="replyButton"><%=t("common.comment.reply")%></span>
 			<%end%>

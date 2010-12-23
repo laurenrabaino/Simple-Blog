@@ -3,8 +3,9 @@
 	<div class="leftSide">
 		
 		<ul class="tabHeader">
-			<li class="tab<%if @tab=='posts'%>Selected<%end%>"><a href="/tags/<%=@tag%>/posts" title="<%=t("common.blog.display")%>"><%=t("common.blog.display").pluralize.capitalize%></a></li>
-			<li class="tab<%if @tab=='pages'%>Selected<%end%>"><a href="/tags/<%=@tag%>/pages" title="<%=t("common.page.display").capitalize%>"><%=t("common.page.display").pluralize.capitalize%></a></li>
+			<li class="tab<%if @tab=='posts'%>Selected<%end%>"><a href="/search/<%=@search_term%>/posts" title="<%=t("common.blog.display")%>"><%=t("common.blog.display").pluralize.capitalize%></a></li>
+			<li class="tab<%if @tab=='pages'%>Selected<%end%>"><a href="/search/<%=@search_term%>/pages" title="<%=t("common.page.display").capitalize%>"><%=t("common.page.display").pluralize.capitalize%></a></li>
+			<li class="tab<%if @tab=='comments'%>Selected<%end%>"><a href="/search/<%=@search_term%>/comments" title="<%=t("common.comment.display").capitalize%>"><%=t("common.comment.display").pluralize.capitalize%></a></li>
 		</ul>
 		
 		<%if @tab == 'posts'%>
@@ -33,6 +34,21 @@
 					<%= will_paginate(@pages, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;") %>
 				<%else%>
 					<p class="noResults"><%=t("common.page.nocontent")%></p>
+				<%end%>
+			</div>
+		<%end%>
+		
+		<%if @tab == 'comments'%>
+			<div class="tabBody">
+				<%if @comments && !@comments.empty?%>
+					<ul class="comments">
+						<%@comments.each do |comment|%>
+							<%=render :partial => "comments/comment", :locals => { :comment => comment, :show_association => true }%>
+						<%end%>
+					</ul>
+					<%=will_paginate(@comments, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
+				<%else%>
+					<p><%=t("common.comment.nocontent")%></p>
 				<%end%>
 			</div>
 		<%end%>

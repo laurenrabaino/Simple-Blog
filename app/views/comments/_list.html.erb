@@ -2,7 +2,7 @@
 	<h2><%=t("common.comment.display").pluralize.capitalize%></h2>
 <%end%>
 <%if comments && !comments.empty?%>
-	<ul class="comments <%="commentsLevel#{level}" if defined?(level) && level>0 && params[:controller]!='comments'%>">
+	<ul class="comments <%="commentsLevel#{level}" if defined?(level) && level>0 && params[:controller]!='comments' && params[:controller]!='search'%>">
 		<%comments.each do |comment|%>
 			<%=render :partial => "comments/comment", :locals => { :comment => comment, :show_association => show_association }%>
 		<%end%>

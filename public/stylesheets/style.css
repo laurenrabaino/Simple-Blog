@@ -1015,7 +1015,7 @@ pre {
 	font-size: 18px;
 }
 
-.postBody .comments .formBody, .jobBody .comments .formBody{
+.postBody .comments .formBody{
 	float:left;
 	width:700px;
 }
@@ -1069,6 +1069,17 @@ pre {
 
 .comments .formBody .row input, .comments .formBody .row textarea, .comments .formBody .row select{
 	width:440px;
+}
+
+.searchPage .comments, .searchPage .comments .adminLinksSmall, .searchPage .comments .comment, .searchPage .comments .commentMetaData{
+	width: 545px;
+}
+
+.searchPage .tabBody .comments li{
+	border-bottom:1px solid #eee;
+	padding-bottom:5px;
+	margin-bottom:15px;
+	margin-top:5px;
 }
 
 /* end comments */

@@ -19,7 +19,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories
   
   map.connect "/tags/suggest", :controller => "tags", :action => "suggest"
-  map.resources :tags
+  map.resources :tags do |tag|
+    tag.connect ":tab", :controller => "tags", :action => "show", :requirements => { :tab => /posts|pages/  }
+  end
 
   map.resources :profiles, :member => { :favorite => :get, :featured => :get } do |profile|
     profile.connect ":tab", :controller => "profiles", :action => "show", :requirements => { :tab => /posts|comments/  }
@@ -39,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/connect", :controller => "profiles", :action => "connect"
 
   map.search '/search', :controller => 'search', :action => "index"
-  map.connect "/search/:search_term/:tab", :controller=>"search", :action => "index" ,:tab=>nil 
+  map.connect "/search/:search_term/:tab", :controller=>"search", :action => "index", :tab=>nil 
 
   map.connect "/rss", :controller => "posts", :action => "index", :format=>"rss"
 

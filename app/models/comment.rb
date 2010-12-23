@@ -26,6 +26,23 @@ class Comment < ActiveRecord::Base
   named_scope :just_spam, :conditions => 'spam=1 OR spaminess>0.75'
   named_scope :just_ham, :conditions => 'spam!=1 OR spaminess<=0.75'
   
+  # only include sphinx methods if it is running...
+  if SPHINX_SEARCH
+    define_index do
+      indexes body, :sortable => true
+
+      has user_id, created_at, updated_at
+    end
+  end
+  
+  def self.get_search(search_term, page, is_admin)
+    having_cache ["search_comments_", page, search_term, @@per_page, SPHINX_SEARCH], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      return search search_term, :order => :created_at, :sort_mode => :desc, :page => page, :per_page => @@per_page if SPHINX_SEARCH
+      search_term = "%#{search_term}%"
+      return paginate({:page=>page, :conditions=>["body like ?", search_term]})
+    end
+  end
+  
   def title
     if body
       short_body = body.length>300 ? body[0..300].gsub(/\w+$/, '')+"..." : body

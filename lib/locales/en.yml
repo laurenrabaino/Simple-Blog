@@ -218,8 +218,8 @@ en:
             passwordsdonotmatch: "The password and confirm password doesn't match."
             forgot: "The username or email doesn't seem to be associated with an account."
         blog:
-            title: "You have to provide a title."
-            body: "You have to provide a body."
+            title: "You have to provide a blog post title."
+            body: "You have to provide a blog post body."
             image:
                 format: "You can only upload JPEG, GIF, and PNG images."
                 size: "The image can only be 3Mb."
@@ -229,8 +229,20 @@ en:
             body: 
                 empty: "You have to specify your comment body"
                 length: "The comment can only be 1000 characters long"
+        page:
+            title: "You have to provide a page title."
+            body: "You have to provide a page body."
+            image:
+                format: "You can only upload JPEG, GIF, and PNG images."
+                size: "The image can only be 3Mb."
         category:
             name: "You have to specify a category name"
+        asset:
+            image:
+                format: "You can only upload JPEG, GIF, and PNG images."
+                size: "The image can only be 3Mb."
+            file:
+                size: "The image can only be 3Mb."
     notice:
         comment:
                 create:

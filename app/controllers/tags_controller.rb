@@ -1,13 +1,29 @@
 class TagsController < ApplicationController
 
   def show
-    Post.per_page = 10
-    posts_search_results = Post.find_tagged_with(URI.decode(params[:id]))
-    @posts = posts_search_results.paginate({:page => @page, :per_page=>10})
+    
+    @tab = params[:tab] ? params[:tab] : "posts"
+    @tag = URI.decode(params[:id]) if params[:id]
+    @tag = URI.decode(params[:tag_id]) if params[:tag_id]
+    @page = params[:page] ? params[:page] : 1
     
     @header[:title] << t("common.tag.display").pluralize.capitalize
-    @header[:title] << params[:id]
-    @header[:title] << t("common.blog.display").pluralize.capitalize
+    @header[:title] << @tag
+    
+    if @tab == "posts"
+      Post.per_page = 10
+      @posts = Post.tagged_with(@tag, @page)
+      @header[:title] << t("common.blog.display").pluralize.capitalize
+    elsif @tab == "pages" 
+      Page.per_page = 10
+      @pages = Page.tagged_with(@tag, @page)
+      @header[:title] << t("common.page.display").pluralize.capitalize
+    else
+      Post.per_page = 10
+      @posts = Post.tagged_with(@tag, @page)
+      @header[:title] << t("common.blog.display").pluralize.capitalize
+    end
+    
   end
 
   def suggest

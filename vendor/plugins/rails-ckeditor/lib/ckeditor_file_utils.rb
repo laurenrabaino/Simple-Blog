@@ -48,17 +48,17 @@ module CkeditorFileUtils
     
     FileUtils.cp(config_file, dest) unless File.exist?(dest)
     
-    unless RUBY_PLATFORM =~ /mswin32|mingw32/
+    #unless RUBY_PLATFORM =~ /mswin32|mingw32/
       #if File.exist?(config_symlink)
-        unless File.symlink?(config_symlink)
-          FileUtils.rm(backup_config) if File.exist?(backup_config)
-          FileUtils.mv(config_symlink, backup_config)
-          FileUtils.ln_s(dest, config_symlink)
-        end
+        #unless File.symlink?(config_symlink)
+         # FileUtils.rm(backup_config) if File.exist?(backup_config)
+        #  FileUtils.mv(config_symlink, backup_config)
+        #  FileUtils.ln_s(dest, config_symlink)
+        #end
       #else
       #  FileUtils.ln_s(dest, config_symlink)
       #end
-    end
+    #end
   end
 
   def CkeditorFileUtils.create_uploads_directory

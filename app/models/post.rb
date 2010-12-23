@@ -63,6 +63,33 @@ class Post < ActiveRecord::Base
     options
   }
   
+  # only include sphinx methods if it is running...
+  if SPHINX_SEARCH
+    define_index do
+      indexes title, :sortable => true
+      indexes excerpt, :sortable => true
+      indexes body, :sortable => true
+    
+      has user_id, created_at, updated_at
+    
+      set_property :delta => :delayed
+    end
+  end
+  
+  def self.get_search(search_term, page, is_admin=false)
+    having_cache ["search_posts_", page, search_term, @@per_page, SPHINX_SEARCH], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      return search search_term, :order => :created_at, :sort_mode => :desc, :page => page, :per_page => @@per_page if SPHINX_SEARCH
+      search_term = "%#{search_term}%"
+      return paginate({:page=>page, :conditions=>["title like ? OR body like ? OR excerpt like ?", search_term, search_term, search_term]})
+    end
+  end
+  
+  def self.tagged_with(tag, page, is_admin=false)
+    having_cache ["tags_posts_", page, tag, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      find_tagged_with(tag).paginate({:page => @page, :per_page => @@per_page})
+    end
+  end
+  
   def self.get_posts_index(page, filter_name='recency', is_admin=false)
       having_cache ["index_page_posts_new", page, filter_name, is_admin, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin }  do
         if is_admin

@@ -10,7 +10,6 @@ class Page < ActiveRecord::Base
   @@per_page = 10
   
   acts_as_taggable
-  #acts_as_solr :fields => [:title, :body]
   
   # author, author_email, title, content, permalink.
   acts_as_defensio_article :fields => { :content => :body  }
@@ -23,9 +22,10 @@ class Page < ActiveRecord::Base
   has_many :features, :as => :featurable, :dependent => :destroy
   
   belongs_to :user
+  belongs_to :profile, :foreign_key => "user_id", :class_name=>"User", :touch => true
   
-  validates_presence_of :title, :on => :create, :message => I18n.t('errors.title')
-  validates_presence_of :body, :on => :create, :message => I18n.t('errors.body')
+  validates_presence_of :title, :on => :create, :message => I18n.t('errors.page.title')
+  validates_presence_of :body, :on => :create, :message => I18n.t('errors.page.body')
   
   has_attached_file :featured_image, 
     :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "100x100>" },
@@ -42,10 +42,10 @@ class Page < ActiveRecord::Base
      validates_attachment_content_type :featured_image,
        :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png',
                          'image/x-png', 'image/jpg'],
-       :message      => I18n.t('errors.featuredimage.format'),
+       :message      => I18n.t('errors.page.image.format'),
        :unless => :featured_image_name
 
-     validates_attachment_size :featured_image, :in => 0..3.megabytes, :message      => I18n.t('errors.featuredimage.size'), :unless => :featured_image_name
+     validates_attachment_size :featured_image, :in => 0..3.megabytes, :message      => I18n.t('errors.page.image.size'), :unless => :featured_image_name
    end
   
   
@@ -59,6 +59,33 @@ class Page < ActiveRecord::Base
     options[:conditions] = f[:conditions].gsub('TABLE_NAME', 'pages') if f[:conditions]
     options
   }
+  
+  # only include sphinx methods if it is running...
+  if SPHINX_SEARCH
+    define_index do
+      indexes title, :sortable => true
+      indexes excerpt, :sortable => true
+      indexes body, :sortable => true
+    
+      has created_at, updated_at
+    
+      set_property :delta => :delayed
+    end
+  end
+  
+  def self.get_search(search_term, page, is_admin=false)
+    having_cache ["search_pages_", page, search_term, @@per_page, SPHINX_SEARCH], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      return search search_term, :order => :created_at, :sort_mode => :desc, :page => page, :per_page => @@per_page if SPHINX_SEARCH
+      search_term = "%#{search_term}%"
+      return paginate({:page=>page, :conditions=>["title like ? OR body like ? OR excerpt like ?", search_term, search_term, search_term]})
+    end
+  end
+  
+  def self.tagged_with(tag, page, is_admin=false)
+    having_cache ["tags_pages_", page, tag, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      find_tagged_with(tag).paginate({:page => @page, :per_page => @@per_page})
+    end
+  end
   
   def author
     (user ? user.user_name : "Anonymous")

@@ -23,6 +23,7 @@ development:
         :public: ""
         :private: ""
     :hoptoad: ""
+    :search: "(optional, set to 'sphinx' if you have Sphinx available and want a performant search)"
     :social:
         :share_this: "(optional)"
         :feedburner: "(optional)"
