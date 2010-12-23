@@ -1,7 +1,7 @@
 <%if !defined?(hide_header) || !hide_header%>
 	<h2>
 		<%=t("common.blog.display").capitalize%>
-		<%if false && defined?(filters) && !filters.empty?%>
+		<%if defined?(filters) && !filters.empty?%>
 			<%filters.each do |key, f|%>
 				<span class="filterLink<%='Active' if key==@filter%>"><a href="<%=pre_link%><%=f[:link]%>" alt='<%=f[:display_name]%>'><%=f[:display_name]%></a></span>
 			<%end%>

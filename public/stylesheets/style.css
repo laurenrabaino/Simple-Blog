@@ -507,7 +507,7 @@ pre {
 
 .categoryContainer{
 	width:98%;
-	margin: 0px 0px 10px 0px;
+	margin: 0px 10px 10px 10px;
 }
 
 .categoryContainer ul{
@@ -1660,12 +1660,12 @@ pre {
 	padding:5px 0px 0px 0px;
 	margin-right:10px;
 	float:right;
-	font-size:11px;
+	font-size:10px;
 }
 
 .filterLink a{
 	text-decoration:none;
-	color:#999;
+	color:#333;
 	cursor:hand;
 }
 
