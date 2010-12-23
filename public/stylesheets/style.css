@@ -1244,10 +1244,11 @@ pre {
 
 .postContainer .postBody ul, .postContainer .postBody ol{
 	display:block;
+	margin-bottom:20px;
 }
 
 .postContainer .postBody ul li, .postContainer .postBody ol li{
-	margin:0px 10px 10px 20px;
+	margin:0px 10px 3px 30px;
 }
 
 /* end post page css */

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222180636) do
+ActiveRecord::Schema.define(:version => 20101223002632) do
 
   create_table "blocked_ips", :force => true do |t|
     t.string   "ip"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20101222180636) do
     t.boolean  "allow_comments",                           :default => true
     t.boolean  "delta",                                    :default => true,  :null => false
     t.boolean  "featured",                                 :default => false
+    t.datetime "featured_at"
   end
 
   create_table "settings", :force => true do |t|

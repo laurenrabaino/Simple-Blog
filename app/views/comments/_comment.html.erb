@@ -11,7 +11,7 @@
 <%apply_fragment ["comment_list_time_", comment, comment.user, is_admin?, params[:controller]=='comments'], { :expires_in => CACHE_TIMEOUT } do %>
 			<span class="commentMetaDataSeparator">|</span>
 			<%=time_ago_in_words(comment.created_at)%>
-			<%unless params[:controller]=='comments' || comment.level>=2%>
+			<%unless !@current_user || params[:controller]=='comments' || comment.level>=2%>
 				<span class="commentMetaDataSeparator">|</span>
 				<span id="replyToComment<%=comment.id%>-<%=comment.level ? comment.level.to_i+1 : 1%>" class="replyButton"><%=t("common.comment.reply")%></span>
 			<%end%>

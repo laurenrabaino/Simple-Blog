@@ -130,6 +130,7 @@ en:
         required: "required"
         captcha: "captcha"
         submit: "submit"
+        private: "private" 
         profile:
             labels:
                 username: "username"
@@ -147,6 +148,7 @@ en:
         comment:
             labels:
                 full_name: "full name"
+                fullname: "full name"
                 email: "email"
                 profile: "profile page"
             submit: "post comment"   
@@ -255,3 +257,7 @@ en:
         new_user:
             subject: "A new user has signed up at SITE_NAME"
             body: "Click the following link to see the profile page:"
+        comment:
+            new: "USERNAME has commented on your TYPE"
+            new_reply: "USERNAME has replied to your comment on the TYPE"
+            read_comment: "You can read the comment here:"
