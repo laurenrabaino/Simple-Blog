@@ -68,13 +68,13 @@
 	
 	<div class="postBody">
 		
-		<%apply_fragment ["post_body_new1_", @post, is_admin?] do %>
+		<%apply_fragment ["post_main_", @post, is_admin?] do %>
 			<%if @post.embed_code && !@post.embed_code.strip.blank?%>
 				<%=transform_embed_code(@post.embed_code, 600, 400)%>
 			<%elsif @post.featured_image.file?%>
 				<%=image_tag @post.featured_image.url(:large)%>
 				<%if @post.featured_image_caption && !@post.featured_image_caption.blank?%>
-					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.photocredit")%>:</span><%=@post.featured_image_caption%></div>
+					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.blog.photo.caption")%>:</span><%=@post.featured_image_caption%></div>
 				<%end%>
 			<%end%>
 		

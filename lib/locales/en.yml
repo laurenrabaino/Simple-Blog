@@ -23,6 +23,8 @@ en:
             posted: "posted"
             postedby: "posted by"
             delete: "Are you sure you want to delete this blog post?"
+            photo:
+                caption: "photo caption"
         page: 
             display: "page"
             create: "submit a new page"
@@ -32,6 +34,8 @@ en:
             postedby: "posted by"
             posted: "posted"
             delete: "Are you sure you want to delete this page?"
+            photo:
+                caption: "photo caption"
         profile: 
             display: "profile"
             create: "register a new user"

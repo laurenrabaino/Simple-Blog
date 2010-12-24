@@ -1579,6 +1579,11 @@ pre {
 	margin:5px 0px 10px 10px;
 }
 
+.featuredImageCaption {
+	margin-top:5px;
+	margin-bottom:10px;
+}
+
 .featuredImageCaption .preCaption{
 	font-weight:bold;
 	padding-right:10px;

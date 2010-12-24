@@ -41,7 +41,7 @@
 			<%elsif @page.featured_image.file?%>
 				<%=image_tag @page.featured_image.url(:large)%>
 				<%if @page.featured_image_caption && !@page.featured_image_caption.blank?%>
-					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.photocredit")%>:</span><%=@page.featured_image_caption%></div>
+					<div class='featuredImageCaption'><span class='preCaption'><%=t("common.page.photo.caption")%>:</span><%=@page.featured_image_caption%></div>
 				<%end%>
 			<%end%>
 			<%=correct_body @page.body%>
