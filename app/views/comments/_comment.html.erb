@@ -1,5 +1,5 @@
-<%apply_fragment ["comment_list_header_5_", comment, comment.user, show_association, is_admin?, params[:controller]=='comments'] do %>
-	<div class="comment <%="spam" if comment.spam%> <%="commentLevel#{comment.level}" if comment.level && comment.level>0 && params[:controller]!='comments'%>" id="comment_<%=comment.id%>">
+<%apply_fragment ["comment_list_header_", comment, comment.user, show_association, is_admin?, params[:controller]=='comments'] do %>
+	<div class="comment <%="spam" if comment.spam%> <%="commentLevel#{comment.level}" if comment.level && comment.level>0 && show_replies%>" id="comment_<%=comment.id%>">
 		<%=comment.body%>
 		<div class="commentMetaData">
 			<%if show_association%>
@@ -20,4 +20,4 @@
 	<div id="replyForm<%=comment.id%>"></div>
 <%end%>
 <%=render :partial => "shared/admin_comments_small", :locals =>{ :comment => comment } %>
-<%=render :partial => "comments/list", :locals => { :comments => comment.replies.all, :show_association => false, :level => (comment.level+1) } if comment.replies.count>0 %>
+<%=render :partial => "comments/list", :locals => { :comments => comment.replies.all, :show_association => false, :level => (comment.level+1) } if comment.replies.count>0 && show_replies%>
