@@ -1,14 +1,14 @@
-<div class="articleContainer">
+<div class="postContainer">
 	
 	<%apply_fragment ["category_header_", @category, is_admin?] do %>
-		<div class="articleHeading">
+		<div class="postHeading">
 			<h2>
 				<%=@category.name%> 
 			</h2>
 		</div>
 	<%end%>
 	
-	<div class="articleDescription">
+	<div class="postDescription">
 		<%=render :partial => "shared/admin_links", :locals =>{
 			:edit_link => edit_category_path(@category),
 			:show_publishing_links => false,
@@ -19,7 +19,7 @@
 		
 	</div>
 	
-	<div class="articleBody">
+	<div class="postBody">
 		<%=@category.description if @category.description && !@category.description.blank?%>
 	</div>
 	
