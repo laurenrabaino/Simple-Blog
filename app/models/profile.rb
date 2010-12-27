@@ -42,13 +42,13 @@ class Profile < User
     
   def get_comments(page, is_admin=false)
     having_cache ["profile_comments_", self, page, @@per_page], { :expires_in => CACHE_TIMEOUT, :force => is_admin }  do
-       comments.paginate(:page=>page)
+       comments.paginate(:page=>page, :order=>'comments.created_at desc')
     end
   end  
   
   def get_posts(page, is_admin=false)
     having_cache ["profile_posts_", self, page, @@per_page], { :expires_in => CACHE_TIMEOUT, :force => is_admin }  do
-       posts.paginate(:page=>page)
+       posts.paginate(:page=>page, :order=>'posts.created_at desc')
     end
   end
   

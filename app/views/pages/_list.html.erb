@@ -2,7 +2,7 @@
 	<h2><%=t("common.page.display").pluralize.capitalize%></h2>
 <%end%>
 <%if pages && !pages.empty?%>
-	<ul class="articles">
+	<ul class="posts">
 		<%pages.each do |p|%>
 			<%=render :partial=>"pages/page", :locals=>{ :cache_key => cache_key, :p => p }%>
 		<%end%>

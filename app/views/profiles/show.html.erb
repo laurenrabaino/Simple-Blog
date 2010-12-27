@@ -1,13 +1,11 @@
 <div class="profileContainer">
 	
-	<%apply_fragment ["profile_header_1_", @profile, @current_user, is_admin?] do %>
+	<%apply_fragment ["profile_header_", @profile, @current_user, is_admin?] do %>
 		<div class="profileHeading">
 			<h1>
 				<%=@profile.user_name%> 
-				<%if @current_user && (@current_user.is_admin? || @current_user==@profile)%>
-					<%if @current_user.is_admin?%>
-						<%=link_to "[#{t("common.delete").capitalize}]", profile_path(@profile), :class=>"deleteLink", :confirm => 'Are you sure you want to delete this user?', :method => :delete%>
-					<%end%>
+				<%if is_admin? || @current_user==@profile%>
+					<%=link_to "[#{t("common.delete").capitalize}]", profile_path(@profile), :class=>"deleteLink", :confirm => 'Are you sure you want to delete this user?', :method => :delete if is_admin?%>
 					<%=link_to "[#{t("account.settings").capitalize}]", account_settings_path, :class=>"editLink"%>
 					<%=link_to "[#{t("account.account").capitalize}]", edit_profile_path(@profile), :class=>"editLink"%>
 				<%end%>			
@@ -15,7 +13,7 @@
 		</div>
 	<%end%>
 	
-	<%apply_fragment ["profile_side_new_8_", @profile, @current_user] do %>
+	<%apply_fragment ["profile_side_", @profile, @current_user] do %>
 		<div class="profileDescription">
 			<%=image_tag @profile.avatar.url(:large)%>
 			<h2><%=t("form.profile.labels.aboutme").capitalize%></h2>
@@ -26,7 +24,7 @@
 			<%end%>
 	<%end%>		
 			<ul class="actionLinks">
-				<%#=render :partial => 'shared/favorite_this', :locals => { :url => favorite_profile_url(@profile), :object => @profile } %>
+				<%=render :partial => 'shared/favorite_this', :locals => { :url => favorite_profile_url(@profile), :object => @profile } %>
 				<%=render :partial => 'shared/viewed', :locals => { :viewed => @profile.viewed } %>
 			</ul>
 		</div>
@@ -35,21 +33,14 @@
 	<div class="profileBody">
 		<ul class="tabHeader">
 			<li class="tab<%if @tab=='posts'%>Selected<%end%>"><a href="<%=profile_path(@profile)%>/posts" title="<%=t("common.blog.display").pluralize.capitalize%>"><%=t("common.blog.display").pluralize.capitalize%></a></li>
-			<li class="tab<%if @tab=='comments'%>Selected<%end%>"><a href="<%=profile_path(@profile)%>/comments" title="<%=t("common.comment.display").pluralize.capitalize%>"><%=t("common.comment.display").capitalize%></a></li>
+			<li class="tab<%if @tab=='comments'%>Selected<%end%>"><a href="<%=profile_path(@profile)%>/comments" title="<%=t("common.comment.display").pluralize.capitalize%>"><%=t("common.comment.display").pluralize.capitalize%></a></li>
 		</ul>
 
 
-		<%if @tab=='posts'%>
-			<div class="tabBody">
-				<%= render :partial => "posts/list", :locals => { :posts => @posts, :show_pagination => true, :cache_key => "landing_page", :hide_header => true }%>
-			</div>
-		<%end%>
-
-		<%if @tab=='comments'%>
-			<div class="tabBody">
-				<%= render :partial => "comments/list", :locals => { :comments => @comments, :show_association => true, :show_pagination => true, :cache_key => "landing_page", :hide_header => true }%>
-			</div>
-		<%end%>
+		<div class="tabBody">
+			<%= render :partial => "posts/list", :locals => { :posts => @posts, :show_pagination => true, :cache_key => "landing_page", :hide_header => true }if @tab == 'posts'%>
+			<%= render :partial => "comments/list", :locals => { :comments => @comments, :show_association => true, :show_pagination => true, :cache_key => "landing_page", :hide_header => true } if @tab == 'comments'%>
+		</div>
 	</div>
 
 </div>

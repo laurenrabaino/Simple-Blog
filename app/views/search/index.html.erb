@@ -8,50 +8,11 @@
 			<li class="tab<%if @tab=='comments'%>Selected<%end%>"><a href="/search/<%=@search_term%>/comments" title="<%=t("common.comment.display").capitalize%>"><%=t("common.comment.display").pluralize.capitalize%></a></li>
 		</ul>
 		
-		<%if @tab == 'posts'%>
-			<div class="tabBody">
-				<%if @posts && !@posts.empty?%>
-					<ul class="posts">
-						<%@posts.each do |a|%>
-							<%=render :partial=>"posts/post", :locals=>{ :cache_key => "landing_page", :a => a }%>
-						<%end%>
-					</ul>
-					<%= will_paginate(@posts, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;") %>
-				<%else%>
-					<p class="noResults"><%=t("common.blog.nocontent")%></p>
-				<%end%>
-			</div>
-		<%end%>
-		
-		<%if @tab == 'pages'%>
-			<div class="tabBody">
-				<%if @pages && !@pages.empty?%>
-					<ul class="posts">
-						<%@pages.each do |p|%>
-							<%=render :partial=>"pages/page", :locals=>{ :cache_key => "landing_page", :p => p }%>
-						<%end%>
-					</ul>
-					<%= will_paginate(@pages, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;") %>
-				<%else%>
-					<p class="noResults"><%=t("common.page.nocontent")%></p>
-				<%end%>
-			</div>
-		<%end%>
-		
-		<%if @tab == 'comments'%>
-			<div class="tabBody">
-				<%if @comments && !@comments.empty?%>
-					<ul class="comments">
-						<%@comments.each do |comment|%>
-							<%=render :partial => "comments/comment", :locals => { :comment => comment, :show_association => true }%>
-						<%end%>
-					</ul>
-					<%=will_paginate(@comments, :prev_label => "&laquo; #{t("pagination.previous").capitalize}", :next_label => "#{t("pagination.next").capitalize} &raquo;")%>
-				<%else%>
-					<p><%=t("common.comment.nocontent")%></p>
-				<%end%>
-			</div>
-		<%end%>
+		<div class="tabBody">
+			<%= render :partial => "posts/list", :locals => { :posts => @posts, :show_pagination => true, :cache_key => "landing_page", :hide_header => true }if @tab == 'posts'%>
+			<%= render :partial => "pages/list", :locals => { :pages => @pages, :show_association => true, :show_pagination => true, :cache_key => "landing_page", :hide_header => true } if @tab == 'pages'%>
+			<%= render :partial => "comments/list", :locals => { :comments => @comments, :show_association => true, :show_pagination => true, :cache_key => "landing_page", :hide_header => true } if @tab == 'comments'%>
+		</div>
 
 	</div>
 	
