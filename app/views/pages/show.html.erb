@@ -19,7 +19,7 @@
 			:feature_link => featured_page_path(@page),
 			:featured => @page.featured,
 			:delete_link => page_path(@page),
-			:confirm_message => 'Are you sure you want to delete this page?'
+			:confirm_message => t("common.page.delete")
 		} if @current_user && @current_user.is_admin?%>
 		
 		<ul class='actionLinks'>

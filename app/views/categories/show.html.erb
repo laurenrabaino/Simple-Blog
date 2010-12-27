@@ -13,7 +13,7 @@
 			:edit_link => edit_category_path(@category),
 			:show_publishing_links => false,
 			:delete_link => category_path(@category),
-			:confirm_message => 'Are you sure you want to delete this category?'
+			:confirm_message => t("common.category.delete")
 		} if @current_user && @current_user.is_admin?%>
 		
 		

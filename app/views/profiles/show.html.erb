@@ -5,7 +5,7 @@
 			<h1>
 				<%=@profile.user_name%> 
 				<%if is_admin? || @current_user==@profile%>
-					<%=link_to "[#{t("common.delete").capitalize}]", profile_path(@profile), :class=>"deleteLink", :confirm => 'Are you sure you want to delete this user?', :method => :delete if is_admin?%>
+					<%=link_to "[#{t("common.delete").capitalize}]", profile_path(@profile), :class=>"deleteLink", :confirm => t("common.profile.delete"), :method => :delete if is_admin?%>
 					<%=link_to "[#{t("account.settings").capitalize}]", account_settings_path, :class=>"editLink"%>
 					<%=link_to "[#{t("account.account").capitalize}]", edit_profile_path(@profile), :class=>"editLink"%>
 				<%end%>			

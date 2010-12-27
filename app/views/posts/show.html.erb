@@ -18,7 +18,7 @@
 			:feature_link => featured_post_path(@post),
 			:featured => @post.featured,
 			:delete_link => post_path(@post),
-			:confirm_message => 'Are you sure you want to delete this post?'
+			:confirm_message => t("common.blog.delete")
 		} if @current_user && @current_user.is_admin?%>
 		
 		<ul class='actionLinks'>
