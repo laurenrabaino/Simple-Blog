@@ -24,7 +24,7 @@
 
 	<div class="rightSide">
 		
-		<%if @current_user && @current_user.is_admin?%>
+		<%if is_admin?%>
 			<div class="adminLinks">
 				<h3><%=t("admin.label").capitalize%></h3>
 				<%=link_to "Create", new_category_path, :class=>"editLink"%><span class="linkSeparator">|</span>

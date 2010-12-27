@@ -14,8 +14,7 @@
 			:show_publishing_links => false,
 			:delete_link => category_path(@category),
 			:confirm_message => t("common.category.delete")
-		} if @current_user && @current_user.is_admin?%>
-		
+		} if is_admin?%>
 		
 	</div>
 	

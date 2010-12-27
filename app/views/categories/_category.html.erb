@@ -8,4 +8,4 @@
 	:show_publishing_links => false,
 	:delete_link => category_path(c),
 	:confirm_message => 'Are you sure you want to delete this category?'
-} if @current_user && @current_user.is_admin?%>
+} if is_admin?%>

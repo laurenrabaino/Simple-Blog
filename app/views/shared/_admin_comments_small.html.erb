@@ -1,14 +1,14 @@
-<%if (@current_user && @current_user.is_admin?) || (comment.profile && comment.profile==@current_user && comment.created_at>15.minutes.ago)%>
+<%if is_admin? || (comment.profile && comment.profile==@current_user && comment.created_at>15.minutes.ago)%>
 	<div class="adminLinksSmall">
 		<span class="adminPre"><%=t("admin.label").capitalize%>:</span>
-		<%if @current_user && @current_user.is_admin?%>
+		<%if is_admin?%>
 			<%if comment.spam%>
 				<%=link_to "Ham", report_as_ham_comment_path(comment), :class=>"publishLink", :method => :put%> <span class="linkSeparator">|</span>
 			<%else%>
 				<%=link_to "Spam", report_as_spam_comment_path(comment), :class=>"publishLink", :method => :put%> <span class="linkSeparator">|</span> 
 			<%end%>
 		<%end%>
-		<%if (@current_user && @current_user.is_admin?) || (comment.profile && comment.profile==@current_user && comment.created_at>15.minutes.ago)%>
+		<%if is_admin? || (comment.profile && comment.profile==@current_user && comment.created_at>15.minutes.ago)%>
 			<%=link_to t("admin.edit").capitalize, edit_comment_path(comment), :class=>"publishLink"%> <span class="linkSeparator">|</span> 
 			<%=link_to t("admin.delete").capitalize, comment_path(comment), :class=>"deleteLink", :confirm => t("common.comment.delete"), :method => :delete%>
 		<%end%>

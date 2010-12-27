@@ -19,7 +19,7 @@
 			:featured => @post.featured,
 			:delete_link => post_path(@post),
 			:confirm_message => t("common.blog.delete")
-		} if @current_user && @current_user.is_admin?%>
+		} if is_admin?%>
 		
 		<ul class='actionLinks'>
 			<%=render :partial => 'shared/favorite_this', :locals => { :url => favorite_post_url(@post), :object => @post }%>

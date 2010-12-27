@@ -6,7 +6,7 @@
 	
 	<div class="rightSide">
 		
-		<%if @current_user && @current_user.is_admin?%>
+		<%if is_admin?%>
 			
 			<div class="adminLinks">
 				<h3><%=t("common.filter_label").capitalize%></h3>

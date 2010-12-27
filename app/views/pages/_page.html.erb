@@ -39,6 +39,6 @@
 		:featured => p.featured,
 		:delete_link => page_path(p),
 		:confirm_message => t("common.page.delete")
-	} if @current_user && @current_user.is_admin?%>
+	} if is_admin?%>
 	
 </li>
