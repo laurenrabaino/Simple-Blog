@@ -59,7 +59,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_comment_published(options, mail_type="text/html")
-    @subject    = "#{SETTINGS[:site][:name]}: #{I18n.t("comment.new").gsub("USERNAME", options[:comment].author_name).gsub("TYPE", options[:commentable][:type])}"
+    @subject    = "#{SETTINGS[:site][:name]}: #{I18n.t("notifier.comment.new").gsub("USERNAME", options[:comment].author_name).gsub("TYPE", options[:commentable][:type])}"
     @body       = options
     @recipients = "#{options[:commentable][:author]} <#{options[:commentable][:email]}>"
     @from       = SETTINGS[:site][:noreply]
@@ -70,7 +70,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_comment_reply(options, mail_type="text/html")
-    @subject    = "#{SETTINGS[:site][:name]}: #{I18n.t("comment.new_reply").gsub("USERNAME", options[:comment].author_name).gsub("TYPE", options[:commentable][:type])}"
+    @subject    = "#{SETTINGS[:site][:name]}: #{I18n.t("notifier.comment.new_reply").gsub("USERNAME", options[:comment].author_name).gsub("TYPE", options[:commentable][:type])}"
     @body       = options
     @recipients = "#{options[:commentable][:author]} <#{options[:commentable][:email]}>"
     @from       = SETTINGS[:site][:noreply]
