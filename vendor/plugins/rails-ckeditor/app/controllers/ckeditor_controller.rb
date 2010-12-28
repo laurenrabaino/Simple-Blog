@@ -5,7 +5,7 @@ class CkeditorController < ActionController::Base
   
   # GET /ckeditor/images
   def images
-    @images = Photo.active_site.paginate(:page => params[:page], :order=>"assets.id DESC")
+    @images = Photo.paginate(:page => params[:page], :order=>"assets.id DESC")
     
     respond_to do |format|
       format.html {}

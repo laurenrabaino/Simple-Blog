@@ -24,7 +24,7 @@ class Comment < ActiveRecord::Base
   validates_length_of :body, :maximum => 1000, :on => :create, :message => I18n.t("form.comment.body.length")
   
   named_scope :just_spam, :conditions => 'spam=1 OR spaminess>0.75'
-  named_scope :just_ham, :conditions => 'spam!=1 OR spaminess<=0.75'
+  named_scope :just_ham, :conditions => 'spam!=1 AND spaminess<=0.75'
   
   # only include sphinx methods if it is running...
   if SPHINX_SEARCH

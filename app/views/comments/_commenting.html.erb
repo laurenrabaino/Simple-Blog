@@ -1,7 +1,7 @@
 <%if object.allow_comments%>
 	<div class="comments">
 		<h3 class="commentsHeading"><%=t("common.comment.display").pluralize.capitalize%></h3>
-		<%=render :partial => "comments/list", :locals => { :comments => object.comments.find(:all, :conditions => 'spam=0 OR spaminess>0.75'), :show_association => false } %>
+		<%=render :partial => "comments/list", :locals => { :comments => object.comments.find(:all, :conditions => 'spam!=1 AND spaminess<=0.75'), :show_association => false } %>
 		<%=render :partial=>"comments/form", :locals => { :object => object }%>
 	</div>
 	<%if defined?(show_pagination) && show_pagination%>
