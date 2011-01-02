@@ -20,7 +20,7 @@
 			<%if @profile.settings%>
 				<%=@profile.settings.about_me%>
 			<%else%>
-				<p><%=@profile.user_name%> <%=t("form.profile.labels.noabout")%></p>
+				<p><%=t("form.profile.labels.noaboutme").gsub('USERNAME', @profile.user_name)%></p>
 			<%end%>
 	<%end%>		
 			<ul class="actionLinks">

@@ -30,7 +30,7 @@ class Profile < User
   end
   
   def validate
-    errors.profile.add('passwords_do_not_match', I18n.t('errors.profile.passwordsdonotmatch')) unless confirm_password == password
+    errors.add('passwords_do_not_match', I18n.t('errors.profile.passwordsdonotmatch')) unless confirm_password == password 
   end
      
   def short_about_me

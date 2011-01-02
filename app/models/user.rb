@@ -24,15 +24,15 @@ class User < ActiveRecord::Base
   cattr_accessor :per_page
   @@per_page = 10
   
-  validates_uniqueness_of   :email, :on => :create, :message => I18n.t('errors.emailtaken')
-  validates_uniqueness_of   :user_name, :on => :create, :message => I18n.t('errors.usernametaken'), :unless => :check_status
-  validates_uniqueness_of   :user_name, :message => I18n.t('errors.usernametaken'), :if => :check_temporary_user
-  validates_presence_of     :email, :on => :create, :message => I18n.t('errors.emailblank')
-  validates_presence_of     :user_name, :on => :create, :message => I18n.t('errors.usernameblank'), :unless => :check_status
-  validates_presence_of     :user_name, :message => I18n.t('errors.usernameblank'), :if => :check_temporary_user
-  validates_length_of       :password, :within => 4..40, :on => :create, :message => I18n.t('errors.passwordinvalid')
-  validates_length_of       :email, :within => 3..100, :on => :create, :message => I18n.t('errors.emailtooshort')
-  validates_format_of       :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, :message => I18n.t('errors.emailinvalid')
+  validates_uniqueness_of   :email, :on => :create, :message => I18n.t('errors.profile.profile.emailtaken')
+  validates_uniqueness_of   :user_name, :on => :create, :message => I18n.t('errors.profile.usernametaken'), :unless => :check_status
+  validates_uniqueness_of   :user_name, :message => I18n.t('errors.profile.usernametaken'), :if => :check_temporary_user
+  validates_presence_of     :email, :on => :create, :message => I18n.t('errors.profile.emailblank')
+  validates_presence_of     :user_name, :on => :create, :message => I18n.t('errors.profile.usernameblank'), :unless => :check_status
+  validates_presence_of     :user_name, :message => I18n.t('errors.profile.usernameblank'), :if => :check_temporary_user
+  validates_length_of       :password, :within => 4..40, :on => :create, :message => I18n.t('errors.profile.passwordinvalid')
+  validates_length_of       :email, :within => 3..100, :on => :create, :message => I18n.t('errors.profile.emailtooshort')
+  validates_format_of       :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, :message => I18n.t('errors.profile.emailinvalid')
   
   has_attached_file :avatar, 
     :styles => { :large => "200x200#", :medium => "100x100#", :thumb => "50x50#" },
@@ -50,10 +50,10 @@ class User < ActiveRecord::Base
     validates_attachment_content_type :avatar,
       :content_type => ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png',
                         'image/x-png', 'image/jpg'],
-      :message      => I18n.t('errors.featuredimage.format'),
+      :message      => I18n.t('errors.profile.featuredimage.format'),
       :unless => :avatar_name
 
-    validates_attachment_size :avatar, :in => 0..3.megabytes, :message => I18n.t('errors.featuredimage.size'), :unless => :avatar_name
+    validates_attachment_size :avatar, :in => 0..3.megabytes, :message => I18n.t('errors.profile.featuredimage.size'), :unless => :avatar_name
   end
   
   def check_temporary_user

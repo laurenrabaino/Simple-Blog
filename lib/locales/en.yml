@@ -146,7 +146,7 @@ en:
                     accept: "I accept the terms of use"
                 admin: "Is admin?"
                 aboutme: "about me"
-                noaboutme: "The user has not written an about me section yet."
+                noaboutme: "USERNAME has not written an about me section yet."
                 email_or_username: "Specify your email or user name"
             submit: "submit"
         comment:
@@ -214,6 +214,8 @@ en:
             badlogin: "Your login credentials doesn't seem to be correct."
             termsofuse: "You have to accept the terms of use."
             bad_captcha: "The CAPTCHA is wrong."
+            usernameblank: "You have to specify a username."
+            emailblank: "You have to specify an email."
             emailtaken: "The email is already taken."
             usernametaken: "The username is already taken."
             passwordinvalid: "The password has to be between 4-40 characters long."
