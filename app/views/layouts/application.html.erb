@@ -3,7 +3,7 @@
 	<head>
 		<title><%=@header[:title].join(" :: ")%></title>
     
-	   	<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', :media => "all" %>
+	   	<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', 'custom', :media => "all", :concat => 'global' %>
 		<%= javascript_include_tag "swfobject" if @recording %>
 		<%if @post || (@page && @page.is_a?(Page)) || @comment%>
 			<%= javascript_include_tag "ckeditor/ckeditor" %>
