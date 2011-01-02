@@ -1,7 +1,7 @@
 development:
     :action_controller:
         :session:
-          :secret:  
+          :secret: "make sure this is really long an difficult to guess. use md5 hashes of something hard to guess to assure sufficient security"
     :cache:
         :name: "simpleblog"
         :timeout: 15.minutes
@@ -14,7 +14,7 @@ development:
         :locale: 'en'
         :noreply: 'noreply@domain.com'
         :email: 'sender@domain.com'
-        :salt: "make sure this is really long an difficult to guess. use md5 hashes of something hard to guess to "
+        :salt: "make sure this is really long an difficult to guess. use md5 hashes of something hard to guess to assure sufficient security"
         :prepend_status_update: "Simple Blog RoR"
         :info_account_user_name: '(make sure you get this username :-))'
     :s3:
@@ -23,7 +23,7 @@ development:
         :public: ""
         :private: ""
     :hoptoad: ""
-    :search: "(optional, set to 'sphinx' if you have Sphinx available and want a performant search)"
+    :search: "(optional, set to 'sphinx' if you have Sphinx available and want a very well-performant search)"
     :social:
         :share_this: "(optional)"
         :feedburner: "(optional)"

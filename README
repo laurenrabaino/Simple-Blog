@@ -1,243 +1,259 @@
-== Welcome to Rails
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+	ABOUT SIMPLE BLOG
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
-Rails is a web-application framework that includes everything needed to create 
-database-backed web applications according to the Model-View-Control pattern. 
+Simple Blog RoR is a very efficient lightweight blogging system built in Ruby on Rails. The server footprint is extremely small ensuring short load times and better server health, not to mention user experience.
 
-This pattern splits the view (also called the presentation) into "dumb" templates
-that are primarily responsible for inserting pre-built data in between HTML tags.
-The model contains the "smart" domain objects (such as Account, Product, Person,
-Post) that holds all the business logic and knows how to persist themselves to
-a database. The controller handles the incoming requests (such as Save New Account,
-Update Product, Show Post) by manipulating the model and directing data to the view.
+Simple Blog RoR also is very tightly integrated with Facebook and Twitter allowing for seamless integration with those platforms. It allows login via Facebook out-of-the-box.
 
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
+Additionally there is a lot of other support such as:
+	- multiple categories,
+	- tag suggestion,
+	- aggressive spam prevention
+	- threaded comments
+	- clickstream
+	- full SEO integration
+	- localization of the entire interface
+	- email posting
+	- efficient caching using memcached
+	- other extensive social features as favoriting 
+	- stores all uploaded images on S3
+	- efficient comment notification framework to foster dialogue 
+	- built-in search with the ability to use MySQL or Sphinx for search
 
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails.  You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
+CURRENT VERSION: 1.0
 
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+	MANDATORY REQUIREMENTS
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
-== Getting Started
+(i) Rails 2.3.8
+(ii) Memcached*
+(iii) MySQL
 
-1. At the command prompt, start a new Rails application using the <tt>rails</tt> command
-   and your application name. Ex: rails myapp
-2. Change directory into myapp and start the web server: <tt>script/server</tt> (run with --help for options)
-3. Go to http://localhost:3000/ and get "Welcome aboard: You're riding the Rails!"
-4. Follow the guidelines to start developing your application
+* You may exclude this but you will need to contact me at webmaster@sundelof.com for instructions how to. Excluding memcached will strongly effect the performance why I do not recommend it.
 
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+	BASIC INSTALLATION OF SIMPLE BLOG
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
-== Web Servers
+Installing Simple Blog is really simple. Just follow these steps: 
 
-By default, Rails will try to use Mongrel if it's are installed when started with script/server, otherwise Rails will use WEBrick, the webserver that ships with Ruby. But you can also use Rails
-with a variety of other web servers.
+Step 1: Checkout the code from github using:
+git clone git@github.com:eriksundelof/Simple-Blog.git
 
-Mongrel is a Ruby-based webserver with a C component (which requires compilation) that is
-suitable for development and deployment of Rails applications. If you have Ruby Gems installed,
-getting up and running with mongrel is as easy as: <tt>gem install mongrel</tt>.
-More info at: http://mongrel.rubyforge.org
+Step 2: Install these mandatory gems 
+Make sure you include all their dependencies when you install them.
+(1) sudo gem install memcached
+(2) sudo gem install will_paginate
+(3) sudo gem install aws-s3
 
-Say other Ruby web servers like Thin and Ebb or regular web servers like Apache or LiteSpeed or
-Lighttpd or IIS. The Ruby web servers are run through Rack and the latter can either be setup to use
-FCGI or proxy to a pack of Mongrels/Thin/Ebb servers.
+Step 3: Rename settings.yml.example to settings.yml
+(a) Edit the file per as your preference.
+(b) Delete all optional fields which you do not want. You can leave the entries inside settings.yml but make sure they are empty strings. 
 
-== Apache .htaccess example for FCGI/CGI
+Comments:
+(i) It is strongly suggested that the noreply@domain.com is a blackhole email!
+(ii) Spend some time thinking of the keywords as they are important for SEO
 
-# General Apache options
-AddHandler fastcgi-script .fcgi
-AddHandler cgi-script .cgi
-Options +FollowSymLinks +ExecCGI
+Step 4: Signup and add your credentials for ReCAPTCHA
+(a) Signup at http://recaptcha.net
+(b) Follow their instructions to get a private and public key
+(c) Add these credentials to the settings.yml file
 
-# If you don't want Rails to look in certain directories,
-# use the following rewrite rules so that Apache won't rewrite certain requests
-# 
-# Example:
-#   RewriteCond %{REQUEST_URI} ^/notrails.*
-#   RewriteRule .* - [L]
+Step 5: Signup and add your API key for Hoptoad
+(a) Signup for a free account here https://hoptoadapp.com/account/new/Egg
+(b) Add your API key to the settings.yml
 
-# Redirect all requests not available on the filesystem to Rails
-# By default the cgi dispatcher is used which is very slow
-# 
-# For better performance replace the dispatcher with the fastcgi one
-#
-# Example:
-#   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-RewriteEngine On
+Comment: Why is this required? Simple Blog is a young product why this will be very helpful for track down issues. If you strongly feel this shouldn't be the case contact me at webmaster@sundelof.com and I can guide you how to turn this off.
 
-# If your Rails application is accessed via an Alias directive,
-# then you MUST also set the RewriteBase in this htaccess file.
-#
-# Example:
-#   Alias /myrailsapp /path/to/myrailsapp/public
-#   RewriteBase /myrailsapp
+Step 6: Doublecheck the settings.yml file
+Look through the settings.yml file to make sure you have all the settings you want. You can of course at any time change entries in the file and bounce your server to see the new settings.
 
-RewriteRule ^$ index.html [QSA]
-RewriteRule ^([^.]+)$ $1.html [QSA]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ dispatch.cgi [QSA,L]
+Step 7: Signup for Amazon S3
+Go to the url to signup for Amazon S3 at http://aws.amazon.com/s3/
 
-# In case Rails experiences terminal errors
-# Instead of displaying this message you can supply a file here which will be rendered instead
-# 
-# Example:
-#   ErrorDocument 500 /500.html
+Step 8: Rename s3.yml.example to s3.yml
+Add your access key and secret access key to your freshly renamed s3.yml that you obtained from step 7!
 
-ErrorDocument 500 "<h2>Application error</h2>Rails application failed to start properly"
+Step 9: Signup for Defensio Spam protection
+(a) Go to http://www.defensio.com and signup
+(b) Follow their instructions to obtain an API key
 
+Step 10: Rename defensio.yml.example to defensio.yml
+Add your credentials from step 9 to our freshly renamed file defensio.yml! 
 
-== Debugging Rails
+Step 11: Setup the database
+(a) Rename database.yml.example to database.yml
+(b) Add your database credentials
+(c) Run rake db:create or rake db:migrate
 
-Sometimes your application goes wrong.  Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+Step 12: Restart your server!
 
-First area to check is the application log files.  Have "tail -f" commands running
-on the server.log and development.log. Rails will automatically display debugging
-and runtime information to these files. Debugging info will also be shown in the
-browser on requests from 127.0.0.1.
+Step 13: Add a scheduled job to calculate the view count
+Simple Blog comes with a built-in view mechanism. In order for you to take advantage of that you need to add a scheduled job to make sure the view counts update. Adding this is really simple. For development and test servers, you can disregard this step.
 
-You can also log your own messages directly into the log file from your code using
-the Ruby logger class from inside your controllers. Example:
+Just add the following cronjob:
+cd PROJECT_ROOT; export RAILS_ENV=production; /usr/bin/ruby script/process_clickstream >> log/process_clickstream.log
 
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
+Comment: Substitute PROJECT_ROOT for your full path to your Rails project.
 
-The result will be a message in your log file along the lines of:
+Step 14: Register as a new user using the normal registration
 
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1
+Step 15: Make sure this user gets admin privileges
+(a) In your project root: 
+	(i) script/console
+	(ii) Run these commands: 
+		>> p = Profile.find_by_email('PUT YOUR EMAIL') 
+		>> p.update_attributes({:password => p.password, :confirm_password => p.password, :is_admin => true})
+(b) OPTIONAL: If you want this to be your info account for the site, add this user name to settings.yml as the info_account_user_name
 
-More information on how to use the logger is at http://www.ruby-doc.org/core/
-
-Also, Ruby documentation can be found at http://www.ruby-lang.org/ including:
-
-* The Learning Ruby (Pickaxe) Book: http://www.ruby-doc.org/docs/ProgrammingRuby/
-* Learn to Program: http://pine.fm/LearnToProgram/  (a beginners guide)
-
-These two online (and free) books will bring you up to speed on the Ruby language
-and also on programming in general.
+Comment: info_account_user_name is the username which will post all site wide actions to Twitter and/or Facebook if such an integration exists. 
 
 
-== Debugger
 
-Debugger support is available through the debugger command when you start your Mongrel or
-Webrick server with --debugger. This means that you can break out of execution at any point
-in the code, investigate and change the model, AND then resume execution! 
-You need to install ruby-debug to run the server in debugging mode. With gems, use 'gem install ruby-debug'
-Example:
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+	OPTIONAL INSTALLATIONS
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.find(:all)
-      debugger
-    end
-  end
+INSTALL BIT.LY URL SHORTENING
+-----------------------------------------------------------------------------------------
+Simple Blog uses bit.ly url shortening for all automatic postings to Facebook and/or Twitter. If you would like to have either or both of those integrations you will have to add valid credentials in settings.yml
 
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
-
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8 @attributes={\"title\"=>nil, \"body\"=>nil, \"id\"=>\"1\"}>,
-       #<Post:0x14a6620 @attributes={\"title\"=>\"Rails you know!\", \"body\"=>\"Only ten..\", \"id\"=>\"2\"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
-
-...and even better is that you can examine how your runtime objects actually work:
-
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
-
-Finally, when you're ready to resume execution, you enter "cont"
+(a) Signup for a new account at http://bit.ly (or login with your existing account)
+(b) Follow their instructions to retrieve an API key
+(c) Add your login (i.e. user name) and api key to settings.yml
+(d) Install the gem url_shortener with the following command: sudo gem install url_shortener 
 
 
-== Console
+INSTALL FACEBOOK INTEGRATION
+-----------------------------------------------------------------------------------------
+Simple Blog contains a complete integration with Facebook allowing both login using Facebook as well as automatic wall postings. You have the option to link Facebook to make sure these actions can be carried out site wide if you link the Facebook application to the info_account_user_name.
+(a) If you haven't setup support for bit.ly url shorterning, first follow the instructions to install bit.ly support!
+(b) Install the OAuth2 gem with this command: sudo gem install oauth2 
+(c) Register your own Facebook application at http://developers.facebook.com/setup/
+Comment: You can basically use the standard settings where you only provide the relevant site emails and the proper site url
+(d) Add the key and secret to the settings.yml file
+(e) If your hostname is http://domain.com make sure your callback url reads:
+	http://domain.com/account/facebook_account/callback
 
-You can interact with the domain model by starting the console through <tt>script/console</tt>.
-Here you'll have all parts of the application configured, just like it is when the
-application is running. You can inspect domain models, change values, and save to the
-database. Starting the script without arguments will launch it in the development environment.
-Passing an argument will specify a different environment, like <tt>script/console production</tt>.
+OPTIONAL STEPS: 
+(f) Login with the info account details
+(g) Go to http://domain.com/account/facebook_account (exchange http://domain.com for your root url)
+(h) Follow the instructions to link your account to Facebook.
 
-To reload your controllers and models after launching the console run <tt>reload!</tt>
+Comments: 
+(i) By linking your info account to Facebook will allow you to login using Facebook as well 
+(ii) All posts will be posted to the Facebook wall of the linked Facebook account
+(iii) All users who link their accounts with Facebook will get their posts posted to
+	
+	
+INSTALL TWITTER INTEGRATION
+-----------------------------------------------------------------------------------------
+Simple Blog contains a complete integration with Twitter allowing automatic tweeting. You have the option to link Twitter to make sure these actions can be carried out site wide if you link the Twitter application to the info_account_user_name. 
+(a) If you haven't setup support for bit.ly url shorterning, first follow the instructions to install bit.ly support!
+(b) Install the Twitter OAuth2 gem with this command: sudo gem install twitter_oauth2 
+(c) Register your own Twitter application at http://twitter.com/apps/new
+Comment: Make sure you choose web application for the type of application
+(d) Add the key and secret to the settings.yml file
+(e) If your hostname is http://domain.com make sure your callback url reads:
+	http://domain.com/account/twitter_account/callback
 
-== dbconsole
+OPTIONAL STEPS: 
+(f) Login with the info account details
+(g) Go to http://domain.com/account/twitter_account (exchange http://domain.com for your root url)
+(h) Follow the instructions to link your account to Twitter.
 
-You can go to the command line of your database directly through <tt>script/dbconsole</tt>.
-You would be connected to the database with the credentials defined in database.yml.
-Starting the script without arguments will connect you to the development database. Passing an
-argument will connect you to a different database, like <tt>script/dbconsole production</tt>.
-Currently works for mysql, postgresql and sqlite.
+Comment: All posts will be posted to Twitter feed of the linked Twitter account
 
-== Description of Contents
 
-app
-  Holds all the code that's specific to this particular application.
+INSTALL OPEN CALAIS SUPPORT FOR TAG SUGGESTION
+-----------------------------------------------------------------------------------------
+(a) Go to http://www.opencalais.com and register
+(b) Follow their instructions to retrieve an API key
+(c) Add the API key to settings.yml
+(d) Install the opencalais gem: sudo gem install opencalais
 
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from ApplicationController
-  which itself descends from ActionController::Base.
 
-app/models
-  Holds models that should be named like post.rb.
-  Most models will descend from ActiveRecord::Base.
+INSTALL SPHINX SEARCH SUPPORT
+-----------------------------------------------------------------------------------------
+(a) Install Sphinx on your server or local machine
+(b) Start the searchd deamon
+(c) Make sure the sphinx.yml file has the right port
+(d) Run from the project root: 
+	(i) rake ts:configure 
+	(ii) rake ts:start
+	(iii) rake ts:dd
+(e) Edit settings.yml and add sphinx as the setting for the field search.
 
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use eRuby
-  syntax.
 
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the common
-  header/footer method of wrapping views. In your views, define a layout using the
-  <tt>layout :default</tt> and create a file named default.html.erb. Inside default.html.erb,
-  call <% yield %> to render the view using this layout.
+INSTALL GOOGLE WEBMASTER SUPPORT
+-----------------------------------------------------------------------------------------
+Simple Blog contains extensive support for SEO and it is strongly suggested that you add the sitemap as well.
 
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are generated
-  for you automatically when using script/generate for controllers. Helpers can be used to
-  wrap functionality for your views into methods.
+(a) Login or register for a new Google Account
+(b) Go to http://www.google.com/webmasters/tools
+(c) Add your site
+(d) Choose verification meta code (DO NOT CLICK VERIFY YET!)
+(d) Add the code to settings.yml
+(e) Restart your server
+(f) Click verify
 
-config
-  Configuration files for the Rails environment, the routing map, the database, and other dependencies.
+OPTIONAL STEPS:
+(a) Inside Google Webmaster Tools, click Site Configuration >> Sitemaps
+(b) Click add a sitemap
+(c) Add sitemap.posts
 
-db
-  Contains the database schema in schema.rb.  db/migrate contains all
-  the sequence of Migrations for your schema.
+Comment: If you add the sitemap you will ensure that new posts get crawled by Google efficiently.
 
-doc
-  This directory is where your application documentation will be stored when generated
-  using <tt>rake doc:app</tt>
 
-lib
-  Application specific libraries. Basically, any kind of custom code that doesn't
-  belong under controllers, models, or helpers. This directory is in the load path.
+INSTALL GOOGLE ANALYTICS SUPPORT
+-----------------------------------------------------------------------------------------
+(a) Login or register for a new Google Account
+(b) Register a new profile and site at http://analytics.google.com
+(c) Add your newly created site Google Analytics Id to settings.yml
+(d) Restart your server
 
-public
-  The directory available for the web server. Contains subdirectories for images, stylesheets,
-  and javascripts. Also contains the dispatchers and the default HTML files. This should be
-  set as the DOCUMENT_ROOT of your web server.
 
-script
-  Helper scripts for automation and generation.
+ADD EMAIL POSTING SUPPORT
+-----------------------------------------------------------------------------------------
+(a) Create an email account using your control panel or equivalent
+(b) Add the relevant settings to settings.yml
+(c) Restart your server
+(d) Add a scheduled job per as your server : cd PROJECT_ROOT; export RAILS_ENV=production; /usr/bin/ruby script/mail_poller >> log/mail_poller.log
 
-test
-  Unit and functional tests along with fixtures. When using the script/generate scripts, template
-  test files will be generated for you and placed in this directory.
+Comment: Substitute PROJECT_ROOT for your full path to your Rails project. 
 
-vendor
-  External libraries that the application depends on. Also includes the plugins subdirectory.
-  If the app has frozen rails, those gems also go here, under vendor/rails/.
-  This directory is in the load path.
+
+ADD SOCIAL MEDIA & SUBSCRIBE
+-----------------------------------------------------------------------------------------
+Inside settings.yml you will find extensive support for many of the popular social media sites. Below you find these explained in more details.
+
+	:social:
+	    :share_this: "signup at ShareThis and add your API key here"
+	    :feedburner: "add your feedburner feed id here"
+	    :facebook_widget_id: "if you have a Gacebook page, add the id of the page here"
+	    :subscribe:
+	        :facebook: "this is the url to any Facebook url you would like to push for"
+	        :twitter: "this is the url to the Twitter page you would like to market"
+	        :blogtalkradio: "this is the url to the Blog Talk Radio page you would like to market"
+	        :youtube: "this is the url to the YouTube page you would like to market"
+	        :itunes: "this is the url to the iTunes feed you would like to market, soon Simple Blog will allow for extensive audio support"
+	        :flickr: "this is the url to the Flickr page you would like to market"
+	
+	
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+	CONTACT
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+If you have any questions or comments, send an email to webmaster@sundelof.com
