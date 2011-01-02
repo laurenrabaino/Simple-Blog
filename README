@@ -1,8 +1,8 @@
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 	ABOUT SIMPLE BLOG
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 Simple Blog RoR is a very efficient lightweight blogging system built in Ruby on Rails. The server footprint is extremely small ensuring short load times and better server health, not to mention user experience.
 
@@ -25,11 +25,11 @@ Additionally there is a lot of other support such as:
 
 CURRENT VERSION: 1.0
 
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 	MANDATORY REQUIREMENTS
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 (i) Rails 2.3.8
 (ii) Memcached*
@@ -37,11 +37,11 @@ CURRENT VERSION: 1.0
 
 * You may exclude this but you will need to contact me at webmaster@sundelof.com for instructions how to. Excluding memcached will strongly effect the performance why I do not recommend it.
 
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 	BASIC INSTALLATION OF SIMPLE BLOG
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 Installing Simple Blog is really simple. Just follow these steps: 
 
@@ -118,14 +118,14 @@ Comment: info_account_user_name is the username which will post all site wide ac
 
 
 
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 	OPTIONAL INSTALLATIONS
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 INSTALL BIT.LY URL SHORTENING
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 Simple Blog uses bit.ly url shortening for all automatic postings to Facebook and/or Twitter. If you would like to have either or both of those integrations you will have to add valid credentials in settings.yml
 
 (a) Signup for a new account at http://bit.ly (or login with your existing account)
@@ -135,7 +135,7 @@ Simple Blog uses bit.ly url shortening for all automatic postings to Facebook an
 
 
 INSTALL FACEBOOK INTEGRATION
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 Simple Blog contains a complete integration with Facebook allowing both login using Facebook as well as automatic wall postings. You have the option to link Facebook to make sure these actions can be carried out site wide if you link the Facebook application to the info_account_user_name.
 (a) If you haven't setup support for bit.ly url shorterning, first follow the instructions to install bit.ly support!
 (b) Install the OAuth2 gem with this command: sudo gem install oauth2 
@@ -157,7 +157,7 @@ Comments:
 	
 	
 INSTALL TWITTER INTEGRATION
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 Simple Blog contains a complete integration with Twitter allowing automatic tweeting. You have the option to link Twitter to make sure these actions can be carried out site wide if you link the Twitter application to the info_account_user_name. 
 (a) If you haven't setup support for bit.ly url shorterning, first follow the instructions to install bit.ly support!
 (b) Install the Twitter OAuth2 gem with this command: sudo gem install twitter_oauth2 
@@ -176,7 +176,7 @@ Comment: All posts will be posted to Twitter feed of the linked Twitter account
 
 
 INSTALL OPEN CALAIS SUPPORT FOR TAG SUGGESTION
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 (a) Go to http://www.opencalais.com and register
 (b) Follow their instructions to retrieve an API key
 (c) Add the API key to settings.yml
@@ -184,7 +184,7 @@ INSTALL OPEN CALAIS SUPPORT FOR TAG SUGGESTION
 
 
 INSTALL SPHINX SEARCH SUPPORT
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 (a) Install Sphinx on your server or local machine
 (b) Start the searchd deamon
 (c) Make sure the sphinx.yml file has the right port
@@ -196,7 +196,7 @@ INSTALL SPHINX SEARCH SUPPORT
 
 
 INSTALL GOOGLE WEBMASTER SUPPORT
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 Simple Blog contains extensive support for SEO and it is strongly suggested that you add the sitemap as well.
 
 (a) Login or register for a new Google Account
@@ -216,7 +216,7 @@ Comment: If you add the sitemap you will ensure that new posts get crawled by Go
 
 
 INSTALL GOOGLE ANALYTICS SUPPORT
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 (a) Login or register for a new Google Account
 (b) Register a new profile and site at http://analytics.google.com
 (c) Add your newly created site Google Analytics Id to settings.yml
@@ -224,7 +224,7 @@ INSTALL GOOGLE ANALYTICS SUPPORT
 
 
 ADD EMAIL POSTING SUPPORT
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 (a) Create an email account using your control panel or equivalent
 (b) Add the relevant settings to settings.yml
 (c) Restart your server
@@ -234,7 +234,7 @@ Comment: Substitute PROJECT_ROOT for your full path to your Rails project.
 
 
 ADD SOCIAL MEDIA & SUBSCRIBE
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 Inside settings.yml you will find extensive support for many of the popular social media sites. Below you find these explained in more details.
 
 	:social:
@@ -250,10 +250,10 @@ Inside settings.yml you will find extensive support for many of the popular soci
 	        :flickr: "this is the url to the Flickr page you would like to market"
 	
 	
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 	CONTACT
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 
 If you have any questions or comments, send an email to webmaster@sundelof.com
