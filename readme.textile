@@ -31,10 +31,12 @@ To install Simple Blog follow these instructions.
 
 h2. Requirements
 
-1. Rails 2.3.8
-1. Memcached*
-1. MySQL
-1. ImageMagick
+Simple Blog has the following technical requirements:
+
+	1. Rails 2.3.8
+	2. Memcached*
+	3. MySQL
+	4. ImageMagick
 
 *You may exclude this but you will need to contact me at webmaster@sundelof.com for instructions how to. Excluding memcached will strongly effect the performance why I do not recommend it.
 
