@@ -1,0 +1,43 @@
+h1. About Simple Blog
+
+*Simple Blog RoR* is a very efficient lightweight blogging system built in Ruby on Rails. The server footprint is extremely small ensuring short load times and better server health, not to mention user experience.
+
+*Simple Blog RoR* also is very tightly integrated with Facebook and Twitter allowing for seamless integration with those platforms. It allows login via Facebook out-of-the-box.
+
+Additionally there is a lot of other support such as:
+
+* multiple categories,
+* tag suggestion,
+* aggressive spam prevention
+* threaded comments
+* clickstream
+* full SEO integration
+* localization of the entire interface
+* email posting
+* efficient caching using memcached
+* other extensive social features as favoriting 
+* stores all uploaded images on S3
+* efficient comment notification framework to foster dialogue 
+* built-in search with the ability to use MySQL or Sphinx for search
+
+h3. CURRENT VERSION: 1.0
+
+h2. Installation:
+
+* [[ Simple Installation|Basic-Installation]]
+* [[Optional Installations|Optional-Installations]]
+
+h2. Requirements
+
+1. Rails 2.3.8
+1. Memcached*
+1. MySQL
+1. ImageMagick
+
+*You may exclude this but you will need to contact me at webmaster@sundelof.com for instructions how to. Excluding memcached will strongly effect the performance why I do not recommend it.
+
+Installation instructions for reaching the technical requirements are found here [[Requirements: Installation|Requirements:-Installation]]
+
+h2. Contact
+
+If you have any questions or comments, send an email to webmaster@sundelof.com
