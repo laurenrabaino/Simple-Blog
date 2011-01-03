@@ -24,8 +24,10 @@ h3. CURRENT VERSION: 1.0
 
 h2. Installation:
 
-* [[ Simple Installation|Basic-Installation]]
-* [[Optional Installations|Optional-Installations]]
+To install Simple Blog follow these instructions.
+
+* Simple Installation:https://github.com/eriksundelof/Simple-Blog/wiki/Basic-Installation
+* Optional Installations:https://github.com/eriksundelof/Simple-Blog/wiki/Optional-Installations
 
 h2. Requirements
 
@@ -36,7 +38,7 @@ h2. Requirements
 
 *You may exclude this but you will need to contact me at webmaster@sundelof.com for instructions how to. Excluding memcached will strongly effect the performance why I do not recommend it.
 
-Installation instructions for reaching the technical requirements are found here [[Requirements: Installation|Requirements:-Installation]]
+Installation instructions for reaching the technical requirements are found here Requirements: Installation:https://github.com/eriksundelof/Simple-Blog/wiki/Requirements:-Installation
 
 h2. Contact
 
