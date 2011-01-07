@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   resources_controller_for :post
   
+  before_filter :clear_home_page_settings, :only => [:create, :update]
   before_filter :set_category_ids, :only => [:create, :update]
   
   def show
@@ -115,6 +116,10 @@ class PostsController < ApplicationController
   
   def set_category_ids
     params[:post][:category_ids] ||= []
+  end
+  
+  def clear_home_page_settings
+     reset_home_page if params[:post] && params[:post][:is_home_page]
   end
   
 end

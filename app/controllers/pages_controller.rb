@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   resources_controller_for :pages
   
+  before_filter :clear_home_page_settings, :only => [:create, :update]
   before_filter :is_admin
   
   def show
@@ -55,6 +56,10 @@ class PagesController < ApplicationController
     @page.featured = true
     @page.save
     redirect_to :back
+  end
+  
+  def clear_home_page_settings
+     reset_home_page if params[:page] && params[:page][:is_home_page]
   end
   
 end
