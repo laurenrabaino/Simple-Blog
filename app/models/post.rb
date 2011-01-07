@@ -77,6 +77,12 @@ class Post < ActiveRecord::Base
     end
   end
   
+  def self.is_home_page?(is_admin=false)
+    having_cache ["is_home_page_post_"], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      find_by_is_home_page(true)
+    end
+  end
+  
   def self.get_search(search_term, page, is_admin=false)
     having_cache ["search_posts_", page, search_term, @@per_page, SPHINX_SEARCH], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
       return search search_term, :order => :created_at, :sort_mode => :desc, :page => page, :per_page => @@per_page if SPHINX_SEARCH

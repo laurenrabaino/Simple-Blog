@@ -4,12 +4,12 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/sitemap_news.:type", :controller => "sitemap", :action => "index", :news => true
 
   map.connect "/posts/:filter", :controller => "posts", :action => "index", :requirements => { :filter => /favorited|featured|viewed/  }
-  map.resources :posts, :member => { :publish => :put, :unpublish => :put, :favorite => :get, :featured => :get, :tweet => :get, :facebook => :get } do |post|
+  map.resources :posts, :member => { :publish => :put, :unpublish => :put, :favorite => :get, :featured => :get, :tweet => :get, :facebook => :get, :set_as_home_page => :get } do |post|
     post.resources :comments, :except => [:index, :show]
   end
 
   map.connect "/pages/:filter", :controller => "pages", :action => "index", :requirements => { :filter => /favorited|featured|viewed/  }
-  map.resources :pages, :member => { :publish => :put, :unpublish => :put, :favorite => :get, :featured => :get } do |page|
+  map.resources :pages, :member => { :publish => :put, :unpublish => :put, :favorite => :get, :featured => :get, :set_as_home_page => :get } do |page|
     page.resources :comments, :except => [:index, :show]
   end
 
@@ -47,10 +47,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resource :incoming, :only => [:create]
+    admin.resource :sites
   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "posts"
+  map.connect "/:filter", :controller => "posts", :action => "index", :requirements => { :filter => /favorited|featured|viewed/  }
+  map.root :controller => "homes"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

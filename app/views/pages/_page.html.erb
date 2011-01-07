@@ -37,6 +37,8 @@
 		:publish_link => publish_page_path(p),
 		:feature_link => featured_page_path(p),
 		:featured => p.featured,
+		:set_as_home_page_link => set_as_home_page_page_path(p),
+		:is_home_page => p.is_home_page,
 		:delete_link => page_path(p),
 		:confirm_message => t("common.page.delete")
 	} if is_admin?%>

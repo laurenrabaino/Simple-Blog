@@ -76,7 +76,13 @@ class Page < ActiveRecord::Base
   
   def self.get_pages(page, is_admin=false)
     having_cache ["index_pages_", page, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
-      paginate(:page=>params[:page])
+      paginate(:page=>params[:page], :conditions=>"is_home_page=0")
+    end
+  end
+  
+  def self.is_home_page?(is_admin=false)
+    having_cache ["is_home_page_page_"], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
+      find_by_is_home_page(true)
     end
   end
   

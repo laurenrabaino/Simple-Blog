@@ -48,6 +48,8 @@
 		:publish_link => publish_post_path(a),
 		:feature_link => featured_post_path(a),
 		:featured => a.featured,
+		:set_as_home_page_link => set_as_home_page_post_path(a),
+		:is_home_page => a.is_home_page,
 		:delete_link => post_path(a),
 		:confirm_message => t("common.post.delete")
 	} if is_admin?%>

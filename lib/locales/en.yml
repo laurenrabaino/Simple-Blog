@@ -87,6 +87,7 @@ en:
            edit: "edit"
            publish: "publish"
            unpublish: "unpublish"
+           set_as_home_page: "use as home page"
            close: "close"
            feature: "feature"
            delete: "delete"
@@ -179,6 +180,7 @@ en:
                     small: "specify a few tags"
                     suggest: "suggest tags"
                 allowcomments: "allow comments"
+                is_home_page: "use as home page"
                 multimedia:
                     display: "multimedia"
                     image:
@@ -199,6 +201,7 @@ en:
                     suggest: "suggest tags"
                 settings: "settings"
                 showintopmenu: "show in top menu"
+                is_home_page: "use as home page"
                 allowcomments: "allow comments"
                 multimedia:
                     display: "multimedia"

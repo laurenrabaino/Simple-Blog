@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223223047) do
+ActiveRecord::Schema.define(:version => 20110107162351) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -157,7 +157,10 @@ ActiveRecord::Schema.define(:version => 20101223223047) do
     t.boolean  "delta",                                    :default => true,  :null => false
     t.datetime "featured_at"
     t.integer  "user_id"
+    t.boolean  "is_home_page",                             :default => false
   end
+
+  add_index "pages", ["is_home_page"], :name => "index_pages_on_is_home_page"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -182,7 +185,10 @@ ActiveRecord::Schema.define(:version => 20101223223047) do
     t.boolean  "delta",                                    :default => true,  :null => false
     t.boolean  "featured",                                 :default => false
     t.datetime "featured_at"
+    t.boolean  "is_home_page",                             :default => false
   end
+
+  add_index "posts", ["is_home_page"], :name => "index_posts_on_is_home_page"
 
   create_table "settings", :force => true do |t|
     t.integer  "user_id"

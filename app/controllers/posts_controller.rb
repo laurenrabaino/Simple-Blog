@@ -70,12 +70,21 @@ class PostsController < ApplicationController
     redirect_to :back
   end
   
-  def unpublish
+  def publish
     @post = find_resource
-    @post.status = 0
+    @post.status = 1
     @post.save
-    flash[:notice] = "You have unpublished this post!"
+    flash[:notice] = "You have published this post!"
     redirect_to :back
+  end
+  
+  def set_as_home_page
+    reset_home_page
+    @post = find_resource
+    @post.is_home_page = true
+    @post.save
+    flash[:notice] = "You have set this post to be the home page!"
+    redirect_to "/"
   end
   
   def favorite

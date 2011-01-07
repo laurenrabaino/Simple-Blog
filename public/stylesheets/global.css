@@ -1760,7 +1760,8 @@ pre {
 	font-size:60%;
 }
 
-#hoverContainerProject{
+/* Leave in for hover control */
+.hoverContainer{
 	background:#f9f9f9;
 	border: 1px solid #fff;
 	position:absolute;

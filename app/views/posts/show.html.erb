@@ -17,6 +17,8 @@
 			:publish_link => publish_post_path(@post),
 			:feature_link => featured_post_path(@post),
 			:featured => @post.featured,
+			:set_as_home_page_link => set_as_home_page_post_path(@post),
+			:is_home_page => @post.is_home_page,
 			:delete_link => post_path(@post),
 			:confirm_message => t("common.blog.delete")
 		} if is_admin?%>

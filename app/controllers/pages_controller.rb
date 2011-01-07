@@ -31,6 +31,15 @@ class PagesController < ApplicationController
     redirect_to :back
   end
   
+  def set_as_home_page
+    reset_home_page
+    @page = find_resource
+    @page.is_home_page = true
+    @page.save
+    flash[:notice] = "You have set this post to be the home page!"
+    redirect_to "/"
+  end
+  
   def favorite
     @page = find_resource
     favorite = @page.favorites.create({ :ip => request.remote_ip, :user_id => session[:user_id] })

@@ -106,6 +106,11 @@ class ApplicationController < ActionController::Base
   
   def get_locale
     (cookies[:locale] ? cookies[:locale] : SETTINGS[:site][:locale])
+  end     
+  
+  def reset_home_page
+    Page.update_all("is_home_page=0")
+    Post.update_all("is_home_page=0")
   end
   
 end

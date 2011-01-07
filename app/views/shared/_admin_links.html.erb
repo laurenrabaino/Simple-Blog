@@ -14,5 +14,8 @@
 	<%if defined?(feature_link)%>
 		<%=link_to t("admin.feature").capitalize+" &raquo;", feature_link, :class=>"publishLink", :method => :get%> <span class="linkSeparator">|</span> 
 	<%end%>
+	<%if defined?(set_as_home_page_link) && (defined?(is_home_page) && !is_home_page)%>
+		<%=link_to t("admin.set_as_home_page").capitalize+" &raquo;", set_as_home_page_link, :class=>"publishLink", :method => :get%> <span class="linkSeparator">|</span> 
+	<%end%>
 	<%=link_to t("admin.delete").capitalize+" &raquo;", delete_link, :class=>"deleteLink", :confirm => confirm_message, :method => :delete%>
 </div>

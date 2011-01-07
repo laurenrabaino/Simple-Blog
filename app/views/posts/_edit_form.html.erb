@@ -61,6 +61,13 @@
 		<%= f.check_box :allow_comments, :class=>"normalCheckbox" %>
 	</div>
 	
+	<div class="row">
+		<label for="is_home_page" class="label"><%=t("form.blog.labels.is_home_page").capitalize%>  
+			<span class="required">*</span>
+		</label>
+		<%= f.check_box :is_home_page, :class=>"normalCheckbox" %>
+	</div>
+	
 	<%if @current_user%>
 		<%if @current_user.twitter_account%>
 			<div class="row">

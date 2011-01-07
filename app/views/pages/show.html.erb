@@ -18,6 +18,8 @@
 			:publish_link => publish_page_path(@page),
 			:feature_link => featured_page_path(@page),
 			:featured => @page.featured,
+			:set_as_home_page_link => set_as_home_page_page_path(@page),
+			:is_home_page => @page.is_home_page,
 			:delete_link => page_path(@page),
 			:confirm_message => t("common.page.delete")
 		} if is_admin?%>
