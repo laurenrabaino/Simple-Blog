@@ -1862,6 +1862,3 @@ pre {
   position: absolute;
   height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
 }
-
-
-/* put your custom CSS definitions here */

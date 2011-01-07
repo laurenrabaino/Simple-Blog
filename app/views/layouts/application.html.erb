@@ -3,7 +3,11 @@
 	<head>
 		<title><%=@header[:title].join(" :: ")%></title>
     
-	   	<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', 'custom', :media => "all", :concat => 'global' %>
+		<%if FileTest.exists?("/stylesheets/custom.css")%>
+	   		<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', 'custom', :media => "all", :concat => 'global_custom' %>
+		<%else%>
+			<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', :media => "all", :concat => 'global' %>
+		<%end%>
 		<%= javascript_include_tag "swfobject" if @recording %>
 		<%if @post || (@page && @page.is_a?(Page)) || @comment%>
 			<%= javascript_include_tag "ckeditor/ckeditor" %>
