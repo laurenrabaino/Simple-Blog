@@ -52,6 +52,7 @@ class Page < ActiveRecord::Base
   
   named_scope :published, :conditions=>"pages.status=1"
   named_scope :top_menu, :conditions=>"top_menu=1"
+  named_scope :not_home_page, :conditions=>"is_home_page=0"
 
   named_scope :apply_filter_to_list, lambda{ |filter_name|
     f = FILTERS[filter_name] || FILTERS['recency']
@@ -76,7 +77,7 @@ class Page < ActiveRecord::Base
   
   def self.get_pages(page, is_admin=false)
     having_cache ["index_pages_", page, @@per_page], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
-      paginate(:page=>params[:page], :conditions=>"is_home_page=0")
+      paginate(:page=>params[:page])
     end
   end
   
@@ -118,7 +119,7 @@ class Page < ActiveRecord::Base
   
   def self.get_menu_pages(is_admin=false)
     having_cache ["page_top_menu", is_admin], {:expires_in => CACHE_TIMEOUT, :force => is_admin } do
-      self.published.top_menu.all
+      self.not_home_page.published.top_menu.all
     end
   end
   

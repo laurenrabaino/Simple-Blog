@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   after_filter :minify_html, :unless => Proc.new { Rails.env.development? }
   after_filter :save_clickstream, :if => :save_clickstream?
   before_filter :preload_models, :unless => Proc.new { Rails.env.production? }
+  before_filter :check_home_page
   before_filter :user_authorization, :unless => :no_before_filters
   before_filter :set_base_header_info, :unless => :no_before_filters
   before_filter :get_pages, :unless => :no_before_filters
@@ -111,6 +112,12 @@ class ApplicationController < ActionController::Base
   def reset_home_page
     Page.update_all("is_home_page=0")
     Post.update_all("is_home_page=0")
+  end
+  
+  def check_home_page
+    @home_post = Post.is_home_page?(logged_in_and_admin)
+    @home_page = @home_post ? nil : Page.is_home_page?(logged_in_and_admin)
+    @show_blog_link = !@home_page.blank? 
   end
   
 end

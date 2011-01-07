@@ -10,7 +10,7 @@ class HomesController < ApplicationController
   # define the home page variables...
   def get_home_page
     @post = Post.is_home_page?(logged_in_and_admin)
-    @page = Page.is_home_page?(logged_in_and_admin) unless @post
+    @page = @post ? nil : Page.is_home_page?(logged_in_and_admin)
 
     unless @post || @page
       Post.per_page = 10
