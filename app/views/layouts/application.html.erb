@@ -30,13 +30,14 @@
 
 	<body>  
 		
+		<%=render :partial=>"shared/embedded_menu" %>
+		
 		<div id="wrapper">
 			
 			<%= render :partial => "layouts/header"%>
 			
 			<div id="container">
 
-				<%=render :partial=>"shared/embedded_menu" %>
 				<%=render :partial=>"shared/flash", :locals => { :message => flash[:notice] }%>
 				
 				<div id="content">
