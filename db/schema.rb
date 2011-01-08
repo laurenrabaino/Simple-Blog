@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110107162351) do
+ActiveRecord::Schema.define(:version => 20110108011333) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -154,13 +154,15 @@ ActiveRecord::Schema.define(:version => 20110107162351) do
     t.integer  "favorited",                                :default => 0
     t.integer  "viewed",                                   :default => 0
     t.boolean  "featured",                                 :default => false
-    t.boolean  "delta",                                    :default => true,  :null => false
+    t.boolean  "delta",                                    :default => true,   :null => false
     t.datetime "featured_at"
     t.integer  "user_id"
     t.boolean  "is_home_page",                             :default => false
+    t.integer  "position",                                 :default => 100000
   end
 
   add_index "pages", ["is_home_page"], :name => "index_pages_on_is_home_page"
+  add_index "pages", ["position"], :name => "index_pages_on_position"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -182,13 +184,15 @@ ActiveRecord::Schema.define(:version => 20110107162351) do
     t.integer  "favorited",                                :default => 0
     t.integer  "viewed",                                   :default => 0
     t.boolean  "allow_comments",                           :default => true
-    t.boolean  "delta",                                    :default => true,  :null => false
+    t.boolean  "delta",                                    :default => true,   :null => false
     t.boolean  "featured",                                 :default => false
     t.datetime "featured_at"
     t.boolean  "is_home_page",                             :default => false
+    t.integer  "position",                                 :default => 100000
   end
 
   add_index "posts", ["is_home_page"], :name => "index_posts_on_is_home_page"
+  add_index "posts", ["position"], :name => "index_posts_on_position"
 
   create_table "settings", :force => true do |t|
     t.integer  "user_id"

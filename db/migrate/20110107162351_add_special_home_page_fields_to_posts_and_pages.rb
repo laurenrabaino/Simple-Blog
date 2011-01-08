@@ -7,7 +7,7 @@ class AddSpecialHomePageFieldsToPostsAndPages < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :pages, :is_home_page
-    add_column :pages, :is_home_page
+    remove_column :posts, :is_home_page
+    remove_column :pages, :is_home_page
   end
 end
