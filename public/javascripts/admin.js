@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
 	jQuery('#pages').sortable({
+		items: "> li[id*=pageId]",
 		stop: function (event, ui){
 			positions = [];
 			pages = $('#pages li[id*=pageId]');
