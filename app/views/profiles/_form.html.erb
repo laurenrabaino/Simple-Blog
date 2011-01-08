@@ -54,6 +54,7 @@
 				<span class="required">*</span>
 			</label>
 			<%= f.check_box :terms_of_use, :id=>"termsOfService", :class=>"normalCheckbox" %>
+			<span class="small">(<%=t("form.profile.labels.termsofuse.description").capitalize%>)</span>
 		</div>
 		<div class="row">
 			<label><%=t("form.captcha").capitalize%>:

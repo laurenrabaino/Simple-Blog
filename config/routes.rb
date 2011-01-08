@@ -44,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => 'search', :action => "index"
   map.connect "/search/:search_term/:tab", :controller=>"search", :action => "index", :tab=>nil 
 
+  map.connect "/terms", :controller => "statics", :action => "terms"
   map.connect "/rss", :controller => "posts", :action => "index", :format=>"rss"
 
   map.namespace :admin do |admin|

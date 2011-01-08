@@ -145,6 +145,7 @@ en:
                 termsofuse: 
                     display: "terms of use"
                     accept: "I accept the terms of use"
+                    description: "you can read the <a href='/terms' title='terms of use' target='_blank'>terms of use</a> here"
                 admin: "Is admin?"
                 aboutme: "about me"
                 noaboutme: "USERNAME has not written an about me section yet."
