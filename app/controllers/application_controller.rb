@@ -81,6 +81,8 @@ class ApplicationController < ActionController::Base
     elsif @post
       arg[:clickstreamable_type] = 'Post'
       arg[:clickstreamable_id] = @post.id
+    else
+      return 
     end
 
     Clickstream.create(arg) if arg && !arg.empty?
