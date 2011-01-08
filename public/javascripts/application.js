@@ -108,6 +108,10 @@ jQuery(document).ready(function($){
 			}
 		}).responseText;
 	});
+	
+	jQuery('#pages').sortable({
+		
+	}).disableSelection();
 
 	/* facebox links */
 	jQuery('a[rel*=facebox]').facebox();

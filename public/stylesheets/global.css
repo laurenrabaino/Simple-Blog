@@ -172,8 +172,8 @@ margin-top: -25px;
 #pages li.languageLink,  #pages li.languageLinkSelected, #pages li.languageSeparator {
 	border:none;
 	float:right;
-	padding-left:2px;
-	padding-right:2px;
+	padding-left:5px;
+	padding-right:5px;
 }
 	
 #pages li a:hover, #pages li.languageLink a:hover{
