@@ -119,7 +119,7 @@ class ApplicationController < ActionController::Base
   def check_home_page
     @home_post = Post.is_home_page?(logged_in_and_admin)
     @home_page = @home_post ? nil : Page.is_home_page?(logged_in_and_admin)
-    @show_blog_link = !@home_post.blank? || !@home_page.blank? 
+    @show_blog_link = (!@home_post.blank? || !@home_page.blank?) && (SETTINGS[:site][:show_blog_link] && SETTINGS[:site][:show_blog_link].to_s=='true') 
   end
   
 end
