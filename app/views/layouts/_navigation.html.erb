@@ -1,7 +1,7 @@
 <%if @menu_pages && !@menu_pages.empty? || @show_blog_link%>
 	<li style="border-left:none;"><%=link_to t("common.home"), "/"%></li>
 	<%@menu_pages.each do |page|%>
-		<li<%if @page && @page.is_a?(Page) && @page==page%> class="selected"<%end%>><%= link_to page.title.capitalize, page_path(page) %></li>
+		<li<%if @page && @page.is_a?(Page) && @page==page%> class="selected"<%end%> id="pageId<%=page.id%>"><%= link_to page.title.capitalize, page_path(page) %></li>
 	<%end%>
 	<%if @show_blog_link%><li<%if params[:controller]=='posts'%> class="selected"<%end%>><%= link_to t("common.blog.display").capitalize, posts_path %></li><%end%>
 <%end%>

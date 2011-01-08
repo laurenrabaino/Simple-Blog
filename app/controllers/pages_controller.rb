@@ -58,6 +58,19 @@ class PagesController < ApplicationController
     redirect_to :back
   end
   
+  def set_order
+    Page.update_all({:position=>100000})
+    position = 1
+    params[:positions].each do |page|
+      p = Page.find_by_id(page)
+      p.update_attributes({:position => position}) if p
+      position += 1
+    end
+    render :text => "ok"
+  end
+  
+  protected
+  
   def clear_home_page_settings
      reset_home_page if params[:page] && params[:page][:is_home_page]
   end

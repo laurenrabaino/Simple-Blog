@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     post.resources :comments, :except => [:index, :show]
   end
 
+  map.connect "/pages/set_order", :controller => "pages", :action => "set_order"
   map.connect "/pages/:filter", :controller => "pages", :action => "index", :requirements => { :filter => /favorited|featured|viewed/  }
   map.resources :pages, :member => { :publish => :put, :unpublish => :put, :favorite => :get, :featured => :get, :set_as_home_page => :get } do |page|
     page.resources :comments, :except => [:index, :show]
