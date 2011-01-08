@@ -1983,7 +1983,7 @@ jQuery(document).ready(function($){
 		items: "> li[id*=pageId]",
 		stop: function (event, ui){
 			positions = [];
-			pages = $('#pages li[id*=pageId]');
+			pages = $('#pages> li[id*=pageId]');
 			for (i=0; i<pages.length; i++){
 				positions[i] = pages[i].id.replace('pageId', '');
 			}
