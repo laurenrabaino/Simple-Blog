@@ -51,7 +51,7 @@ class Page < ActiveRecord::Base
   
   
   named_scope :published, :conditions=>"pages.status=1"
-  named_scope :top_menu, :conditions=>"top_menu=1", :order=>'title desc'
+  named_scope :top_menu, :conditions=>"top_menu=1", :order=>'title asc'
   named_scope :not_home_page, :conditions=>"is_home_page=0"
 
   named_scope :apply_filter_to_list, lambda{ |filter_name|
