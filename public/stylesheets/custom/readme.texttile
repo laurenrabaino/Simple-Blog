@@ -1,0 +1,14 @@
+h1. About the stylesheet override
+
+You can override any of the following files:
+* *base.css:* Contains all main tags such as body, p, h1 etc
+* *main.css:* Contains all global CSS settings for classes specific to the layout
+* *page.css:* Contains all styles specific for the detail view of a page
+* *post.css:* Contains all styles specific for the detail view of a post
+* *profile.css:* Contains all styles specific for the detail view of a profile
+* *static.css:* Used for all pages with static content such as the terms of use
+* *style.css:* Miscellaneous styles for things such as lists. This will be broken down later on when I have the complete HTML theming ready.
+
+If you want to add a stylesheet overriding just add a file named as above. If you create a file in the custom directory, Simple Blog will *not* include the default defined stylesheets. 
+
+*Tip:* If you choose to customize the styles, copy and paste the corresponding stylesheet from `/stylesheets/` to make sure you have all the necessary styles defined.
