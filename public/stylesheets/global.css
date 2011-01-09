@@ -443,9 +443,9 @@ pre {
 	color:red;
 }
 
-/* search form */
+/* search container */
 
-.searchForm{
+.searchContainer{
 	display:inline;
 	float:right;
 	text-align:right;
@@ -455,20 +455,7 @@ pre {
 	margin-right:15px;
 }
 
-/* end search form */
-
-.noResults{
-	padding:10px 0px 10px 10px;
-}
-
-.flashMessage{
-	border:2px solid red;
-	font-size:18px;
-	line-height:20px;
-	margin:10px 10px 15px 0px;
-	padding:10px;
-	width:920px;
-}
+/* end search container */
 
 /* subscribe container */
 
@@ -1668,6 +1655,19 @@ pre {
 	float:right;
 	margin-right:10px;
 	font-size:60%;
+}
+
+.noResults{
+	padding:10px 0px 10px 10px;
+}
+
+.flashMessage{
+	border:2px solid red;
+	font-size:18px;
+	line-height:20px;
+	margin:10px 10px 15px 0px;
+	padding:10px;
+	width:920px;
 }
 /* end global styles*/
 

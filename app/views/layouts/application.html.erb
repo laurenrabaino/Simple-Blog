@@ -10,11 +10,11 @@
 		
 		<%=render :partial=>"shared/embedded_menu" %>
 		
-		<div class="pageWrapper">
+		<div class="outerWrapper">
 			
 			<%= render :partial => "layouts/header"%>
 			
-			<div class="bodyContainer">
+			<div class="innerWrapper">
 
 				<%=render :partial=>"shared/flash", :locals => { :message => flash[:notice] }%>
 				
