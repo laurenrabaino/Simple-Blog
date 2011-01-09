@@ -83,7 +83,7 @@ module ApplicationHelper
     end
   end
 
-  # get the stylesheet breakdowns...
+  # get the stylesheets...
   def get_stylesheets(is_admin=false)
     stylesheets = ['base', 'main', 'style', '/javascripts/facebox']
     stylesheets.collect! { |s| File.exists?("#{Rails.public_path}/stylesheets/custom/#{s}.css") ? "custom/#{s}" : s }
