@@ -2089,10 +2089,6 @@ jQuery(document).ready(function($){
 		}).responseText;
 	});
 	
-	jQuery('#pages').sortable({
-		
-	}).disableSelection();
-
 	/* facebox links */
 	jQuery('a[rel*=facebox]').facebox();
 	jQuery('img[id*=faceboxImage]').click(function(){
@@ -2104,15 +2100,6 @@ jQuery(document).ready(function($){
 function setUrlField(url){
 	value = jQuery("input[id*='PhotoUrls']").val();
 	jQuery("input[id*='PhotoUrls']").val(value+"::"+url);
-}
-
-function createAudioPlayer(player,recording_id,div,hashcode){
-	var s1 = new SWFObject(player,'player','600','500','9');
-	s1.addParam('allowfullscreen','true');
-	s1.addParam('allowscriptaccess','always');
-	//s1.addParam('flashvars','file=http://mobiletools.hablacentro.com/radio/retrieve?internal_request='+hashcode+'&file_id='+recording_id);
-	s1.addParam('flashvars','file=http://mobiletools.hablacentro.com/public/recordings/transcoded/'+recording_id);
-	s1.write(div);
 }
 
 

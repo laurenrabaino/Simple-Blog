@@ -1,10 +1,6 @@
 <title><%=@header[:title].join(" :: ")%></title>
 
-<%if FileTest.exists?("/stylesheets/custom.css")%>
-	<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', 'custom', :media => "all", :concat => 'global_custom' %>
-<%else%>
-	<%= stylesheet_link_tag 'style', '/javascripts/facebox.css', :media => "all", :concat => 'global' %>
-<%end%>
+<%=get_stylesheets(is_admin?)%>
 
 <!-- Include the JS files -->
 <%if @post || (@page && @page.is_a?(Page)) || @comment%>

@@ -1,0 +1,82 @@
+/* post page */
+
+.postContainer {
+	margin-top:10px;
+	width:920px;
+}
+
+.postContainer .postHeading{
+	text-transform:capitalize;
+}
+
+.postContainer .postHeading h1{
+	border-bottom:1px solid #ddd;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+
+.postContainer .postDescription{
+	float:right;
+	font-size:11px;
+	width:25%;
+	margin: 10px 0px 10px 10px;
+}
+
+.postContainer .postDescription .postAuthor{
+	background:none;
+	border:none;
+	font-size: 18px;
+}
+
+.postContainer .postDescription .categoryHeader{
+	font-size:16px;
+	border: none;
+	border-bottom:1px solid #ddd;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+
+.postContainer .postDescription .postCreatedAt, .postContainer .postDescription .postKeywords{
+	display:block;
+	padding-left:10px;
+	width:100%;
+}
+
+.postContainer .postDescription .postAboutMe{
+	padding-bottom:10px;
+	margin-bottom:10px;
+	border-bottom:1px solid #ddd;
+}
+
+.postContainer .postDescription .postAboutMe p{
+	padding-left:0px;
+	margin-left:-5px;
+}
+
+.postContainer .postBody{
+	float:left;
+	width:70%;
+	margin:10px;
+}
+
+.postContainer .postBody img{
+	cursor:pointer;
+}
+
+.postContainer .postBody .attributionUrl{
+}
+
+.postContainer .postBody .attributionUrl .preUrl{
+	margin-right:5px;
+}
+
+.postContainer .postBody ul, .postContainer .postBody ol{
+	display:block;
+	margin-bottom:20px;
+}
+
+.postContainer .postBody ul li, .postContainer .postBody ol li{
+	margin:0px 10px 3px 30px;
+}
+
+/* end post page css */

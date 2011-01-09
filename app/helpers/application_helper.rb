@@ -82,5 +82,26 @@ module ApplicationHelper
       yield tag, classes[index]
     end
   end
+
+  # get the stylesheet breakdowns...
+  def get_stylesheets(is_admin=false)
+    stylesheets = ['base', 'main', 'style', '/javascripts/facebox']
+    stylesheets.collect! { |s| File.exists?("#{Rails.public_path}/stylesheets/custom/#{s}.css") ? "custom/#{s}" : s }
+    stylesheets << 'admin' if is_admin
+    stylesheets << "post" if @post || (@page && @page.is_a?(Page))
+    stylesheets << "profile" if @profile
+    stylesheets << "terms" if params[:controller]=="static" &&  params[:action]=="terms"
+    stylesheet_link_tag stylesheets, :media => "all", :concat => stylesheet_name?(stylesheets), :cache => true
+  end
+  
+  def stylesheet_name?(stylesheets)
+    names = ['global']
+    names << "admin" if stylesheets.detect { |s| s =~ /(?:admin)/i }  
+    names << "custom" if stylesheets.detect { |s| s =~ /(?:custom)/i }
+    names << "post" if @post || (@page && @page.is_a?(Page))
+    names << "profile" if @profile
+    names << "terms" if params[:controller]=="static" &&  params[:action]=="terms"
+    "cache/#{names.join('_')}"
+  end
   
 end

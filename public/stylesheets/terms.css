@@ -1,0 +1,48 @@
+/* start terms of use */
+
+.termsContainer {
+	margin-top:10px;
+	width:920px;
+}
+
+.termsContainer .termsBody h1, .termsContainer .termsBody h2, .termsContainer .termsBody h3{
+	background:none;
+	border: none;
+	padding-left:0px;
+	padding-bottom:5px;
+	margin-bottom:5px;
+	border-bottom:1px solid #ccc;
+}
+
+.termsContainer .termsHeading{
+	text-transform:capitalize;
+}
+
+.termsContainer .termsHeading h1{
+	border-bottom:1px solid #ddd;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+
+.termsContainer .termsDescription{
+	float:right;
+	font-size:11px;
+	width:25%;
+	margin: 10px 0px 10px 10px;
+}
+
+.termsContainer .termsBody{
+	float:left;
+	width:70%;
+	margin:10px;
+}
+
+.termsContainer .termsBody ul, .termsContainer .termsBody ol{
+	display:block;
+	margin-bottom:20px;
+}
+
+.termsContainer .termsBody ul li, .termsContainer .termsBody ol li{
+	margin:0px 10px 3px 30px;
+}
+/* end terms of use */
