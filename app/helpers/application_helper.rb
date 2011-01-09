@@ -90,7 +90,7 @@ module ApplicationHelper
     stylesheets << 'admin' if is_admin
     stylesheets << "post" if @post || (@page && @page.is_a?(Page))
     stylesheets << "profile" if @profile
-    stylesheets << "terms" if params[:controller]=="static" &&  params[:action]=="terms"
+    stylesheets << "static" if params[:controller]=="statics"
     stylesheet_link_tag stylesheets, :media => "all", :concat => stylesheet_name?(stylesheets), :cache => true
   end
   
@@ -100,7 +100,7 @@ module ApplicationHelper
     names << "custom" if stylesheets.detect { |s| s =~ /(?:custom)/i }
     names << "post" if @post || (@page && @page.is_a?(Page))
     names << "profile" if @profile
-    names << "terms" if params[:controller]=="static" &&  params[:action]=="terms"
+    names << "static" if params[:controller]=="statics"
     "cache/#{names.join('_')}"
   end
   

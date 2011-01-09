@@ -17,7 +17,7 @@ development:
         :salt: "make sure this is really long an difficult to guess. use md5 hashes of something hard to guess to assure sufficient security"
         :prepend_status_update: "Simple Blog RoR"
         :info_account_user_name: '(make sure you get this username :-))'
-        :show_blog_link: "(optional, set to 'true' if you prefer the blog link to be shown at the end of the navigation)"
+        :show_blog_link: true
     :s3:
         :bucket: "simpleblog-dev"
     :recaptcha:

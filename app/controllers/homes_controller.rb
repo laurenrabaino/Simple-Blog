@@ -9,8 +9,8 @@ class HomesController < ApplicationController
   
   # define the home page variables...
   def get_home_page
-    @post = Post.is_home_page?(logged_in_and_admin)
-    @page = @post ? nil : Page.is_home_page?(logged_in_and_admin)
+    @post = @home_post      # loaded on each load to know if the blog link should be shown or not
+    @page = @home_page      # loaded on each load to know if the blog link should be shown or not
 
     unless @post || @page
       Post.per_page = 10
