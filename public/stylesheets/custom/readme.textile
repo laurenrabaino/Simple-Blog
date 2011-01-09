@@ -11,4 +11,4 @@ You can override any of the following files:
 
 If you want to add a stylesheet overriding just add a file named as above. If you create a file in the custom directory, Simple Blog will *not* include the default defined stylesheets. 
 
-*Tip:* If you choose to customize the styles, copy and paste the corresponding stylesheet from `/stylesheets/` to make sure you have all the necessary styles defined.
+*Tip:* If you choose to customize the styles, copy and paste the corresponding stylesheet from /stylesheets/ to make sure you have all the necessary styles defined.
