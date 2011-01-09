@@ -2,223 +2,20 @@
 	Simple Blog - Basic CSS
 */
 
- 
-a:active{
-	outline: none;
-}
+/* Fundamental styles */
 
-a:focus{
-	-moz-outline-style: none;
-}.
-
-more-link {
-   font-style: italic;
-   text-align: right;
-}
-
-*html #applesearch {
-margin-top: -25px;
-}
-
-/* search form */
-
-.searchForm{
-	display:inline;
-	float:right;
-	text-align:right;
-	margin-top:35px;
-	margin-bottom:5px;
-	padding-bottom:1px;
-	margin-right:15px;
-}
-
-/* search form */
-
-
-
-.page-link{
-	font-size: 14px;
-	width:100%;
-	line-height:14px;
-	display:block;
-	clear:both;
-	padding:5px;
-	margin-bottom:6px;
-	text-align:right;
-}
-
-.page-link span{
-	padding: 2px;
-	margin: 0px 2px 0px 2px; 
-	border: 1px solid #ddd;
-}
-
-.linkwrapper{
-	display:inline;
-	list-style: none;
-	float:left;
-	margin: 6px 0px 6px 0px;    
-	padding: 10px 5px 10px 0px;
-}
-
-.linkcat{
-	display:block;
-	list-style: none;
-	padding: 5px 5px 5px 0px;
-}
-
-.linkcat h2{
-	float:left;
-	display:inline;
-	font-weight:bold;
-	font-size:14px;
-	margin:0px;
-	padding:0px 12px 0px 0px;
-}
-
-.linkcat .xoxo .blogroll{
-	display:inline;        
-	float:left;
-	list-style: none;
-	padding: 2px 12px 2px 0px;
-}
-
-.linkcat .xoxo .blogroll li{
-	float:left;
-	display: inline;
-	margin:0px;
-	padding:0px;
-	width:auto;
-}
-
-.linkcat li{
-	display:inline;
-	list-style: none;
-	padding: 2px 12px 2px 0px;
-	margin:0px;
-}
-
-
-
-#footer{
-	clear:both;
-	float:left;
-	font-size:10px;
-	margin-top:60px;
-	padding:10px 0 25px;
-	width:945px;
-	border-top: 1px solid #ccc;
-}
-
-#footer li {
-	display:inline;
-	padding-right:5px;
-}
-
-#header{
-	margin: 0px 0 5px 0;
-	width:945px;
-	background:#eee;
-}
-
-#header img {
-    margin:0px;
-	}
-	
-#header a img {
-	border:none;
-	padding:0px;
-	
-}
-
-/* page navigation */
-#pages {
-	clear:both;
-	padding-left:10px;
-	width:99%;
-	border-bottom:1px solid #999;
-	border-top:1px solid #999;
-	font-size:10px;
-	height:20px;
-	padding-top:5px;
-	margin-bottom:10px;
-	margin-top:10px;
-	background:#ccc;
-}
-
-#pages li{
-	display:inline;
-	font-family:Arial, Helvetica, sans-serif;
-	list-style-type:none;
-	text-transform:uppercase;
-	padding-left:4px;
-	padding-right:1px;
-	border-left:1px solid #999;
-}
-
-#pages li.first{
-	border-left:none;
-}
-
-#pages li.pagePre{
-	font-weight:bold;
-}
-
-#pages li a:link, #pages li a:visited, #pages li.languageLink a:link, #pages li.languageLink a:visited{
-    color:#333;
-	text-decoration:none;
-}
-
-#pages li.languageLink,  #pages li.languageLinkSelected, #pages li.languageSeparator {
-	border:none;
-	float:right;
-	padding-left:5px;
-	padding-right:5px;
-}
-	
-#pages li a:hover, #pages li.languageLink a:hover{
-    color: #333;
-	text-decoration:underline;
-}
-
-#pages li.selected a{
-	color:red;
-	text-decoration:none;
-}
-
-#pages li.languageLinkSelected a{
-	text-decoration:none;
-	color:red;
-}
-	
-#nav-above .nav-previous{
-    float:right;
-}
-	
 *{
 	margin:0;
 	padding:0;
 }
 
-#mobile {
-	height:45px;
-	padding: 15px;
-	text-transform:none;
-	font-size:12px;
-	border: 2px solid #CCC;
-	margin-top: 5px;
-	margin-bottom: 10px;
-	background-image: url(images/arrow_grey.png);
-	background-repeat: no-repeat;
-	background-position: right center;
+body{
+    background:#fff;
+	color:#444;
+	font:12px/18px Arial, Arial, sans-serif;
+	margin:auto;
+	width:945px;
 }
-
-#mobile li {
-	line-height: 14px;
-}
-
-
-
 
 a:link, a:visited{
     color:#333;
@@ -239,14 +36,6 @@ blockquote{
     font:14px/21px Arial, Helvetica, sans-serif;
 	padding:12px;
 	background:#eee;
-}
-
-body{
-    background:#fff;
-	color:#444;
-	font:12px/18px Arial, Arial, sans-serif;
-	margin:auto;
-	width:945px;
 }
 
 code,pre{
@@ -292,41 +81,13 @@ a img {
 
 label{
     cursor:pointer;
-	}
+}
 	
-*html #logo{
+*html .logoContainer{
 	clear: right;
 }
 
 
-	
-#logo {
-	float: left;
-	padding:0px;
-	margin:20px 20px 10px 20px;
-	color:#666;
-}
-
-#logo a{
-	font-size:30px;
-	text-transform:uppercase;
-	text-decoration:none;
-	color:#666;
-}
-
-#logo a:hover{
-	text-decoration:underline;
-}
-
-#logo span{
-	font-size:14px;
-	text-transform:capitalize;
-	color:#999;
-	font-weight:normal;
-	margin-top:10px;
-	display:block;
-}
-	
 li#categories ul li{
 	border-bottom:1px solid silver;
 	display:inline;
@@ -371,28 +132,330 @@ pre {
 	padding:1em;
 }
 
-.button {
-	text-align:center;
+
+/* Footer styles */
+
+.footerContainer{
+	clear:both;
+	float:left;
+	font-size:10px;
+	margin-top:60px;
+	padding:10px 0 25px;
+	width:945px;
+	border-top: 1px solid #ccc;
 }
 
-.button a {
-	color: #FFFFFF;
-	background-color: #999999;
-	float: right;
-	height: 20px;
-	width: 75px;
-	margin-right: 15px;
-	padding-top: 5px;
-	font-size: 9px;
-	text-transform: uppercase;
-	background-image: url(images/button_corner.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
+.footerContainer li {
+	display:inline;
+	padding-right:5px;
 }
 
-.button a:hover{
-	color: #E8E8E8;
+/* end footer styles */
+
+/* top admin menu */
+.hideShowEmbeddedAdminMenu{
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;
+	text-transform:capitalize;
+	margin-left:0px;
+	padding-bottom:4px;
+	width:100%;
+	padding-top:3px;
+	background:#f9f9f9;
+	color:#666;
+	cursor:pointer;
+	font-size:11px;
 }
+
+.hideShowEmbeddedAdminMenu span{
+	padding-left:5px;
+	text-align:right;
+	width:300px;
+}
+
+.embeddedAdminMenu{
+	font-size:9px;
+	padding:10px 0px;
+	width:100%;
+	background:#f9f9f9;
+	border-bottom:2px solid #ccc;
+}
+
+.embeddedAdminMenu h4{
+	font-size:12px;
+	border:none;
+	border-bottom:1px solid #999;
+	background:none;
+	width:905px;
+	cursor:pointer;
+}
+
+.embeddedAdminMenu .adminMenu, .embeddedAdminMenu .subAdminMenu{
+	margin: 5px 5px 0px 5px;
+	list-style-type:none;
+}
+
+.embeddedAdminMenu .adminMenu li, .embeddedAdminMenu .subAdminMenu li, 
+	.embeddedAdminMenu .subAdminMenu .adminMenuSpace, .embeddedAdminMenu .subAdminMenu .adminMenuSpacerLarge {
+	display:inline;
+	padding: 0px 5px 0px 5px;
+}
+
+.embeddedAdminMenu .subAdminMenu .adminMenuSpacerLarge{
+	padding: 0px 10px 0px 10px;
+	margin-left:10px;
+}
+
+.embeddedAdminMenu .adminMenu li, .embeddedAdminMenu .subAdminMenu li{
+	font-size:10px;
+	cursor:pointer;
+	text-transform:capitalize;
+	background:#fff;
+}
+
+.embeddedAdminMenu .subAdminMenu{
+	border:1px solid #999;
+	margin-top:1px;
+	padding:7px 5px 5px 5px;
+	background:#fff;
+}
+
+.embeddedAdminMenu .subAdminMenu .preMenu{
+	font-weight:bold;
+	padding-right:10px;
+}
+
+.embeddedAdminMenu .adminMenu li{
+	font-size:10px;
+	border:1px solid #999;
+	padding:5px 4px;
+	margin-right:4px;
+	color:#999;
+}
+
+.embeddedAdminMenu .adminMenu .active{
+	border-bottom:1px solid #fff;
+	color: #333;
+}
+
+/* end admin menu*/
+
+/* header container */
+
+.headerContainer{
+	margin: 0px 0 5px 0;
+	width:945px;
+	background:#eee;
+}
+
+.headerContainer img {
+    margin:0px;
+	}
+	
+.headerContainer a img {
+	border:none;
+	padding:0px;
+}
+/* end header container */
+
+/* login and registration links */
+.loginContainer {
+	float:right;
+	margin-top:11px;
+	margin-right:15px;
+	width:54%;
+}
+
+.loginContainer li{
+    float:right;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:700;
+	list-style-type:none;
+	padding-left:20px;
+	text-transform:uppercase;
+	color:#666;
+}
+
+.loginContainer .actionLink, .loginContainer .actionLinkInbox{
+    padding-left:7px;
+}
+
+.loginContainer .actionLink .submitArticle{
+    color: #666;
+	margin-left:12px;
+}
+
+.loginContainer .actionLinkInbox, .loginContainer .actionLinkInbox a, .loginContainer .actionLinkInbox a:hover{
+	color:#666;
+}
+
+.loginContainer .actionLinkInbox a img{
+	height:16px;
+	padding-top:-2px;
+}
+
+.loginContainer .actionLinkInbox a span{
+	float:right;
+	display:inline;
+	margin: 0px 0px 0px 3px;
+}
+
+.loginContainer .actionLinkinBox a:hover{
+	text-decoration:underline;
+}
+
+.loginContainer .actionSeparator{
+    padding-left:0px;
+	color:#666;
+	display:none;
+}
+
+.loginContainer .actionSeparatorFacebookConnect{
+    padding-left:0px;
+	margin-left:5px;
+	margin-top:-1px;
+	color:#666;
+}
+
+.loginContainer li a:link, .loginContainer li a:visited, .loginContainer li span{
+	color:#666;
+	padding:0px;
+}
+
+.loginContainer li span{
+	padding-right:3px;
+}
+
+.loginContainer li .userName{
+	text-decoration: underline;
+}
+
+.loginContainer li a.logout{
+	padding:0px;
+	color: red;
+}
+	
+.loginContainer li a:hover{
+    color: #ED2528;
+	padding:0px;
+}
+
+.loginContainer li.facebookConnect {
+	margin: -2px 0px 0px 5px;
+	padding:0px 0px 0px 0px;
+}
+
+.loginContainer li.facebookConnect a img{
+	width:20px;
+}
+
+/* end login and registration links */
+
+/* Logo container */
+	
+.logoContainer {
+	float: left;
+	padding:0px;
+	margin:20px 20px 10px 20px;
+	color:#666;
+}
+
+.logoContainer a{
+	font-size:30px;
+	text-transform:uppercase;
+	text-decoration:none;
+	color:#666;
+}
+
+.logoContainer a:hover{
+	text-decoration:underline;
+}
+
+.logoContainer span{
+	font-size:14px;
+	text-transform:capitalize;
+	color:#999;
+	font-weight:normal;
+	margin-top:10px;
+	display:block;
+}
+
+/* end Logo container */
+
+/* page navigation */
+.navigationContainer {
+	clear:both;
+	padding-left:10px;
+	width:99%;
+	border-bottom:1px solid #999;
+	border-top:1px solid #999;
+	font-size:10px;
+	height:20px;
+	padding-top:5px;
+	margin-bottom:10px;
+	margin-top:10px;
+	background:#ccc;
+}
+
+.navigationContainer li{
+	display:inline;
+	font-family:Arial, Helvetica, sans-serif;
+	list-style-type:none;
+	text-transform:uppercase;
+	padding-left:4px;
+	padding-right:1px;
+	border-left:1px solid #999;
+}
+
+.navigationContainer li.first{
+	border-left:none;
+}
+
+.navigationContainer li.pagePre{
+	font-weight:bold;
+}
+
+.navigationContainer li a:link, .navigationContainer li a:visited, .navigationContainer li.languageLink a:link, .navigationContainer li.languageLink a:visited{
+    color:#333;
+	text-decoration:none;
+}
+
+.navigationContainer li.languageLink,  .navigationContainer li.languageLinkSelected, .navigationContainer li.languageSeparator {
+	border:none;
+	float:right;
+	padding-left:5px;
+	padding-right:5px;
+}
+	
+.navigationContainer li a:hover, .navigationContainer li.languageLink a:hover{
+    color: #333;
+	text-decoration:underline;
+}
+
+.navigationContainer li.selected a{
+	color:red;
+	text-decoration:none;
+}
+
+.navigationContainer li.languageLinkSelected a{
+	text-decoration:none;
+	color:red;
+}
+
+/* search form */
+
+.searchForm{
+	display:inline;
+	float:right;
+	text-align:right;
+	margin-top:35px;
+	margin-bottom:5px;
+	padding-bottom:1px;
+	margin-right:15px;
+}
+
+/* end search form */
 
 .noResults{
 	padding:10px 0px 10px 10px;
@@ -406,6 +469,8 @@ pre {
 	padding:10px;
 	width:920px;
 }
+
+/* subscribe container */
 
 .subscribeHeader {
 	background:#eee;
@@ -480,9 +545,10 @@ pre {
 	font-size:12px;
 	margin-right:0px;
 }
+/* end subscribe container */
 
 /* landing page */
-.landingPage, .searchPage, .postsPage {
+.searchPage, .postsPage {
 	width:920px;
 }
 
@@ -496,7 +562,7 @@ pre {
 	margin-top:10px;	
 }
 
-.postsPage .rightSide, .searchPage .rightSide, .landingPage .rightSide {
+.postsPage .rightSide, .searchPage .rightSide {
 	float:right;
 	width:30%;
 	margin:10px;
@@ -888,7 +954,7 @@ pre {
 	width:440px;
 }
 
-.formContainer .formBody .row input#originalArticle, .formContainer .formBody .row input#termsOfService, .formContainer .formBody .row input.normalCheckbox{
+.formContainer .formBody .row input#termsOfService, .formContainer .formBody .row input.normalCheckbox{
 	margin-top:3px;
 	width:20px;
 }
@@ -1053,16 +1119,6 @@ pre {
 	border-bottom:1px solid #ddd;
 	margin-bottom:5px;
 	padding-bottom:5px;
-}
-
-.postBody .alertArticleHeading {
-	margin-top:10px;
-	padding-left:0px;
-	width:590px;
-	background:none;
-	border:none;
-	border-bottom:1px solid #eee;
-	font-size: 18px;
 }
 
 .postBody .comments .formBody{
@@ -1419,100 +1475,6 @@ pre {
 
 /* end profile page css */
 
-/* login and registration links */
-#login {
-	float:right;
-	margin-top:11px;
-	margin-right:15px;
-	width:54%;
-}
-
-#login li{
-    float:right;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:10px;
-	font-weight:700;
-	list-style-type:none;
-	padding-left:20px;
-	text-transform:uppercase;
-	color:#666;
-}
-
-#login .actionLink, #login .actionLinkInbox{
-    padding-left:7px;
-}
-
-#login .actionLink .submitArticle{
-    color: #666;
-	margin-left:12px;
-}
-
-#login .actionLinkInbox, #login .actionLinkInbox a, #login .actionLinkInbox a:hover{
-	color:#666;
-}
-
-#login .actionLinkInbox a img{
-	height:16px;
-	padding-top:-2px;
-}
-
-#login .actionLinkInbox a span{
-	float:right;
-	display:inline;
-	margin: 0px 0px 0px 3px;
-}
-
-#login .actionLinkinBox a:hover{
-	text-decoration:underline;
-}
-
-#login .actionSeparator{
-    padding-left:0px;
-	color:#666;
-	display:none;
-}
-
-#login .actionSeparatorFacebookConnect{
-    padding-left:0px;
-	margin-left:5px;
-	margin-top:-1px;
-	color:#666;
-}
-
-#login li a:link, #login li a:visited, #login li span{
-	color:#666;
-	padding:0px;
-}
-
-#login li span{
-	padding-right:3px;
-}
-
-#login li .userName{
-	text-decoration: underline;
-}
-
-#login li a.logout{
-	padding:0px;
-	color: red;
-}
-	
-#login li a:hover{
-    color: #ED2528;
-	padding:0px;
-}
-
-#login li.facebookConnect {
-	margin: -2px 0px 0px 5px;
-	padding:0px 0px 0px 0px;
-}
-
-#login li.facebookConnect a img{
-	width:20px;
-}
-
-/* end login and registration links */
-
 /* tag cloud */
 
 .css1 { font-size: 8px; }
@@ -1522,91 +1484,6 @@ pre {
 
 /* end tag cloud */
 
-/* ADMIN MENU */
-.hideShowEmbeddedAdminMenu{
-	border-top:2px solid #ccc;
-	border-bottom:2px solid #ccc;
-	text-transform:capitalize;
-	margin-left:0px;
-	padding-bottom:4px;
-	width:100%;
-	padding-top:3px;
-	background:#f9f9f9;
-	color:#666;
-	cursor:pointer;
-	font-size:11px;
-}
-
-.hideShowEmbeddedAdminMenu span{
-	padding-left:5px;
-	text-align:right;
-	width:300px;
-}
-
-.embeddedAdminMenu{
-	font-size:9px;
-	padding:10px 0px;
-	width:100%;
-	background:#f9f9f9;
-	border-bottom:2px solid #ccc;
-}
-
-.embeddedAdminMenu h4{
-	font-size:12px;
-	border:none;
-	border-bottom:1px solid #999;
-	background:none;
-	width:905px;
-	cursor:pointer;
-}
-
-.embeddedAdminMenu .adminMenu, .embeddedAdminMenu .subAdminMenu{
-	margin: 5px 5px 0px 5px;
-	list-style-type:none;
-}
-
-.embeddedAdminMenu .adminMenu li, .embeddedAdminMenu .subAdminMenu li, 
-	.embeddedAdminMenu .subAdminMenu .adminMenuSpace, .embeddedAdminMenu .subAdminMenu .adminMenuSpacerLarge {
-	display:inline;
-	padding: 0px 5px 0px 5px;
-}
-
-.embeddedAdminMenu .subAdminMenu .adminMenuSpacerLarge{
-	padding: 0px 10px 0px 10px;
-	margin-left:10px;
-}
-
-.embeddedAdminMenu .adminMenu li, .embeddedAdminMenu .subAdminMenu li{
-	font-size:10px;
-	cursor:pointer;
-	text-transform:capitalize;
-	background:#fff;
-}
-
-.embeddedAdminMenu .subAdminMenu{
-	border:1px solid #999;
-	margin-top:1px;
-	padding:7px 5px 5px 5px;
-	background:#fff;
-}
-
-.embeddedAdminMenu .subAdminMenu .preMenu{
-	font-weight:bold;
-	padding-right:10px;
-}
-
-.embeddedAdminMenu .adminMenu li{
-	font-size:10px;
-	border:1px solid #999;
-	padding:5px 4px;
-	margin-right:4px;
-	color:#999;
-}
-
-.embeddedAdminMenu .adminMenu .active{
-	border-bottom:1px solid #fff;
-	color: #333;
-}
 
 .preFeaturedImage{
 	font-size:11px;
@@ -1701,6 +1578,7 @@ pre {
 
 /* end profiles list*/
 
+/* global styles */
 .shareThis{
 	padding-top:10px;
 	margin:10px 0px 0px 10px;
@@ -1765,9 +1643,6 @@ pre {
 	text-transform:none;
 }
 
-.profileContainer .favoriteThis, .profileContainer .favoritedThis{
-}
-
 .favoriteThis a{
 	text-decoration:none;
 }
@@ -1794,6 +1669,7 @@ pre {
 	margin-right:10px;
 	font-size:60%;
 }
+/* end global styles*/
 
 /* Leave in for hover control */
 .hoverContainer{

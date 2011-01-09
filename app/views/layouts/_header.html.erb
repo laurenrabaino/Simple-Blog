@@ -1,22 +1,22 @@
-<div id="header">
+<div class="headerContainer">
 	
-	<ul id="login">
+	<ul class="loginContainer">
 		<%=render :partial => "profiles/login_links"%>
 	</ul>
 
-	<div id="logo"> 
+	<div class="logoContainer"> 
 		<a href="/"><%=SETTINGS[:site][:name]%></a>
 		<%if SETTINGS[:site][:tagline]%><span><%=SETTINGS[:site][:tagline]%></span><%end%>
 	</div>
 	
-	<div class="searchForm">
+	<div class="searchContainer">
 		<% form_tag(search_path, :method => "post") do %>
 			<%= text_field_tag(:q) %>
 			<%= submit_tag(t("outer.search").capitalize) %>
 		<% end %>
 	</div>
 
-	<ul id="pages">	
+	<ul class='navigationContainer' id="navigation">	
 		<%=render :partial => "layouts/navigation"%>
 	</ul>
 
