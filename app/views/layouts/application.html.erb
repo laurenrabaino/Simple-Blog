@@ -3,7 +3,7 @@
 	<head>
 		
 		<%=render :partial => "layouts/head"%>
-		
+				
 	</head>
 
 	<body>  
@@ -13,6 +13,7 @@
 		<div class="outerWrapper">
 			
 			<%= render :partial => "layouts/header"%>
+			<%= render :partial => "layouts/navigation"%>
 			
 			<div class="innerWrapper">
 
@@ -24,13 +25,7 @@
 
 			</div>
 			
-			<div class="footerContainer">
-				<ul>
-					<li><%=t "outer.copyright"%> &copy; 2009-2010 <%=SETTINGS[:site][:name]%></li>
-					<li>|</li>
-					<li><%=link_to t("form.profile.labels.termsofuse.display").capitalize, "/terms"%></li>
-				</ul>
-			</div>
+			<%= render :partial => "layouts/footer"%>
 
 			<% if Rails.env.production? && !is_admin? %><%=render :partial => "shared/google_analytics"%><%end%>
 
