@@ -5,12 +5,12 @@
 /* subscribe container */
 
 .subscribeHeader {
-	background:#eee;
-	border:1px solid #999;
+	background:#f9f9f9;
+	border:1px solid #ccc;
 }
 
 .subscribeContainer{
-	border:1px solid #999;
+	border:1px solid #ccc;
 	background: none;
 	width:100%;
 	margin:-11px 10px 10px 0px;
@@ -77,16 +77,19 @@
 	font-size:12px;
 	margin-right:0px;
 }
+
 /* end subscribe container */
 
 /* landing page */
+
 .searchPage, .postsPage {
 	width:920px;
+	background:#f9f9f9;
 }
 
 .searchPage .leftSide, .postsPage .leftSide {
 	float:left;
-	width:65%;
+	width:64%;
 	margin:10px;	
 }
 
@@ -98,6 +101,7 @@
 	float:right;
 	width:30%;
 	margin:10px;
+	padding-left:8px;
 }
 
 /* end landing page*/

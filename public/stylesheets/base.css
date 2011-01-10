@@ -9,8 +9,7 @@ body{
     background:#fff;
 	color:#444;
 	font:12px/18px Arial, Arial, sans-serif;
-	margin:auto;
-	width:945px;
+	margin:0px auto;
 }
 
 a:link, a:visited{
@@ -45,9 +44,8 @@ h1,h2,h3,h4,h5,h6{
 	padding:10px 10px 10px 10px;
 	width:100%;
 	color:000;
-	background:#f9f9f9;
-	border:1px solid #ccc;
-	text-transform:capitalize;
+	border-bottom:1px solid #ccc;
+	text-transform:uppercase;
 }
 
 

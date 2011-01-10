@@ -1,19 +1,38 @@
+/* wrappers */
+.outerWrapper{
+	background:#fff;
+	border-top: 10px solid #ddd;
+}
+
+.innerWrapper{
+	margin-top:5px;
+	border-top: 25px solid #ddd;
+	background:#fff;
+}
+
+.contentContainer{
+	margin:0px auto;
+	width:920px;
+}
+
+/* end wrapper */
+
 /* header container */
 
 .headerContainer{
-	margin: 0px 0 5px 0;
-	width:945px;
-	background:#eee;
+	margin: 0px auto;
+	width:1000px;
 }
 
 .headerContainer img {
     margin:0px;
-	}
+}
 	
 .headerContainer a img {
 	border:none;
 	padding:0px;
 }
+
 /* end header container */
 
 /* login and registration links */
@@ -133,9 +152,12 @@
 .logoContainer span{
 	font-size:14px;
 	text-transform:capitalize;
-	color:#999;
+	color:#666;
 	font-weight:normal;
 	margin-top:10px;
+	padding-top:5px;
+	padding-left:2px;
+	border-top:1px solid #999;
 	display:block;
 }
 
@@ -145,15 +167,12 @@
 .navigationContainer {
 	clear:both;
 	padding-left:10px;
-	width:99%;
-	border-bottom:1px solid #999;
-	border-top:1px solid #999;
+	width:100%;
+	border-bottom:0px solid #666;
+	border-top:1px solid #ccc;
 	font-size:10px;
-	height:20px;
 	padding-top:5px;
-	margin-bottom:10px;
-	margin-top:10px;
-	background:#ccc;
+	margin: 0px auto;
 }
 
 .navigationContainer li{
@@ -161,9 +180,9 @@
 	font-family:Arial, Helvetica, sans-serif;
 	list-style-type:none;
 	text-transform:uppercase;
-	padding-left:4px;
-	padding-right:1px;
-	border-left:1px solid #999;
+	padding-left:8px;
+	padding-right:2px;
+	border-left:1px solid #666;
 }
 
 .navigationContainer li.first{
@@ -175,19 +194,19 @@
 }
 
 .navigationContainer li a:link, .navigationContainer li a:visited, .navigationContainer li.languageLink a:link, .navigationContainer li.languageLink a:visited{
-    color:#333;
+    color:#666;
 	text-decoration:none;
 }
 
 .navigationContainer li.languageLink,  .navigationContainer li.languageLinkSelected, .navigationContainer li.languageSeparator {
 	border:none;
 	float:right;
-	padding-left:5px;
-	padding-right:5px;
+	padding-left:10px;
+	padding-right:10px;
 }
 	
 .navigationContainer li a:hover, .navigationContainer li.languageLink a:hover{
-    color: #333;
+    color:#fff;
 	text-decoration:underline;
 }
 
@@ -198,7 +217,7 @@
 
 .navigationContainer li.languageLinkSelected a{
 	text-decoration:none;
-	color:red;
+	color:#666;
 }
 
 /* search container */
@@ -219,12 +238,11 @@
 
 .footerContainer{
 	clear:both;
-	float:left;
+	text-align:center;
 	font-size:10px;
-	margin-top:60px;
+	margin:0px auto;
 	padding:10px 0 25px;
-	width:945px;
-	border-top: 1px solid #ccc;
+	border-top: 5px solid #ccc;
 }
 
 .footerContainer li {
