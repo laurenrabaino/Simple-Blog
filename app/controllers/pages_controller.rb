@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   
   def index
     @header[:title] << t("common.page.display").capitalize
-    @pages = Page.get_pages(params[:page], is_logged_in_and_admin)
+    @pages = Page.get_pages(params[:page], logged_in_and_admin)
   end
   
   def publish
